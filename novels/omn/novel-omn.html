@@ -10,12 +10,8 @@
 <title>OMN | RotaRS — The Literary Archive</title>
 
 <link rel="stylesheet" href="../../style.css?v=5">
-<link rel="stylesheet" href="../../reading.css?v=1">
 
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Serif+TC:wght@400;500;600&display=swap" rel="stylesheet">
-
-<script defer src="../../novels.js?v=1"></script>
-<script defer src="../../reading.js?v=2"></script>
 
 <style>
 
@@ -25,6 +21,9 @@
 
    作品首頁
    路徑：novels/omn/novel-omn.html
+
+   純粹閱讀版本
+   最新章節置頂
 ========================================= */
 
 * {
@@ -309,6 +308,8 @@ body {
 }
 
 .omn-chapter-list {
+  display: flex;
+  flex-direction: column;
   border-top: 1px solid rgba(91,65,45,.38);
 }
 
@@ -355,9 +356,10 @@ body {
 }
 
 .omn-chapter-title {
-  font-family: "Noto Serif TC", serif;
-  font-size: 17px;
-  letter-spacing: 1px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 25px;
+  font-style: italic;
+  letter-spacing: .5px;
   color: #39291f;
 }
 
@@ -369,23 +371,24 @@ body {
 }
 
 /* =========================================
+   最新章節
+========================================= */
+
+.omn-latest-item {
+  background: rgba(255,247,232,.16);
+}
+
+/* =========================================
    TEASER
 ========================================= */
 
 .omn-teaser-item {
-  background: rgba(255,247,232,.12);
+  background: rgba(255,247,232,.08);
 }
 
 .omn-teaser-item .omn-chapter-number {
   letter-spacing: 3px;
   font-weight: 600;
-}
-
-.omn-teaser-item .omn-chapter-title {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 25px;
-  font-style: italic;
-  letter-spacing: .5px;
 }
 
 /* =========================================
@@ -498,10 +501,6 @@ body {
   }
 
   .omn-chapter-title {
-    font-size: 15px;
-  }
-
-  .omn-teaser-item .omn-chapter-title {
     font-size: 22px;
   }
 
@@ -528,10 +527,7 @@ body {
 
 </head>
 
-<body
-  class="characters-page"
-  data-novel-id="omn"
->
+<body class="characters-page">
 
 <div class="site">
 
@@ -592,10 +588,6 @@ body {
       <a href="../../characters.html" class="nav-link">
         CHARACTERS
       </a>
-
-      <span class="nav-link nav-disabled">
-        CONTINUE READING
-      </span>
 
     </nav>
 
@@ -810,10 +802,9 @@ body {
       <!-- =================================
            TABLE OF CONTENTS
 
-           RESUME READING
-           由 reading.js 自動加入。
-
-           Teaser 已正式改為新資料夾。
+           最新章節排最上面
+           純 HTML 連結
+           不依賴 JavaScript
       ================================= -->
 
       <section class="omn-chapters">
@@ -829,18 +820,47 @@ body {
 
         <div class="omn-chapter-list">
 
-          <!-- =============================
+          <!-- =================================
+               CHAPTER 1
+               Under the Lights
+               最新章節
+          ================================= -->
+
+          <a
+            href="chapters/omn-01.html"
+            class="omn-chapter-item omn-latest-item"
+          >
+
+            <div class="omn-chapter-info">
+
+              <span class="omn-chapter-number">
+                CHAPTER 1
+              </span>
+
+              <span class="omn-chapter-title">
+                Under the Lights
+              </span>
+
+            </div>
+
+            <span
+              class="omn-chapter-arrow"
+              aria-hidden="true"
+            >
+              ›
+            </span>
+
+          </a>
+
+
+          <!-- =================================
                TEASER
                Soft Before the Noise
-
-               新版路徑：
-               novels/omn/chapters/omn-teaser.html
-          ============================= -->
+          ================================= -->
 
           <a
             href="chapters/omn-teaser.html"
             class="omn-chapter-item omn-teaser-item"
-            data-chapter-id="omn-teaser"
           >
 
             <div class="omn-chapter-info">
