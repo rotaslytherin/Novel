@@ -18,30 +18,31 @@
   <title>OMN | RotaRS — The Literary Archive</title>
 
   <!-- 網站共用樣式 -->
-  <link rel="stylesheet" href="style.css?v=5">
+  <link rel="stylesheet" href="../../style.css?v=5">
 
   <!-- 閱讀系統樣式 -->
-  <link rel="stylesheet" href="reading.css?v=1">
+  <link rel="stylesheet" href="../../reading.css?v=1">
 
   <!-- 閱讀系統資料與功能 -->
-  <script defer src="novels.js?v=1"></script>
-  <script defer src="reading.js?v=1"></script>
+  <script defer src="../../novels.js?v=1"></script>
+  <script defer src="../../reading.js?v=2"></script>
 
   <style>
 
     /* =========================================
        ROTARS — OMN NOVEL ARCHIVE
 
-       ★ 完整小說專頁
-       ★ 置中小說封面
-       ★ 六位角色卡片
-       ★ 點擊前往角色主頁
-       ★ Teaser 前導篇
-       ★ 自訂章節目錄
-       ★ Resume Reading
-       ★ 章節閱讀狀態
+       完整小說專頁
+       置中小說封面
+       六位角色卡片
+       共用角色主頁
+       Teaser 前導篇
+       自訂章節目錄
+       Resume Reading
+       章節閱讀狀態
 
-       檔案：novel-omn.html
+       檔案：
+       novels/omn/novel-omn.html
     ========================================= */
 
     * {
@@ -205,7 +206,6 @@
 
     /* =========================================
        小說封面
-       完整顯示、不裁切
     ========================================= */
 
     .omn-cover {
@@ -328,7 +328,6 @@
 
     /* =========================================
        THE CAST
-       六位角色卡片
 
        電腦：六欄
        iPad：三欄
@@ -703,10 +702,10 @@
 
     <header class="site-header">
 
-      <a href="home.html" class="brand">
+      <a href="../../home.html" class="brand">
 
         <img
-          src="images/IMG_1497.png"
+          src="../../images/IMG_1497.png"
           alt="RotaRS Logo"
           class="brand-logo"
         >
@@ -740,14 +739,14 @@
       >
 
         <a
-          href="home.html"
+          href="../../home.html"
           class="nav-link"
         >
           HOME
         </a>
 
         <a
-          href="library.html"
+          href="../../library.html"
           class="nav-link active"
           aria-current="page"
         >
@@ -755,7 +754,7 @@
         </a>
 
         <a
-          href="characters.html"
+          href="../../characters.html"
           class="nav-link"
         >
           CHARACTERS
@@ -781,7 +780,7 @@
     <main class="main-content omn-main">
 
       <a
-        href="library.html"
+        href="../../library.html"
         class="omn-back"
       >
         ← BACK TO LIBRARY
@@ -817,7 +816,7 @@
         <figure class="omn-cover">
 
           <img
-            src="images/IMG_1527.jpeg"
+            src="../../images/IMG_1527.jpeg"
             alt="OMN 小說封面"
           >
 
@@ -835,9 +834,7 @@
 
         <!-- =====================================
              THE CAST
-
-             六位角色
-             每張卡片連結至角色主頁
+             共用角色檔案
         ===================================== -->
 
         <section class="omn-cast">
@@ -859,7 +856,7 @@
             <!-- 01 珞塔 -->
 
             <a
-              href="character-01.html"
+              href="../../character-01.html"
               class="omn-cast-card"
               aria-label="查看珞塔的角色主頁"
             >
@@ -878,7 +875,7 @@
             <!-- 02 阿格妮絲 -->
 
             <a
-              href="character-02.html"
+              href="../../character-02.html"
               class="omn-cast-card"
               aria-label="查看阿格妮絲的角色主頁"
             >
@@ -897,7 +894,7 @@
             <!-- 03 吉姆 -->
 
             <a
-              href="character-03.html"
+              href="../../character-03.html"
               class="omn-cast-card"
               aria-label="查看吉姆的角色主頁"
             >
@@ -916,7 +913,7 @@
             <!-- 04 修格斯 -->
 
             <a
-              href="character-04.html"
+              href="../../character-04.html"
               class="omn-cast-card"
               aria-label="查看修格斯的角色主頁"
             >
@@ -935,7 +932,7 @@
             <!-- 05 菲爾 -->
 
             <a
-              href="character-07.html"
+              href="../../character-07.html"
               class="omn-cast-card"
               aria-label="查看菲爾的角色主頁"
             >
@@ -954,7 +951,7 @@
             <!-- 06 雷蒙德 -->
 
             <a
-              href="character-05.html"
+              href="../../character-05.html"
               class="omn-cast-card"
               aria-label="查看雷蒙德的角色主頁"
             >
@@ -982,12 +979,12 @@
 
         <!-- =====================================
              TABLE OF CONTENTS
-             小說章節目錄
 
-             Resume Reading 按鈕會由
-             reading.js 自動加入。
+             RESUME READING 由 reading.js
+             自動加入。
 
-             只有存在閱讀紀錄時顯示。
+             目前 Teaser 暫時使用舊網址。
+             搬移章節後再更新。
         ===================================== -->
 
         <section class="omn-chapters">
@@ -1007,11 +1004,14 @@
             <!-- =================================
                  TEASER
                  Soft Before the Noise
+
+                 暫時連回網站根目錄
             ================================= -->
 
             <a
-              href="omn-teaser.html"
+              href="../../omn-teaser.html"
               class="omn-chapter-item omn-teaser-item"
+              data-chapter-id="omn-teaser"
             >
 
               <div class="omn-chapter-info">
@@ -1037,20 +1037,20 @@
 
 
             <!-- =================================
-                 ★★★ 正式章節新增區 ★★★
+                 正式章節新增區
 
-                 之後每新增一章，
-                 需要：
+                 搬遷完成後：
 
-                 ① 建立章節 HTML
-                 ② 在 novels.js 登記章節
-                 ③ 在這裡加入章節連結
+                 1. 建立章節 HTML
+                 2. 在 novels.js 登記
+                 3. 在此加入章節連結
 
-                 範本：
+                 未來章節範例：
 
                  <a
-                   href="omn-chapter-01.html"
+                   href="chapters/omn-chapter-01.html"
                    class="omn-chapter-item"
+                   data-chapter-id="omn-chapter-01"
                  >
 
                    <div class="omn-chapter-info">
