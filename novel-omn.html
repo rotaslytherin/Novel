@@ -25,14 +25,12 @@
     /* =========================================
        ROTARS — OMN NOVEL ARCHIVE
 
-       完整小說專頁
-
-       ★ 置中封面
-       ★ 六位主演
-       ★ 作品簡介
+       ★ 完整小說專頁
+       ★ 置中小說封面
+       ★ 六位角色卡片
+       ★ 點擊前往角色主頁
        ★ Teaser 前導篇
        ★ 自訂章節目錄
-       ★ 獨立閱讀頁面連結
 
        檔案：novel-omn.html
     ========================================= */
@@ -198,7 +196,7 @@
 
     /* =========================================
        小說封面
-       完整顯示，不裁切
+       完整顯示、不裁切
     ========================================= */
 
     .omn-cover {
@@ -320,111 +318,101 @@
     }
 
     /* =========================================
-       THE STORY
-       作品簡介
+       THE CAST
+       六位角色卡片
+
+       電腦：六欄
+       iPad：三欄
+       手機：兩欄
     ========================================= */
 
-    .omn-story {
-      max-width: 720px;
+    .omn-cast {
+      max-width: 900px;
       margin: 0 auto;
     }
 
-    .omn-story-text {
-      max-width: 650px;
-      margin: 0 auto;
+    .omn-cast-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(6, minmax(0, 1fr));
+
+      gap: 12px;
+    }
+
+    .omn-cast-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      min-width: 0;
+      min-height: 100px;
+
+      padding: 18px 7px;
+
+      border:
+        1px solid rgba(91, 65, 45, 0.38);
+
+      background:
+        rgba(255, 247, 232, 0.08);
+
+      color: #39291F;
+      text-decoration: none;
 
       text-align: center;
 
+      transition:
+        background 0.25s ease,
+        transform 0.25s ease,
+        border-color 0.25s ease;
+    }
+
+    .omn-cast-card:hover {
+      background:
+        rgba(255, 247, 232, 0.25);
+
+      border-color:
+        rgba(91, 65, 45, 0.7);
+
+      transform: translateY(-3px);
+    }
+
+    .omn-cast-card:focus-visible {
+      outline: 2px solid #5A4030;
+      outline-offset: 4px;
+    }
+
+    .omn-cast-card-name {
       font-family:
         "Noto Serif TC",
         serif;
 
       font-size: 16px;
-      line-height: 2.2;
-      letter-spacing: 0.8px;
-
-      color: #4E392B;
-    }
-
-    .omn-story-text p {
-      margin: 0 0 18px;
-    }
-
-    .omn-story-text p:last-child {
-      margin-bottom: 0;
-    }
-
-    .omn-placeholder {
-      font-style: italic;
-      opacity: 0.75;
-    }
-
-    /* =========================================
-       THE CAST
-       六位主演
-    ========================================= */
-
-    .omn-cast {
-      max-width: 740px;
-      margin: 0 auto;
-    }
-
-    .omn-cast-list {
-      border-top:
-        1px solid rgba(91, 65, 45, 0.38);
-    }
-
-    .omn-cast-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      gap: 20px;
-
-      padding: 20px 12px;
-
-      border-bottom:
-        1px solid rgba(91, 65, 45, 0.38);
+      letter-spacing: 1px;
+      line-height: 1.7;
 
       color: #39291F;
-      text-decoration: none;
-
-      transition: background 0.2s ease;
+      overflow-wrap: anywhere;
     }
 
-    a.omn-cast-item:hover {
-      background:
-        rgba(91, 65, 45, 0.07);
-    }
+    .omn-cast-card-label {
+      margin-top: 8px;
 
-    a.omn-cast-item:focus-visible {
-      outline: 2px solid #5A4030;
-      outline-offset: 3px;
-    }
-
-    .omn-cast-name {
       font-family:
-        "Noto Serif TC",
+        "Cormorant Garamond",
+        Georgia,
         serif;
 
-      font-size: 19px;
-      letter-spacing: 2px;
+      font-size: 11px;
+      font-style: italic;
+      letter-spacing: 1px;
 
-      color: #39291F;
-    }
-
-    .omn-cast-arrow {
-      flex-shrink: 0;
-
-      font-family: Georgia, serif;
-      font-size: 25px;
-
-      color: #715640;
+      color: #826A55;
     }
 
     /* =========================================
        TABLE OF CONTENTS
-       Teaser + 正式章節
     ========================================= */
 
     .omn-chapters {
@@ -457,14 +445,14 @@
         padding-left 0.2s ease;
     }
 
-    a.omn-chapter-item:hover {
+    .omn-chapter-item:hover {
       background:
         rgba(91, 65, 45, 0.07);
 
       padding-left: 18px;
     }
 
-    a.omn-chapter-item:focus-visible {
+    .omn-chapter-item:focus-visible {
       outline: 2px solid #5A4030;
       outline-offset: 3px;
     }
@@ -510,10 +498,7 @@
     }
 
     /* =========================================
-       Teaser 特別標記
-
-       讓前導篇與正式章節稍有區別，
-       但不破壞整體英倫簡約風格。
+       TEASER
     ========================================= */
 
     .omn-teaser-item {
@@ -578,6 +563,17 @@
         width: min(100%, 400px);
       }
 
+      .omn-cast-grid {
+        grid-template-columns:
+          repeat(3, minmax(0, 1fr));
+
+        gap: 12px;
+      }
+
+      .omn-cast-card {
+        min-height: 90px;
+      }
+
     }
 
     /* =========================================
@@ -636,13 +632,20 @@
         font-size: 15px;
       }
 
-      .omn-story-text {
-        font-size: 14px;
-        line-height: 2.1;
+      .omn-cast-grid {
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+
+        gap: 10px;
       }
 
-      .omn-cast-name {
-        font-size: 17px;
+      .omn-cast-card {
+        min-height: 85px;
+        padding: 14px 6px;
+      }
+
+      .omn-cast-card-name {
+        font-size: 15px;
       }
 
       .omn-chapter-title {
@@ -653,7 +656,6 @@
         font-size: 22px;
       }
 
-      .omn-cast-item,
       .omn-chapter-item {
         padding: 19px 5px;
       }
@@ -666,7 +668,7 @@
 
     @media (prefers-reduced-motion: reduce) {
 
-      .omn-cast-item,
+      .omn-cast-card,
       .omn-chapter-item {
         transition: none;
       }
@@ -797,12 +799,7 @@
 
 
         <!-- =====================================
-             ★ 小說封面
-
-             封面：
-             images/IMG_1527.jpeg
-
-             完整顯示，不裁切。
+             小說封面
         ===================================== -->
 
         <figure class="omn-cover">
@@ -825,54 +822,10 @@
 
 
         <!-- =====================================
-             THE STORY
-             小說簡介
-        ===================================== -->
-
-        <section class="omn-story">
-
-          <div class="omn-section-heading">
-
-            <h2>The Story</h2>
-
-            <p>Between the Pages</p>
-
-          </div>
-
-
-          <!-- =================================
-               ★ 小說簡介編輯區
-
-               未來將下面的文字替換成
-               OMN 正式劇情介紹。
-
-               若需要多段：
-
-               <p>第一段</p>
-               <p>第二段</p>
-          ================================= -->
-
-          <div class="omn-story-text">
-
-            <p class="omn-placeholder">
-              故事簡介即將揭曉。
-            </p>
-
-          </div>
-
-        </section>
-
-
-        <div class="omn-divider">
-          <span>✦</span>
-        </div>
-
-
-        <!-- =====================================
              THE CAST
-             六位主演
 
-             僅顯示小說角色名稱
+             六位角色
+             每張卡片連結至角色主頁
         ===================================== -->
 
         <section class="omn-cast">
@@ -888,89 +841,141 @@
           </div>
 
 
-          <div class="omn-cast-list">
+          <div class="omn-cast-grid">
 
 
-            <!-- 主演 01：珞塔 -->
-
-            <div class="omn-cast-item">
-              <span class="omn-cast-name">
-                珞塔
-              </span>
-            </div>
-
-
-            <!-- 主演 02：阿格妮絲 -->
-
-            <div class="omn-cast-item">
-              <span class="omn-cast-name">
-                阿格妮絲
-              </span>
-            </div>
-
-
-            <!-- 主演 03：吉姆 -->
+            <!-- =================================
+                 01 珞塔
+                 character-01.html
+            ================================= -->
 
             <a
-              href="character-03.html"
-              class="omn-cast-item"
+              href="character-01.html"
+              class="omn-cast-card"
+              aria-label="查看珞塔的角色主頁"
             >
 
-              <span class="omn-cast-name">
-                吉姆
+              <span class="omn-cast-card-name">
+                珞塔
               </span>
 
-              <span
-                class="omn-cast-arrow"
-                aria-hidden="true"
-              >
-                ›
+              <span class="omn-cast-card-label">
+                View Profile
               </span>
 
             </a>
 
 
-            <!-- 主演 04：修格斯 -->
+            <!-- =================================
+                 02 阿格妮絲
+                 character-02.html
+            ================================= -->
 
-            <div class="omn-cast-item">
-              <span class="omn-cast-name">
-                修格斯
+            <a
+              href="character-02.html"
+              class="omn-cast-card"
+              aria-label="查看阿格妮絲的角色主頁"
+            >
+
+              <span class="omn-cast-card-name">
+                阿格妮絲
               </span>
-            </div>
 
-
-            <!-- 主演 05：菲爾 -->
-
-            <div class="omn-cast-item">
-              <span class="omn-cast-name">
-                菲爾
+              <span class="omn-cast-card-label">
+                View Profile
               </span>
-            </div>
 
-
-            <!-- 主演 06：雷蒙德 -->
-
-            <div class="omn-cast-item">
-              <span class="omn-cast-name">
-                雷蒙德
-              </span>
-            </div>
+            </a>
 
 
             <!-- =================================
-                 ★ 未來新增主演
-
-                 複製以下整組：
-
-                 <div class="omn-cast-item">
-                   <span class="omn-cast-name">
-                     新角色名稱
-                   </span>
-                 </div>
-
-                 若有個人頁，
-                 可改成 a 標籤並加 href。
+                 03 吉姆
+                 character-03.html
             ================================= -->
+
+            <a
+              href="character-03.html"
+              class="omn-cast-card"
+              aria-label="查看吉姆的角色主頁"
+            >
+
+              <span class="omn-cast-card-name">
+                吉姆
+              </span>
+
+              <span class="omn-cast-card-label">
+                View Profile
+              </span>
+
+            </a>
+
+
+            <!-- =================================
+                 04 修格斯
+                 character-04.html
+            ================================= -->
+
+            <a
+              href="character-04.html"
+              class="omn-cast-card"
+              aria-label="查看修格斯的角色主頁"
+            >
+
+              <span class="omn-cast-card-name">
+                修格斯
+              </span>
+
+              <span class="omn-cast-card-label">
+                View Profile
+              </span>
+
+            </a>
+
+
+            <!-- =================================
+                 05 菲爾
+
+                 ★ 指定角色頁編號：07
+            ================================= -->
+
+            <a
+              href="character-07.html"
+              class="omn-cast-card"
+              aria-label="查看菲爾的角色主頁"
+            >
+
+              <span class="omn-cast-card-name">
+                菲爾
+              </span>
+
+              <span class="omn-cast-card-label">
+                View Profile
+              </span>
+
+            </a>
+
+
+            <!-- =================================
+                 06 雷蒙德
+
+                 ★ 指定角色頁編號：05
+            ================================= -->
+
+            <a
+              href="character-05.html"
+              class="omn-cast-card"
+              aria-label="查看雷蒙德的角色主頁"
+            >
+
+              <span class="omn-cast-card-name">
+                雷蒙德
+              </span>
+
+              <span class="omn-cast-card-label">
+                View Profile
+              </span>
+
+            </a>
 
 
           </div>
@@ -986,9 +991,6 @@
         <!-- =====================================
              TABLE OF CONTENTS
              小說章節目錄
-
-             ★ 第一篇：Teaser
-             ★ 正式章節自行新增
         ===================================== -->
 
         <section class="omn-chapters">
@@ -1006,16 +1008,12 @@
 
 
             <!-- =================================
-                 ★★★ OMN TEASER ★★★
+                 TEASER
 
-                 名稱：
                  Soft Before the Noise
 
-                 閱讀頁面：
+                 閱讀頁：
                  omn-teaser.html
-
-                 ★ 不計入正式章節編號
-                 ★ 放在所有章節之前
             ================================= -->
 
             <a
@@ -1048,29 +1046,22 @@
             <!-- =================================
                  ★★★ 正式章節新增區 ★★★
 
-                 請把未來新增的章節，
-                 放在這個註解下方、
-                 omn-chapter-list 結束標籤之前。
+                 目前沒有預設正式章節。
 
-                 目前沒有預設章節。
+                 之後每新增一章，
+                 就複製下面的範本，
+                 貼在這個註解結束後。
 
+                 只需要修改三個地方：
 
-                 【新增章節教學】
-
-                 每一章需要修改：
-
-                 ① 閱讀頁面連結
+                 ① href：章節閱讀頁面
                  ② 章節編號
                  ③ 章節標題
 
 
-                 【章節範本】
-
-                 複製下面的 <a> 到 </a>
-                 整組程式碼。
-
-                 貼在這段註解結束後。
-
+                 =================================
+                 ★ 章節範本開始 ★
+                 =================================
 
                  <a
                    href="omn-chapter-01.html"
@@ -1098,22 +1089,27 @@
 
                  </a>
 
-
-                 【三個修改位置】
-
-
-                 ★ ① 閱讀頁面
-
-                 href="omn-chapter-01.html"
-
-                 改成對應章節的 HTML 檔名。
+                 =================================
+                 ★ 章節範本結束 ★
+                 =================================
 
 
-                 ★ ② 章節編號
+                 ★ 閱讀頁面命名建議：
 
-                 在 omn-chapter-number 裡填寫。
+                 第一章：
+                 omn-chapter-01.html
 
-                 可以使用：
+                 第二章：
+                 omn-chapter-02.html
+
+                 第三章：
+                 omn-chapter-03.html
+
+                 第四章：
+                 omn-chapter-04.html
+
+
+                 ★ 章節編號可以填：
 
                  CHAPTER I
                  CHAPTER II
@@ -1126,28 +1122,8 @@
                  第三章
 
 
-                 ★ ③ 章節標題
-
-                 在 omn-chapter-title 裡填寫
-                 妳自己決定的標題。
-
-
-                 【閱讀頁面命名建議】
-
-                 omn-chapter-01.html
-                 omn-chapter-02.html
-                 omn-chapter-03.html
-                 omn-chapter-04.html
-
-
-                 ★ 每新增一章，
-                   複製一整組即可。
-
-                 ★ 新章節會排列在 Teaser 下方。
-
-                 ★ 必須先建立對應的
-                   HTML 閱讀頁面，
-                   連結才能正常開啟。
+                 ★ 每個章節都需要建立
+                   對應的 HTML 閱讀頁面。
 
                  ★ 不需要修改 CSS。
 
