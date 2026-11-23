@@ -10,14 +10,19 @@
 <title>Soft Before the Noise | OMN | RotaRS</title>
 
 <link rel="stylesheet" href="../../../style.css?v=5">
-<link rel="stylesheet" href="../../../reading.css?v=1">
 
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Serif+TC:wght@400;500;600&display=swap" rel="stylesheet">
 
-<script defer src="../../../novels.js?v=1"></script>
-<script defer src="../../../reading.js?v=2"></script>
-
 <style>
+
+/* =========================
+   RotaRS — THE LITERARY ARCHIVE
+   OMN / TEASER
+
+   Soft Before the Noise
+
+   純閱讀版本
+========================= */
 
 /* =========================
    基本設定
@@ -62,6 +67,11 @@ body {
 
 .reading-back:hover {
   color: #f5e9d9;
+}
+
+.reading-back:focus-visible {
+  outline: 2px solid #c9b69b;
+  outline-offset: 5px;
 }
 
 /* =========================
@@ -211,7 +221,10 @@ body {
 }
 
 .reading-navigation {
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
 }
 
 .reading-navigation a {
@@ -228,6 +241,11 @@ body {
 
 .reading-navigation a:hover {
   text-decoration: underline;
+}
+
+.reading-navigation a:focus-visible {
+  outline: 2px solid #624935;
+  outline-offset: 5px;
 }
 
 /* =========================
@@ -365,6 +383,14 @@ body {
     letter-spacing: 0;
   }
 
+  .reading-navigation {
+    flex-wrap: wrap;
+  }
+
+  .reading-navigation a {
+    font-size: 14px;
+  }
+
   .comments-panel {
     padding: 32px 22px;
   }
@@ -379,11 +405,7 @@ body {
 
 </head>
 
-<body
-  class="characters-page"
-  data-novel-id="omn"
-  data-chapter-id="omn-teaser"
->
+<body class="characters-page">
 
 <div class="site">
 
@@ -439,10 +461,6 @@ body {
       <a href="../../../characters.html" class="nav-link">
         CHARACTERS
       </a>
-
-      <span class="nav-link nav-disabled">
-        CONTINUE READING
-      </span>
 
     </nav>
 
@@ -621,6 +639,10 @@ body {
             BACK TO TABLE OF CONTENTS
           </a>
 
+          <a href="omn-01.html">
+            NEXT · CHAPTER 1 →
+          </a>
+
         </nav>
 
       </article>
@@ -632,11 +654,8 @@ body {
 
       <section
         class="comments-panel"
-        aria-labelledby="comments-title"
+        aria-label="讀者公開留言區"
       >
-
-        <p class="comments-help">
-        </p>
 
         <iframe
           class="comments-frame"
