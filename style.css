@@ -6,6 +6,9 @@
 /* =========================
    RotaRS — THE LITERARY ARCHIVE
    ESPRESSO LIBRARY
+
+   全站共用樣式
+   純閱讀網站版本
 ========================= */
 
 :root {
@@ -203,11 +206,6 @@ a.nav-link:hover {
   color: var(--ivory);
   background: rgba(155,118,96,0.32);
   border-left: 2px solid var(--accent);
-}
-
-.nav-disabled {
-  opacity: 0.55;
-  cursor: default;
 }
 
 .sidebar-footer {
