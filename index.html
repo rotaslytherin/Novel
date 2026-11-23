@@ -1,10 +1,18 @@
 
 <!DOCTYPE html>
 <html lang="zh-Hant">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex, nofollow, noimageindex">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="robots"
+    content="noindex, nofollow, noimageindex"
+  >
 
   <title>RotaRS | The Literary Archive</title>
 
@@ -15,9 +23,14 @@
 
   <div class="site">
 
-    <!-- 頂部品牌區 -->
+    <!-- =====================
+         頂部品牌區
+    ====================== -->
+
     <header class="site-header">
+
       <a href="index.html" class="brand">
+
         <img
           src="images/IMG_1497.png"
           alt="RotaRS Logo"
@@ -25,66 +38,192 @@
         >
 
         <div class="brand-text">
-          <span class="brand-name">RotaRS</span>
+
+          <span class="brand-name">
+            RotaRS
+          </span>
+
           <span class="brand-subtitle">
             THE LITERARY ARCHIVE
           </span>
+
         </div>
+
       </a>
+
     </header>
 
-    <!-- 左側導覽列 -->
+
+    <!-- =====================
+         左側導覽列
+    ====================== -->
+
     <aside class="sidebar">
-      <nav class="sidebar-nav" aria-label="網站導覽">
-        <a href="index.html" class="nav-link active">
-          書庫
+
+      <nav
+        class="sidebar-nav"
+        aria-label="Main Navigation"
+      >
+
+        <a
+          href="index.html"
+          class="nav-link active"
+          aria-current="page"
+        >
+          LIBRARY
         </a>
 
-        <a href="#collection" class="nav-link">
-          所有作品
-        </a>
+        <!-- 人物資料庫尚未建立 -->
 
-        <a href="#about" class="nav-link">
-          關於 RotaRS
-        </a>
+        <span class="nav-link nav-disabled">
+          CHARACTERS
+        </span>
+
+        <!-- 閱讀紀錄功能尚未建立 -->
+
+        <span class="nav-link nav-disabled">
+          CONTINUE READING
+        </span>
+
       </nav>
 
       <div class="sidebar-footer">
         ROTA SILVER
       </div>
+
     </aside>
 
-    <!-- 主要內容 -->
+
+    <!-- =====================
+         主要內容區
+    ====================== -->
+
     <main class="main-content">
 
+      <!-- 書庫介紹 -->
+
       <section class="library-intro">
-        <p class="eyebrow">THE LITERARY ARCHIVE</p>
-        <h1>The Library</h1>
+
+        <p class="eyebrow">
+          RotaRS — THE LITERARY ARCHIVE
+        </p>
+
+        <h1>
+          The Library
+        </h1>
+
         <p class="intro-description">
-          A collection of stories, characters and worlds.
+          A collection of stories,
+          characters and worlds.
         </p>
+
       </section>
 
-      <section class="collection" id="collection">
+
+      <!-- =====================
+           小說封面牆
+      ====================== -->
+
+      <section
+        class="collection"
+        id="collection"
+      >
+
         <div class="section-heading">
-          <h2>所有作品</h2>
-          <span>THE COLLECTION</span>
+
+          <h2>
+            THE COLLECTION
+          </h2>
+
+          <span class="section-caption">
+            EXPLORE THE STORIES
+          </span>
+
         </div>
 
-        <!-- 未來小說封面會放在這裡 -->
+
         <div class="book-grid">
-          <div class="book-placeholder">
-            <span>COMING SOON</span>
+
+          <!--
+            以下為暫時的封面位置。
+            等妳提供小說封面後，
+            再替換成正式的作品卡片。
+          -->
+
+          <div class="book-card placeholder-card">
+            <div class="book-cover placeholder-cover">
+              <span>COMING SOON</span>
+            </div>
+            <div class="book-info">
+              <span class="book-title">
+                UNTITLED STORY
+              </span>
+              <span class="book-status">
+                IN PREPARATION
+              </span>
+            </div>
           </div>
+
+          <div class="book-card placeholder-card">
+            <div class="book-cover placeholder-cover">
+              <span>COMING SOON</span>
+            </div>
+            <div class="book-info">
+              <span class="book-title">
+                UNTITLED STORY
+              </span>
+              <span class="book-status">
+                IN PREPARATION
+              </span>
+            </div>
+          </div>
+
+          <div class="book-card placeholder-card">
+            <div class="book-cover placeholder-cover">
+              <span>COMING SOON</span>
+            </div>
+            <div class="book-info">
+              <span class="book-title">
+                UNTITLED STORY
+              </span>
+              <span class="book-status">
+                IN PREPARATION
+              </span>
+            </div>
+          </div>
+
+          <div class="book-card placeholder-card">
+            <div class="book-cover placeholder-cover">
+              <span>COMING SOON</span>
+            </div>
+            <div class="book-info">
+              <span class="book-title">
+                UNTITLED STORY
+              </span>
+              <span class="book-status">
+                IN PREPARATION
+              </span>
+            </div>
+          </div>
+
         </div>
+
       </section>
 
-      <section class="about-section" id="about">
-        <h2>About RotaRS</h2>
-        <p>
-          Stories by Rota Silver.
-        </p>
-      </section>
+
+      <!-- 頁尾 -->
+
+      <footer class="site-footer">
+
+        <span>
+          RotaRS — The Literary Archive
+        </span>
+
+        <span>
+          Stories by Rota Silver
+        </span>
+
+      </footer>
 
     </main>
 
