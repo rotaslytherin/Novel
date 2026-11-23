@@ -1,32 +1,15 @@
 
 <!DOCTYPE html>
 <html lang="zh-Hant">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <meta name="robots" content="noindex, nofollow, noimageindex">
-
   <title>金碩珍 | RotaRS — The Literary Archive</title>
-
   <link rel="stylesheet" href="style.css?v=5">
 
   <style>
-
-    /* =========================================
-       RotaRS CHARACTER PROFILE
-       第三號人物檔案｜金碩珍
-
-       ★ 煙燻羊皮紙
-       ★ 主照片完整顯示
-       ★ 相冊統一外框、不裁切照片
-       ★ 支援 iPhone / iPad
-    ========================================= */
-
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     .profile-main {
       min-width: 0;
@@ -37,46 +20,24 @@
     .profile-back {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-
       margin-bottom: 30px;
-
+      color: #C9B69B;
+      text-decoration: none;
       font-family: "Cormorant Garamond", Georgia, serif;
       font-size: 16px;
       letter-spacing: 1.5px;
-
-      color: #C9B69B;
-      text-decoration: none;
     }
-
-    .profile-back:active {
-      opacity: 0.65;
-    }
-
-    .profile-back:focus-visible {
-      outline: 2px solid #C9B69B;
-      outline-offset: 5px;
-    }
-
-
-    /* =========================================
-       煙燻羊皮紙主體
-    ========================================= */
 
     .profile-paper {
       position: relative;
       isolation: isolate;
-
       min-width: 0;
-
       padding: 55px 48px 65px;
-
       background-color: #C7B49A;
-
       background-image:
         radial-gradient(
           ellipse at 50% 35%,
-          rgba(246, 231, 208, 0.22),
+          rgba(246,231,208,.22),
           transparent 75%
         ),
         linear-gradient(
@@ -85,30 +46,20 @@
           #C7B49A 52%,
           #B8A187 100%
         );
-
       border: 1px solid #8C745D;
-
       box-shadow:
-        0 20px 48px rgba(0, 0, 0, 0.34),
-        inset 0 0 35px rgba(84, 59, 39, 0.06);
+        0 20px 48px rgba(0,0,0,.34),
+        inset 0 0 35px rgba(84,59,39,.06);
     }
 
     .profile-paper::before {
       content: "";
-
       position: absolute;
       inset: 12px;
-
-      border: 1px solid rgba(91, 65, 45, 0.35);
-
+      border: 1px solid rgba(91,65,45,.35);
       pointer-events: none;
       z-index: -1;
     }
-
-
-    /* =========================================
-       頂部檔案標題
-    ========================================= */
 
     .profile-heading {
       text-align: center;
@@ -117,136 +68,100 @@
 
     .profile-overline {
       margin: 0 0 10px;
-
       font-family: "Cormorant Garamond", Georgia, serif;
       font-size: 12px;
       letter-spacing: 3px;
-
       color: #725B48;
     }
 
     .profile-heading h1 {
       margin: 0;
-
       font-family: "Cormorant Garamond", Georgia, serif;
       font-size: clamp(35px, 5vw, 52px);
       font-weight: 500;
       letter-spacing: 2px;
-
       color: #3E2D23;
     }
 
     .profile-number {
       display: block;
       margin-top: 8px;
-
       font-family: "Cormorant Garamond", Georgia, serif;
       font-size: 17px;
       font-style: italic;
-
       color: #725B48;
     }
 
-
-    /* =========================================
-       主肖像
-       完整顯示、不裁切
-    ========================================= */
+    /* ===== 主照片：完整顯示 ===== */
 
     .hero-portrait {
       width: min(100%, 470px);
       margin: 0 auto;
-
       text-align: center;
     }
 
     .hero-portrait img {
       display: block;
-
       width: 100%;
       height: auto;
-
       object-fit: contain;
-
-      border: 1px solid rgba(74, 50, 32, 0.45);
-
-      box-shadow:
-        0 12px 26px rgba(50, 31, 19, 0.25);
+      border: 1px solid rgba(74,50,32,.45);
+      box-shadow: 0 12px 26px rgba(50,31,19,.25);
     }
 
     .portrait-caption {
       margin-top: 14px;
-
       font-family: "Cormorant Garamond", Georgia, serif;
       font-size: 12px;
       letter-spacing: 2px;
-
       color: #725B48;
     }
 
-
-    /* =========================================
-       姓名與人物身分
-
-       ★ 金碩珍
-       ★ 吉姆 · Jim
-       ★ Gryffindor 保持原樣
-    ========================================= */
+    /* ===== 人物姓名與身分 ===== */
 
     .identity {
-      margin: 42px auto 0;
       max-width: 680px;
-
+      margin: 42px auto 0;
       text-align: center;
     }
 
     .identity-label {
       margin: 0 0 10px;
-
       font-family: "Cormorant Garamond", Georgia, serif;
       font-size: 13px;
       letter-spacing: 3px;
-
       color: #725B48;
     }
 
     .identity-name {
       margin: 0;
-
       font-family: "Noto Serif TC", serif;
       font-size: clamp(29px, 4vw, 40px);
       font-weight: 500;
       letter-spacing: 5px;
-
       color: #35251C;
     }
-
-    /* ★ 中文角色名與英文名同行 */
 
     .identity-character {
       display: flex;
       align-items: baseline;
       justify-content: center;
       flex-wrap: wrap;
-
       gap: 10px;
-
       margin: 12px 0 0;
-
       color: #634B38;
     }
 
     .identity-character .chinese {
       font-family: "Noto Serif TC", serif;
       font-size: 22px;
-      font-weight: 400;
       letter-spacing: 3px;
     }
 
     .identity-character .separator {
       font-family: Georgia, serif;
       font-size: 17px;
-      opacity: 0.7;
+      opacity: .7;
     }
 
     .identity-character .english {
@@ -259,191 +174,140 @@
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-
       gap: 10px;
-
       margin-top: 25px;
     }
 
     .identity-role {
       padding: 9px 18px;
-
-      border: 1px solid rgba(91, 65, 45, 0.45);
-
+      border: 1px solid rgba(91,65,45,.45);
+      background: rgba(255,247,232,.1);
       font-family: "Cormorant Garamond", Georgia, serif;
       font-size: 16px;
       letter-spacing: 1px;
-
       color: #4E392B;
-
-      background: rgba(255, 247, 232, 0.1);
     }
-
-
-    /* =========================================
-       裝飾分隔線
-    ========================================= */
 
     .ornament-divider {
       display: flex;
       align-items: center;
-      justify-content: center;
-
       gap: 17px;
-
       margin: 48px 0;
     }
 
     .ornament-divider::before,
     .ornament-divider::after {
       content: "";
-
       flex: 1;
       height: 1px;
-
-      background: rgba(91, 65, 45, 0.35);
+      background: rgba(91,65,45,.35);
     }
 
     .ornament-divider span {
-      font-family: "Cormorant Garamond", Georgia, serif;
       font-size: 22px;
-
       color: #715640;
     }
 
-
-    /* =========================================
-       區塊標題
-
-       ★ Selected Works
-       ★ Portrait Gallery
-
-       主標題與副標題全部置中，
-       副標題放在主標題正下方。
-    ========================================= */
+    /* ===== 區塊標題 ===== */
 
     .section-heading {
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-
       gap: 7px;
-
       width: 100%;
       margin-bottom: 28px;
-
       text-align: center;
     }
 
     .section-heading h2 {
-      display: block;
-
       margin: 0;
-
       font-family: "Cormorant Garamond", Georgia, serif;
       font-size: clamp(30px, 4vw, 39px);
       font-weight: 500;
-      line-height: 1.2;
-
       color: #3E2D23;
     }
 
     .section-heading p {
-      display: block;
-
       margin: 0;
-
       font-family: "Cormorant Garamond", Georgia, serif;
       font-size: 16px;
       font-style: italic;
-      line-height: 1.4;
-
       color: #715640;
     }
 
-
-    /* =========================================
-       出演劇本
-    ========================================= */
+    /* ===== 出演劇本：可點擊作品入口 ===== */
 
     .works-list {
       max-width: 740px;
       margin: 0 auto;
-
-      border-top: 1px solid rgba(91, 65, 45, 0.4);
+      border-top: 1px solid rgba(91,65,45,.4);
     }
 
     .work-item {
       display: flex;
       align-items: center;
       justify-content: space-between;
-
       gap: 20px;
-
       padding: 22px 12px;
-
-      border-bottom: 1px solid rgba(91, 65, 45, 0.4);
-
+      border-bottom: 1px solid rgba(91,65,45,.4);
       text-decoration: none;
       color: inherit;
+      -webkit-tap-highlight-color: transparent;
+      transition: background .2s ease;
     }
 
-    .work-item[href]:active {
-      background: rgba(91, 65, 45, 0.08);
+    .work-item:active {
+      background: rgba(91,65,45,.1);
     }
 
-    .work-info {
-      min-width: 0;
+    .work-item:focus-visible {
+      outline: 2px solid #5A4030;
+      outline-offset: 3px;
     }
+
+    .work-info { min-width: 0; }
 
     .work-title {
       display: block;
-
       font-family: "Cormorant Garamond", Georgia, serif;
       font-size: 27px;
       font-weight: 500;
-
       color: #39291F;
     }
-
-    /* ★ 劇中角色名稱 */
 
     .work-role {
       display: block;
       margin-top: 5px;
-
       font-family: "Noto Serif TC", serif;
       font-size: 14px;
       letter-spacing: 1px;
-
       color: #725B48;
     }
 
     .work-arrow {
       flex-shrink: 0;
-
       font-family: Georgia, serif;
       font-size: 25px;
-
       color: #715640;
+      transition: transform .2s ease;
     }
 
+    @media (hover: hover) and (pointer: fine) {
+      .work-item:hover {
+        background: rgba(91,65,45,.08);
+      }
 
-    /* =========================================
-       相冊
+      .work-item:hover .work-arrow {
+        transform: translateX(4px);
+      }
+    }
 
-       ★ 統一相框比例
-       ★ 照片完整顯示
-       ★ 橫式、直式照片都能放入
-    ========================================= */
+    /* ===== 相冊：不同尺寸統一外框 ===== */
 
     .gallery-grid {
       display: grid;
-
-      grid-template-columns:
-        repeat(3, minmax(0, 1fr));
-
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 18px;
     }
 
@@ -451,89 +315,50 @@
       display: flex;
       align-items: center;
       justify-content: center;
-
       width: 100%;
       min-width: 0;
-
       aspect-ratio: 4 / 5;
-
       padding: 8px;
-
       border: 1px solid #8A6C51;
-
       background: #423126;
-
-      box-shadow:
-        0 5px 13px rgba(57, 36, 22, 0.22);
-
+      box-shadow: 0 5px 13px rgba(57,36,22,.22);
       cursor: zoom-in;
-
       -webkit-tap-highlight-color: transparent;
-
-      transition: transform 0.2s ease;
     }
 
     .gallery-item img {
       display: block;
-
       width: 100%;
       height: 100%;
-
       object-fit: contain;
     }
 
     .gallery-item:active {
-      transform: scale(0.975);
+      transform: scale(.975);
     }
 
-    .gallery-item:focus-visible {
-      outline: 2px solid #4E392B;
-      outline-offset: 4px;
-    }
-
-    @media (hover: hover) and (pointer: fine) {
-
-      .gallery-item:hover {
-        transform: translateY(-3px);
-      }
-
-    }
-
-
-    /* =========================================
-       照片放大視窗
-    ========================================= */
+    /* ===== 相冊放大視窗 ===== */
 
     .lightbox {
       position: fixed;
       inset: 0;
-
       z-index: 99999;
-
       display: none;
       align-items: center;
       justify-content: center;
-
       padding: 65px 55px;
-
-      background: rgba(12, 9, 7, 0.96);
+      background: rgba(12,9,7,.96);
     }
 
-    .lightbox.open {
-      display: flex;
-    }
+    .lightbox.open { display: flex; }
 
     .lightbox-image {
       display: block;
-
       max-width: 100%;
       max-height: 100%;
-
       width: auto;
       height: auto;
-
       object-fit: contain;
-
       user-select: none;
       -webkit-user-select: none;
     }
@@ -542,29 +367,19 @@
     .lightbox-prev,
     .lightbox-next {
       position: absolute;
-
       display: flex;
       align-items: center;
       justify-content: center;
-
       width: 44px;
       height: 44px;
-
       padding: 0;
-
-      border: 1px solid rgba(255, 255, 255, 0.35);
+      border: 1px solid rgba(255,255,255,.35);
       border-radius: 50%;
-
-      background: rgba(35, 25, 19, 0.75);
-
+      background: rgba(35,25,19,.75);
       color: #F2E9DC;
-
       font-family: Georgia, serif;
       font-size: 27px;
-
       cursor: pointer;
-
-      -webkit-tap-highlight-color: transparent;
     }
 
     .lightbox-close {
@@ -586,244 +401,100 @@
 
     .lightbox-counter {
       position: absolute;
-
       bottom: max(18px, env(safe-area-inset-bottom));
-
       left: 50%;
       transform: translateX(-50%);
-
       font-family: "Cormorant Garamond", Georgia, serif;
       font-size: 17px;
       letter-spacing: 2px;
-
       color: #E7D9C5;
     }
-
-
-    /* =========================================
-       頁尾
-    ========================================= */
 
     .profile-footer {
       margin-top: 55px;
       padding-top: 24px;
-
-      border-top: 1px solid rgba(91, 65, 45, 0.35);
-
+      border-top: 1px solid rgba(91,65,45,.35);
       text-align: center;
-
       font-family: "Cormorant Garamond", Georgia, serif;
       font-size: 13px;
       letter-spacing: 1.5px;
-
       color: #725B48;
     }
 
-
-    /* =========================================
-       iPad / 中型平板
-    ========================================= */
-
     @media (min-width: 701px) and (max-width: 1100px) {
-
-      .profile-paper {
-        padding: 44px 32px 55px;
-      }
-
-      .gallery-grid {
-        gap: 14px;
-      }
-
+      .profile-paper { padding: 44px 32px 55px; }
+      .gallery-grid { gap: 14px; }
     }
 
-
-    /* =========================================
-       手機
-    ========================================= */
-
     @media (max-width: 700px) {
-
       .profile-main {
-        padding-top:
-          calc(var(--header-height, 100px) + 30px);
-
+        padding-top: calc(var(--header-height, 100px) + 30px);
         padding-bottom: 110px;
       }
 
-      .profile-paper {
-        padding: 35px 20px 42px;
-      }
-
-      .profile-paper::before {
-        inset: 8px;
-      }
-
-      .profile-heading {
-        margin-bottom: 28px;
-      }
-
-      .profile-overline {
-        font-size: 10px;
-        letter-spacing: 1.5px;
-      }
-
-      .hero-portrait {
-        width: 100%;
-      }
-
-      .identity {
-        margin-top: 30px;
-      }
-
-      .identity-name {
-        font-size: 30px;
-        letter-spacing: 3px;
-      }
-
-      .identity-character .chinese {
-        font-size: 19px;
-      }
-
-      .identity-character .english {
-        font-size: 25px;
-      }
-
-      .identity-role {
-        padding: 8px 12px;
-        font-size: 15px;
-      }
-
-      .ornament-divider {
-        margin: 36px 0;
-      }
-
-      .section-heading h2 {
-        font-size: 31px;
-      }
-
-      .section-heading p {
-        font-size: 15px;
-      }
-
-      .work-title {
-        font-size: 24px;
-      }
+      .profile-paper { padding: 35px 20px 42px; }
+      .profile-paper::before { inset: 8px; }
+      .profile-heading { margin-bottom: 28px; }
+      .profile-overline { font-size: 10px; letter-spacing: 1.5px; }
+      .hero-portrait { width: 100%; }
+      .identity { margin-top: 30px; }
+      .identity-name { font-size: 30px; letter-spacing: 3px; }
+      .identity-character .chinese { font-size: 19px; }
+      .identity-character .english { font-size: 25px; }
+      .identity-role { padding: 8px 12px; font-size: 15px; }
+      .ornament-divider { margin: 36px 0; }
+      .section-heading h2 { font-size: 31px; }
+      .section-heading p { font-size: 15px; }
+      .work-title { font-size: 24px; }
 
       .gallery-grid {
-        grid-template-columns:
-          repeat(2, minmax(0, 1fr));
-
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 12px;
       }
 
-      .gallery-item {
-        padding: 5px;
-      }
-
-      .lightbox {
-        padding: 65px 45px;
-      }
-
-      .lightbox-prev {
-        left: 4px;
-      }
-
-      .lightbox-next {
-        right: 4px;
-      }
-
+      .gallery-item { padding: 5px; }
+      .lightbox { padding: 65px 45px; }
+      .lightbox-prev { left: 4px; }
+      .lightbox-next { right: 4px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-
-      .gallery-item {
-        transition: none;
-      }
-
+      .work-item,
+      .work-arrow { transition: none; }
     }
-
   </style>
-
 </head>
 
-
 <body class="characters-page">
-
   <div class="site">
 
-    <!-- =========================================
-         頂部品牌
-    ========================================= -->
-
+    <!-- 網站頂部品牌 -->
     <header class="site-header">
-
       <a href="home.html" class="brand">
-
         <img
           src="images/IMG_1497.png"
           alt="RotaRS Logo"
           class="brand-logo"
         >
-
         <div class="brand-text">
-
-          <span class="brand-name">
-            RotaRS
-          </span>
-
-          <span class="brand-subtitle">
-            THE LITERARY ARCHIVE
-          </span>
-
+          <span class="brand-name">RotaRS</span>
+          <span class="brand-subtitle">THE LITERARY ARCHIVE</span>
         </div>
-
       </a>
-
     </header>
 
-
-    <!-- =========================================
-         左側導覽列
-    ========================================= -->
-
+    <!-- 左側導覽列 -->
     <aside class="sidebar">
-
-      <nav
-        class="sidebar-nav"
-        aria-label="Main Navigation"
-      >
-
-        <a href="home.html" class="nav-link">
-          HOME
-        </a>
-
-        <a href="library.html" class="nav-link">
-          LIBRARY
-        </a>
-
-        <a
-          href="characters.html"
-          class="nav-link active"
-        >
+      <nav class="sidebar-nav" aria-label="Main Navigation">
+        <a href="home.html" class="nav-link">HOME</a>
+        <a href="library.html" class="nav-link">LIBRARY</a>
+        <a href="characters.html" class="nav-link active">
           CHARACTERS
         </a>
-
-        <span class="nav-link nav-disabled">
-          CONTINUE READING
-        </span>
-
+        <span class="nav-link nav-disabled">CONTINUE READING</span>
       </nav>
-
-      <div class="sidebar-footer">
-        ROTA SILVER
-      </div>
-
+      <div class="sidebar-footer">ROTA SILVER</div>
     </aside>
-
-
-    <!-- =========================================
-         第三號人物檔案
-    ========================================= -->
 
     <main class="main-content profile-main">
 
@@ -831,372 +502,229 @@
         ← BACK TO CHARACTERS
       </a>
 
-
       <article class="profile-paper">
 
-        <!-- =====================================
-             頂部檔案標題
-        ===================================== -->
-
+        <!-- 頂部檔案標題 -->
         <div class="profile-heading">
-
           <p class="profile-overline">
             ROTARS · THE LITERARY ARCHIVE
           </p>
-
           <h1>The Portrait</h1>
-
           <span class="profile-number">
             Character Archive · No. 003
           </span>
-
         </div>
 
-
         <!-- =====================================
-             ★ 主照片 ★
-
-             更換主照片：
-             修改下方 src 即可。
+             ★ 主照片
+             修改 src 可更換主照片
         ===================================== -->
-
         <figure class="hero-portrait">
-
           <img
             src="images/IMG_1520.jpeg"
             alt="金碩珍主肖像"
           >
-
           <figcaption class="portrait-caption">
             THE MAIN PORTRAIT
           </figcaption>
-
         </figure>
 
-
         <!-- =====================================
-             人物姓名與身分
+             ★ 人物姓名與角色身分
         ===================================== -->
-
         <section class="identity">
-
           <p class="identity-label">
             THE PERSON BEHIND THE STORIES
           </p>
 
-
-          <!-- ★ 真實姓名 ★ -->
-
-          <h2 class="identity-name">
-            金碩珍
-          </h2>
-
-
-          <!-- =================================
-               ★ 劇中角色名字 ★
-
-               中文：吉姆
-               英文：Jim
-
-               未來可以分別修改。
-          ================================= -->
+          <h2 class="identity-name">金碩珍</h2>
 
           <p class="identity-character">
-
-            <span class="chinese">
-              吉姆
-            </span>
-
-            <span class="separator">
-              ·
-            </span>
-
-            <span class="english">
-              Jim
-            </span>
-
+            <span class="chinese">吉姆</span>
+            <span class="separator">·</span>
+            <span class="english">Jim</span>
           </p>
 
-
-          <!-- =================================
-               ★ 人物身分標籤 ★
-
-               Gryffindor 保持不變。
-
-               未來新增身分時，
-               複製以下一行：
-
-               <span class="identity-role">
-                 新身分
-               </span>
-
-               貼在 identity-roles 裡面。
-          ================================= -->
-
+          <!--
+            ★ 新增身分標籤：
+            複製 <span class="identity-role">新身分</span>
+            貼在 identity-roles 裡面。
+          -->
           <div class="identity-roles">
-
-            <span class="identity-role">
-              Gryffindor
-            </span>
-
+            <span class="identity-role">Gryffindor</span>
           </div>
-
         </section>
 
-
-        <div class="ornament-divider">
-          <span>✦</span>
-        </div>
-
+        <div class="ornament-divider"><span>✦</span></div>
 
         <!-- =====================================
-             出演劇本
+             ★ 出演劇本
+             OMN 已設定未來作品頁連結
         ===================================== -->
-
         <section class="works-section">
-
           <div class="section-heading">
-
             <h2>Selected Works</h2>
-
-            <p>
-              Appearances in the Archive
-            </p>
-
+            <p>Appearances in the Archive</p>
           </div>
-
 
           <div class="works-list">
 
-
             <!-- =================================
-                 ★ 出演劇本 01 ★
+                 ★ 劇本 01：OMN
 
-                 劇本：OMN
-                 飾演：吉姆
+                 href="novel-omn.html"
+                 是未來 OMN 作品專頁。
 
-                 尚未設定小說頁網址。
+                 目前該檔案尚未建立，
+                 所以點擊會暫時找不到頁面。
             ================================= -->
-
-            <div class="work-item">
-
+            <a href="novel-omn.html" class="work-item">
               <div class="work-info">
-
-                <span class="work-title">
-                  OMN
-                </span>
-
-                <span class="work-role">
-                  飾演：吉姆
-                </span>
-
+                <span class="work-title">OMN</span>
+                <span class="work-role">飾演：吉姆</span>
               </div>
-
-              <span class="work-arrow">
-                ✦
-              </span>
-
-            </div>
-
+              <span class="work-arrow" aria-hidden="true">›</span>
+            </a>
 
             <!-- =================================
                  ★★★ 未來新增出演劇本 ★★★
 
                  請在這裡新增！
 
-                 複製以下整組：
+                 複製下面整組：
 
-                 <div class="work-item">
+                 <a href="新劇本頁.html" class="work-item">
 
                    <div class="work-info">
-
                      <span class="work-title">
                        新劇本名稱
                      </span>
-
                      <span class="work-role">
                        飾演：新角色名字
                      </span>
-
                    </div>
 
-                   <span class="work-arrow">
-                     ✦
-                   </span>
-
-                 </div>
-
-
-                 ★ 如果劇本已有網頁：
-
-                 把最外層：
-
-                 <div class="work-item">
-
-                 改成：
-
-                 <a
-                   href="novel.html"
-                   class="work-item"
-                 >
-
-                 並將對應的最外層結尾：
-
-                 </div>
-
-                 改成：
+                   <span class="work-arrow"
+                         aria-hidden="true">›</span>
 
                  </a>
 
-                 ★ novel.html：
-                   改成實際劇本頁檔名。
+                 ★ 修改三個地方：
 
-                 ★ 每新增一部劇本，
-                   就複製一整組放在這裡。
+                 1. href="新劇本頁.html"
+                    改成作品頁的檔案名稱。
 
+                 2. 新劇本名稱
+                    改成作品標題。
+
+                 3. 新角色名字
+                    改成此演員在該劇本的角色。
+
+                 ★ 每增加一部劇本，
+                   就複製一組放在這裡。
+
+                 ★ 不需要修改 CSS 或 JS。
             ================================= -->
 
-
           </div>
-
         </section>
 
-
-        <div class="ornament-divider">
-          <span>✦</span>
-        </div>
-
+        <div class="ornament-divider"><span>✦</span></div>
 
         <!-- =====================================
-             其他照片相冊
+             ★ 其他照片相冊
         ===================================== -->
-
         <section class="gallery-section">
-
           <div class="section-heading">
-
             <h2>Portrait Gallery</h2>
-
-            <p>
-              A Private Collection of Portraits
-            </p>
-
+            <p>A Private Collection of Portraits</p>
           </div>
 
-
-          <div
-            class="gallery-grid"
-            id="portraitGallery"
-          >
-
+          <div class="gallery-grid" id="portraitGallery">
 
             <!-- 相冊照片 01 -->
-
             <button
               class="gallery-item"
               type="button"
               aria-label="查看照片 1"
               data-full="images/IMG_1519.jpeg"
             >
-
               <img
                 src="images/IMG_1519.jpeg"
                 alt="金碩珍相冊照片 1"
                 loading="lazy"
               >
-
             </button>
 
-
             <!-- 相冊照片 02 -->
-
             <button
               class="gallery-item"
               type="button"
               aria-label="查看照片 2"
               data-full="images/IMG_1521.jpeg"
             >
-
               <img
                 src="images/IMG_1521.jpeg"
                 alt="金碩珍相冊照片 2"
                 loading="lazy"
               >
-
             </button>
 
-
             <!-- 相冊照片 03 -->
-
             <button
               class="gallery-item"
               type="button"
               aria-label="查看照片 3"
               data-full="images/IMG_1522.jpeg"
             >
-
               <img
                 src="images/IMG_1522.jpeg"
                 alt="金碩珍相冊照片 3"
                 loading="lazy"
               >
-
             </button>
 
-
             <!-- 相冊照片 04 -->
-
             <button
               class="gallery-item"
               type="button"
               aria-label="查看照片 4"
               data-full="images/IMG_1523.jpeg"
             >
-
               <img
                 src="images/IMG_1523.jpeg"
                 alt="金碩珍相冊照片 4"
                 loading="lazy"
               >
-
             </button>
 
-
             <!-- 相冊照片 05 -->
-
             <button
               class="gallery-item"
               type="button"
               aria-label="查看照片 5"
               data-full="images/IMG_1524.jpeg"
             >
-
               <img
                 src="images/IMG_1524.jpeg"
                 alt="金碩珍相冊照片 5"
                 loading="lazy"
               >
-
             </button>
 
-
             <!-- 相冊照片 06 -->
-
             <button
               class="gallery-item"
               type="button"
               aria-label="查看照片 6"
               data-full="images/IMG_1525.jpeg"
             >
-
               <img
                 src="images/IMG_1525.jpeg"
                 alt="金碩珍相冊照片 6"
                 loading="lazy"
               >
-
             </button>
-
 
             <!-- =================================
                  ★★★ 未來新增相冊照片 ★★★
@@ -1209,54 +737,31 @@
                    aria-label="查看新照片"
                    data-full="images/新照片.jpeg"
                  >
-
                    <img
                      src="images/新照片.jpeg"
                      alt="新照片"
                      loading="lazy"
                    >
-
                  </button>
 
+                 ★ data-full 與 img src
+                   都填入同一張圖片路徑。
 
-                 ★ 記得修改兩個地方：
-
-                 1. data-full="..."
-                 2. img src="..."
-
-                 兩者填入相同圖片路徑。
-
-                 ★ 新增後不需要修改 JS。
-
+                 ★ 新增後不必修改 JS。
             ================================= -->
 
-
           </div>
-
         </section>
 
-
-        <!-- =====================================
-             頁尾
-        ===================================== -->
-
         <footer class="profile-footer">
-
           RotaRS · THE LITERARY ARCHIVE
-
         </footer>
 
       </article>
-
     </main>
-
   </div>
 
-
-  <!-- =========================================
-       相冊放大視窗
-  ========================================= -->
-
+  <!-- 相冊放大視窗 -->
   <div
     class="lightbox"
     id="lightbox"
@@ -1265,24 +770,19 @@
     aria-label="照片檢視器"
     aria-hidden="true"
   >
-
     <button
       class="lightbox-close"
       id="lightboxClose"
       type="button"
       aria-label="關閉照片"
-    >
-      ×
-    </button>
+    >×</button>
 
     <button
       class="lightbox-prev"
       id="lightboxPrev"
       type="button"
       aria-label="上一張照片"
-    >
-      ‹
-    </button>
+    >‹</button>
 
     <img
       class="lightbox-image"
@@ -1295,60 +795,29 @@
       id="lightboxNext"
       type="button"
       aria-label="下一張照片"
-    >
-      ›
-    </button>
+    >›</button>
 
     <span
       class="lightbox-counter"
       id="lightboxCounter"
       aria-live="polite"
     ></span>
-
   </div>
 
-
   <script>
-
     /* =========================================
        相冊互動功能
-
-       ★ 點擊縮圖放大
-       ★ 左右箭頭切換
-       ★ iPhone / iPad 左右滑動
-       ★ Esc 關閉
-       ★ 新增照片不需要修改 JS
+       新增照片不需要修改這段
     ========================================= */
 
     (function () {
-
-      const gallery = document.getElementById(
-        "portraitGallery"
-      );
-
-      const lightbox = document.getElementById(
-        "lightbox"
-      );
-
-      const lightboxImage = document.getElementById(
-        "lightboxImage"
-      );
-
-      const closeButton = document.getElementById(
-        "lightboxClose"
-      );
-
-      const prevButton = document.getElementById(
-        "lightboxPrev"
-      );
-
-      const nextButton = document.getElementById(
-        "lightboxNext"
-      );
-
-      const counter = document.getElementById(
-        "lightboxCounter"
-      );
+      const gallery = document.getElementById("portraitGallery");
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImage = document.getElementById("lightboxImage");
+      const closeButton = document.getElementById("lightboxClose");
+      const prevButton = document.getElementById("lightboxPrev");
+      const nextButton = document.getElementById("lightboxNext");
+      const counter = document.getElementById("lightboxCounter");
 
       const items = Array.from(
         gallery.querySelectorAll(".gallery-item")
@@ -1356,203 +825,117 @@
 
       let currentIndex = 0;
       let previousFocus = null;
-
       let touchStartX = 0;
       let touchStartY = 0;
 
-
       function showPhoto(index) {
-
         if (!items.length) return;
 
-        currentIndex = (
-          index + items.length
-        ) % items.length;
+        currentIndex = (index + items.length) % items.length;
 
         const item = items[currentIndex];
         const photo = item.querySelector("img");
 
         lightboxImage.src = item.dataset.full;
-
-        lightboxImage.alt = photo
-          ? photo.alt
-          : "相冊照片";
+        lightboxImage.alt = photo ? photo.alt : "相冊照片";
 
         counter.textContent =
-          (currentIndex + 1) +
-          " / " +
-          items.length;
-
+          (currentIndex + 1) + " / " + items.length;
       }
-
 
       function openLightbox(index) {
-
         previousFocus = document.activeElement;
-
         showPhoto(index);
-
         lightbox.classList.add("open");
-
-        lightbox.setAttribute(
-          "aria-hidden",
-          "false"
-        );
-
+        lightbox.setAttribute("aria-hidden", "false");
         document.body.style.overflow = "hidden";
-
         closeButton.focus();
-
       }
 
-
       function closeLightbox() {
-
         lightbox.classList.remove("open");
-
-        lightbox.setAttribute(
-          "aria-hidden",
-          "true"
-        );
-
+        lightbox.setAttribute("aria-hidden", "true");
         document.body.style.overflow = "";
-
         lightboxImage.removeAttribute("src");
 
         if (previousFocus) {
           previousFocus.focus();
         }
-
       }
-
 
       function nextPhoto() {
         showPhoto(currentIndex + 1);
       }
 
-
       function prevPhoto() {
         showPhoto(currentIndex - 1);
       }
 
-
       items.forEach(function (item, index) {
-
-        item.addEventListener(
-          "click",
-          function () {
-            openLightbox(index);
-          }
-        );
-
+        item.addEventListener("click", function () {
+          openLightbox(index);
+        });
       });
 
+      closeButton.addEventListener("click", closeLightbox);
+      nextButton.addEventListener("click", nextPhoto);
+      prevButton.addEventListener("click", prevPhoto);
 
-      closeButton.addEventListener(
-        "click",
-        closeLightbox
-      );
-
-      nextButton.addEventListener(
-        "click",
-        nextPhoto
-      );
-
-      prevButton.addEventListener(
-        "click",
-        prevPhoto
-      );
-
-
-      lightbox.addEventListener(
-        "click",
-        function (event) {
-
-          if (event.target === lightbox) {
-            closeLightbox();
-          }
-
+      lightbox.addEventListener("click", function (event) {
+        if (event.target === lightbox) {
+          closeLightbox();
         }
-      );
+      });
 
+      document.addEventListener("keydown", function (event) {
+        if (!lightbox.classList.contains("open")) return;
 
-      document.addEventListener(
-        "keydown",
-        function (event) {
+        if (event.key === "Escape") closeLightbox();
+        if (event.key === "ArrowRight") nextPhoto();
+        if (event.key === "ArrowLeft") prevPhoto();
 
-          if (!lightbox.classList.contains("open")) {
-            return;
+        if (event.key === "Tab") {
+          const controls = [
+            closeButton,
+            prevButton,
+            nextButton
+          ];
+
+          const first = controls[0];
+          const last = controls[controls.length - 1];
+
+          if (
+            event.shiftKey &&
+            document.activeElement === first
+          ) {
+            event.preventDefault();
+            last.focus();
           }
 
-          if (event.key === "Escape") {
-            closeLightbox();
+          if (
+            !event.shiftKey &&
+            document.activeElement === last
+          ) {
+            event.preventDefault();
+            first.focus();
           }
-
-          if (event.key === "ArrowRight") {
-            nextPhoto();
-          }
-
-          if (event.key === "ArrowLeft") {
-            prevPhoto();
-          }
-
-          if (event.key === "Tab") {
-
-            const controls = [
-              closeButton,
-              prevButton,
-              nextButton
-            ];
-
-            const first = controls[0];
-            const last = controls[controls.length - 1];
-
-            if (
-              event.shiftKey &&
-              document.activeElement === first
-            ) {
-
-              event.preventDefault();
-              last.focus();
-
-            }
-
-            if (
-              !event.shiftKey &&
-              document.activeElement === last
-            ) {
-
-              event.preventDefault();
-              first.focus();
-
-            }
-
-          }
-
         }
-      );
-
-
-      /* iPhone / iPad 左右滑動 */
+      });
 
       lightbox.addEventListener(
         "touchstart",
         function (event) {
-
           if (!event.touches.length) return;
 
           touchStartX = event.touches[0].clientX;
           touchStartY = event.touches[0].clientY;
-
         },
         { passive: true }
       );
 
-
       lightbox.addEventListener(
         "touchend",
         function (event) {
-
           if (!event.changedTouches.length) return;
 
           const endX = event.changedTouches[0].clientX;
@@ -1565,22 +948,16 @@
             Math.abs(deltaX) > 55 &&
             Math.abs(deltaX) > Math.abs(deltaY)
           ) {
-
             if (deltaX < 0) {
               nextPhoto();
             } else {
               prevPhoto();
             }
-
           }
-
         },
         { passive: true }
       );
-
     })();
-
   </script>
-
 </body>
 </html>
