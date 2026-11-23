@@ -1,0 +1,820 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Chapter 1 — Under the Lights | OMN | RotaRS</title>
+
+<link rel="stylesheet" href="../../../style.css?v=5">
+<link rel="stylesheet" href="../../../reading.css?v=1">
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Noto+Serif+TC:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script defer src="../../../novels.js?v=1"></script>
+<script defer src="../../../reading.js?v=2"></script>
+
+<style>
+
+/* =========================================
+   RotaRS — THE LITERARY ARCHIVE
+   OMN / CHAPTER 1
+
+   Under the Lights
+========================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #211811;
+  color: #e9ddcc;
+  font-family: "Noto Serif TC", serif;
+}
+
+.chapter-main {
+  min-width: 0;
+  padding-top: calc(var(--header-height, 100px) + 40px);
+  padding-bottom: 90px;
+}
+
+.chapter-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.chapter-navigation a {
+  color: #c9b69b;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 15px;
+  letter-spacing: 1.2px;
+  text-decoration: none;
+}
+
+.chapter-navigation a:hover {
+  color: #fff2df;
+}
+
+.chapter-navigation a:focus-visible {
+  outline: 2px solid #c9b69b;
+  outline-offset: 5px;
+}
+
+/* =========================================
+   羊皮紙閱讀區
+========================================= */
+
+.chapter-paper {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  padding: 65px 65px 75px;
+
+  background-color: #c7b49a;
+
+  background-image:
+    radial-gradient(
+      ellipse at 50% 25%,
+      rgba(246,231,208,.24),
+      transparent 75%
+    ),
+    linear-gradient(
+      135deg,
+      #d3c1a8 0%,
+      #c7b49a 52%,
+      #b8a187 100%
+    );
+
+  border: 1px solid #8c745d;
+
+  box-shadow:
+    0 20px 48px rgba(0,0,0,.34),
+    inset 0 0 35px rgba(84,59,39,.06);
+}
+
+.chapter-paper::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(91,65,45,.35);
+  pointer-events: none;
+}
+
+/* =========================================
+   章節標題
+========================================= */
+
+.chapter-heading {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 65px;
+  text-align: center;
+}
+
+.chapter-series {
+  margin: 0 0 24px;
+  color: #765d49;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 14px;
+  letter-spacing: 4px;
+}
+
+.chapter-number {
+  margin: 0 0 12px;
+  color: #725844;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 19px;
+  letter-spacing: 3px;
+}
+
+.chapter-title {
+  margin: 0;
+  color: #35251c;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(38px, 6vw, 62px);
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.chapter-heading-rule {
+  width: 100px;
+  height: 1px;
+  margin: 30px auto 0;
+  background: rgba(91,65,45,.5);
+}
+
+/* =========================================
+   正文
+========================================= */
+
+.chapter-content {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+  margin: 0 auto;
+
+  color: #382a21;
+  font-family: "Noto Serif TC", serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 2.25;
+  letter-spacing: .5px;
+  overflow-wrap: break-word;
+}
+
+.chapter-content p {
+  margin: 0 0 1.25em;
+  text-align: justify;
+  text-justify: inter-ideograph;
+}
+
+/* =========================================
+   場景轉換
+========================================= */
+
+.scene-break {
+  display: block;
+  margin: 48px auto;
+  text-align: center;
+  color: #80654e;
+  font-family: Georgia, serif;
+  font-size: 17px;
+  line-height: 1;
+  letter-spacing: 8px;
+  user-select: none;
+}
+
+.scene-dash {
+  display: block;
+  margin: 45px auto;
+  text-align: center;
+  color: #80654e;
+  letter-spacing: 3px;
+}
+
+/* =========================================
+   章節結尾
+========================================= */
+
+.chapter-ending {
+  margin: 65px auto 0;
+  text-align: center;
+  color: #765d49;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 14px;
+  letter-spacing: 3px;
+}
+
+.chapter-bottom-navigation {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 35px;
+}
+
+.chapter-bottom-navigation a {
+  color: #c9b69b;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 15px;
+  letter-spacing: 1px;
+  text-decoration: none;
+}
+
+.chapter-bottom-navigation a:hover {
+  color: #fff2df;
+}
+
+/* =========================================
+   留言區
+========================================= */
+
+.chapter-comments {
+  margin-top: 55px;
+  padding: 35px 25px;
+  border: 1px solid rgba(201,182,155,.35);
+  background: rgba(0,0,0,.12);
+}
+
+.chapter-comments h2 {
+  margin: 0 0 12px;
+  color: #e9ddcc;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 32px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.chapter-comments-description {
+  margin: 0 0 25px;
+  color: #c9b69b;
+  font-size: 13px;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.chapter-comments iframe {
+  display: block;
+  width: 100%;
+  min-height: 650px;
+  border: 0;
+  background: transparent;
+}
+
+/* =========================================
+   iPad
+========================================= */
+
+@media (min-width:701px) and (max-width:1100px) {
+
+  .chapter-paper {
+    padding: 55px 40px 65px;
+  }
+
+  .chapter-content {
+    font-size: 16px;
+    line-height: 2.2;
+  }
+
+}
+
+/* =========================================
+   手機
+========================================= */
+
+@media (max-width:700px) {
+
+  .chapter-main {
+    padding-top: calc(var(--header-height,100px) + 25px);
+    padding-bottom: 110px;
+  }
+
+  .chapter-navigation a {
+    font-size: 13px;
+  }
+
+  .chapter-paper {
+    padding: 45px 23px 55px;
+  }
+
+  .chapter-paper::before {
+    inset: 8px;
+  }
+
+  .chapter-heading {
+    margin-bottom: 45px;
+  }
+
+  .chapter-series {
+    font-size: 11px;
+    letter-spacing: 2px;
+  }
+
+  .chapter-number {
+    font-size: 16px;
+  }
+
+  .chapter-title {
+    font-size: 40px;
+  }
+
+  .chapter-content {
+    font-size: 15px;
+    line-height: 2.2;
+    letter-spacing: .3px;
+  }
+
+  .chapter-content p {
+    margin-bottom: 1.3em;
+  }
+
+  .scene-break,
+  .scene-dash {
+    margin: 35px auto;
+  }
+
+  .chapter-comments {
+    padding: 25px 12px;
+  }
+
+  .chapter-comments iframe {
+    min-height: 650px;
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+  }
+}
+
+</style>
+
+</head>
+
+<body
+  class="characters-page reading-page"
+  data-novel-id="omn"
+  data-chapter-id="omn-01"
+>
+
+<div class="site">
+
+  <!-- =====================================
+       網站頂部
+  ===================================== -->
+
+  <header class="site-header">
+
+    <a href="../../../home.html" class="brand">
+
+      <img
+        src="../../../images/IMG_1497.png"
+        alt="RotaRS Logo"
+        class="brand-logo"
+      >
+
+      <div class="brand-text">
+
+        <span class="brand-name">
+          RotaRS
+        </span>
+
+        <span class="brand-subtitle">
+          THE LITERARY ARCHIVE
+        </span>
+
+      </div>
+
+    </a>
+
+  </header>
+
+
+  <!-- =====================================
+       左側導覽列
+  ===================================== -->
+
+  <aside class="sidebar">
+
+    <nav
+      class="sidebar-nav"
+      aria-label="Main Navigation"
+    >
+
+      <a href="../../../home.html" class="nav-link">
+        HOME
+      </a>
+
+      <a href="../../../library.html" class="nav-link">
+        LIBRARY
+      </a>
+
+      <a href="../../../characters.html" class="nav-link">
+        CHARACTERS
+      </a>
+
+      <span class="nav-link nav-disabled">
+        CONTINUE READING
+      </span>
+
+    </nav>
+
+    <div class="sidebar-footer">
+      ROTA SILVER
+    </div>
+
+  </aside>
+
+
+  <!-- =====================================
+       第一章閱讀頁面
+  ===================================== -->
+
+  <main class="main-content chapter-main">
+
+    <nav class="chapter-navigation">
+
+      <a href="../novel-omn.html">
+        ← BACK TO OMN
+      </a>
+
+      <a href="omn-teaser.html">
+        PREVIOUS · TEASER
+      </a>
+
+    </nav>
+
+
+    <article class="chapter-paper">
+
+      <!-- =================================
+           章節標題
+      ================================= -->
+
+      <header class="chapter-heading">
+
+        <p class="chapter-series">
+          OMN
+        </p>
+
+        <p class="chapter-number">
+          CHAPTER 1
+        </p>
+
+        <h1 class="chapter-title">
+          Under the Lights
+        </h1>
+
+        <div
+          class="chapter-heading-rule"
+          aria-hidden="true"
+        ></div>
+
+      </header>
+
+
+      <!-- =================================
+           正文開始
+           原文保留
+      ================================= -->
+
+      <div class="chapter-content">
+
+        <p>奧洛菲莫飯店的入口燈光明亮，車輛一輛接一輛地停靠又離開，門口的地面被打磨得幾乎能映出人影。</p>
+
+        <p>計程車緩緩停下</p>
+
+        <p>站在門口的三個男人幾乎同時看向那輛車</p>
+
+        <p>車門打開的瞬間，高跟鞋踩在地面的聲音清脆而明確</p>
+
+        <p>「哇嗚……」</p>
+
+        <p>查理幾乎沒有猶豫地走上前，伸手扶住珞塔，「妳真的……太誇張了。」</p>
+
+        <p>他的語氣帶著一點真心的驚嘆</p>
+
+        <p>珞塔抬頭看他，笑了一下，手自然地落在他的領帶上，替他稍微調整了一下位置，「你也不錯。」她語氣輕輕的，「我就說你很適合這種版型。」</p>
+
+        <p>查理微微一愣，隨即笑出來，抬起手臂，「那今晚，讓我當妳的舞伴。」</p>
+
+        <p>珞塔沒有拒絕，她的手輕輕搭上去，兩人一起走進大廳</p>
+
+        <p>而在後方，蒂莉安正低頭拉著自己的禮服</p>
+
+        <p>「等一下！」菲爾瞬間慌了，「妳不要在這裡——」</p>
+
+        <p>「現在沒人啦……」她小聲說</p>
+
+        <p>「不行！」他幾乎是半推半拉地把她帶進去，「進去找廁所再處理！」</p>
+
+        <p>阿格妮絲剛結束一通電話，一抬頭，發現人全不見了</p>
+
+        <p>「……人呢？」</p>
+
+        <p>席克站在她旁邊，輕輕聳肩，他看著她，目光比平常多停了一秒，「我們進去吧？」</p>
+
+        <p>他抬起手臂，阿格妮絲看了他一眼，沒有多說什麼，將手放了上去</p>
+
+        <p>兩人並肩走進燈光之中</p>
+
+
+        <div class="scene-break" aria-hidden="true">✦</div>
+
+
+        <p>宴會廳的門一推開，聲音不是一下子湧進來，而是像一層一層疊上來的——杯子碰撞的清脆、低聲交談的節奏、遠處樂隊壓得很剛好的音樂，全都混在一起，形成一種只屬於這種場合的背景噪音</p>
+
+        <p>水晶吊燈從高處垂落，光線碎成一片片灑在每一個人的肩膀與髮絲上，像刻意設計過的聚光</p>
+
+        <p>席克站在入口的第一步就慢了下來</p>
+
+        <p>「哇……」</p>
+
+        <p>他的視線幾乎是被強行拉開的，從左到右，每一張臉、每一套西裝、每一件禮服都帶著某種“被認得出來”的價值</p>
+
+        <p>「那個是時代雜誌的總編嗎？」他低聲問，語氣裡有點藏不住的興奮</p>
+
+        <p>阿格妮絲站在他身邊，目光已經快速掃過整個場子，她不是在看人，而是在確認位置、動線、誰在哪一區</p>
+
+        <p>她手肘輕輕頂了他一下，「冷靜一點，別像第一次進城的小孩」</p>
+
+        <p>她語氣不重，但很準</p>
+
+        <p>「先站穩，深呼吸，然後——」她稍微側過頭，看向他，「假裝你本來就屬於這裡」</p>
+
+        <p>席克愣了一下，隨即笑出來，「好難的任務」</p>
+
+        <p>「你看起來已經比一半的人自然了」</p>
+
+        <p>她話才說到一半，一道聲音從人群另一側切進來</p>
+
+        <p>「格林蓋爾」</p>
+
+        <p>那聲音不大，但精準</p>
+
+        <p>阿格妮絲幾乎是立刻轉頭，「是」</p>
+
+        <p>她的表情沒有變，但整個人已經進入另一種狀態</p>
+
+        <p>「我老闆」她低聲對席克說了一句</p>
+
+        <p>「去吧」他點點頭，「我自己晃一下」</p>
+
+        <p>她看了他一眼，「你確定你不會迷路？」</p>
+
+        <p>「我會打電話求救」他笑</p>
+
+        <p>她沒有再多說，轉身往人群深處走去</p>
+
+        <p>高跟鞋踩在地面上的聲音穩而乾淨，每一步都像是早就計算過</p>
+
+
+        <div class="scene-dash" aria-hidden="true">———</div>
+
+
+        <p>阿格妮絲已經站在娜瑟芬面前，她的姿態完全不一樣了，背挺直，視線穩，連呼吸都變得很輕</p>
+
+        <p>娜瑟芬沒有多餘寒暄，直接切入</p>
+
+        <p>「讓我介紹」</p>
+
+        <p>她的手輕輕搭在阿格妮絲肩上，像是在宣告某種位置的交接</p>
+
+        <p>「這位是羅森，本次策展的核心人物」</p>
+
+        <p>男人轉過身，氣質乾淨利落，眼神帶著評估意味</p>
+
+        <p>「這位是阿格妮絲・格林蓋爾」娜瑟芬繼續說，「我們新的行銷公關」</p>
+
+        <p>那句話落下的瞬間，時間像短暫停了一拍</p>
+
+        <p>阿格妮絲的心跳明顯往上一下，她沒有被提前告知，但她沒有表現出來</p>
+
+        <p>「原來就是妳」羅森看著她，「準備好了嗎？」</p>
+
+        <p>這句話不是問候，是測試</p>
+
+        <p>阿格妮絲喉嚨微微收緊了一下</p>
+
+        <p>但下一秒，她抬起下巴「我想，我準備好了」語氣穩得像早就預料到</p>
+
+        <p>娜瑟芬在旁邊沒有表情，但那一瞬間，她沒有否定</p>
+
+        <p>這本身就是認可</p>
+
+
+        <div class="scene-break" aria-hidden="true">✦</div>
+
+
+        <p>另一側，珞塔已經跟著查理進入人群中央</p>
+
+        <p>她不需要刻意做什麼，只要站著，就會被看見</p>
+
+        <p>她的禮服在燈光下有一種很低調的光，沒有過度閃耀，卻讓視線停留得更久</p>
+
+        <p>查理低聲在她耳邊說，「左邊那桌是品牌方高層，等等可能會過來打招呼」</p>
+
+        <p>珞塔點了一下頭，「好」</p>
+
+        <p>她的目光隨著他指的方向掃過去，但沒有停太久</p>
+
+        <p>她不喜歡“盯著看”，她習慣用餘光記住，這讓她看起來更從容</p>
+
+        <p>「妳很適合這種場合」查理忍不住說</p>
+
+        <p>珞塔笑了一下，「你是說我看起來很會裝嗎？」</p>
+
+        <p>「不是」他搖頭，「是看起來不需要裝」</p>
+
+        <p>她沒有回話，只是把香檳杯拿起來，輕輕碰了一下他的杯緣</p>
+
+
+        <div class="scene-break" aria-hidden="true">✦</div>
+
+
+        <p>菲爾終於把蒂莉安帶到比較不顯眼的位置</p>
+
+        <p>「好了，現在可以調了」他鬆了一口氣</p>
+
+        <p>蒂莉安立刻低頭拉整禮服，動作還是有點慌</p>
+
+        <p>「我真的覺得它隨時會掉下來……」</p>
+
+        <p>菲爾看了一眼又立刻別開視線，「不會掉」</p>
+
+        <p>「你確定？」</p>
+
+        <p>「我非常確定」他語氣變得很快，「而且妳現在看起來——很好」</p>
+
+        <p>他講完才意識到自己講太直接，耳根微微紅了一點</p>
+
+        <p>蒂莉安愣了一下，然後笑出來</p>
+
+        <p>那種笑不是自信，是被安撫之後的放鬆</p>
+
+        <p>「好吧，那我相信你」</p>
+
+
+        <div class="scene-break" aria-hidden="true">✦</div>
+
+
+        <p>阿格妮絲重新回到宴會廳時，腳步比剛剛穩了一點，但眼神明顯亮了許多</p>
+
+        <p>珞塔和蒂莉安正站在靠近甜點桌的位置，一邊看著場內來來往往的人，一邊低聲猜測那些西裝筆挺、笑得得體的人物到底是誰</p>
+
+        <p>「那個應該是某個基金會的理事吧？」蒂莉安壓低聲音說著</p>
+
+        <p>「不，我覺得比較像投資人。」珞塔輕輕晃著手中的香檳杯，目光淡淡掃過去</p>
+
+        <p>「嘿。」阿格妮絲的聲音插進來</p>
+
+        <p>兩人同時轉頭看她</p>
+
+        <p>「待會要不要去喝一杯？」她語氣很自然，像是隨口提起，但眼神裡有一點壓不住的輕快，「我請。」</p>
+
+        <p>珞塔愣了一下，有點心動，但還是露出為難的表情，「你們去吧，我要回家趕稿。」</p>
+
+        <p>她輕輕吐了一口氣，像是對自己的選擇也有點無奈</p>
+
+        <p>「啊……今天我也不行。」蒂莉安跟著聳了聳肩，「剛剛收到訊息，老諾臨時丟了一些東西給我處理。」</p>
+
+        <p>阿格妮絲看了她們兩個一眼，沉默了一秒，然後笑出來</p>
+
+        <p>「好吧好吧。」她抬手揮了揮，語氣輕鬆，「那你們都去忙吧。」</p>
+
+        <p>她的笑意沒有收，「反正這些都不會影響我的好心情——所以我還是會去喝一杯。」</p>
+
+        <p>珞塔微微挑眉，看著她，「怎麼不找畢維森，或傑赫比？」</p>
+
+        <p>「我根本不知道他們在哪。」阿格妮絲聳肩，語氣理直氣壯</p>
+
+        <p>正好有服務生端著托盤經過，她抬手示意。</p>
+
+        <p>「這邊。」</p>
+
+        <p>她從托盤上拿了三杯香檳，她轉身，把杯子一一遞給珞塔和蒂莉安</p>
+
+        <p>「至少現在，我們可以一起喝完這一杯。」</p>
+
+        <p>她舉起杯子，眼神在兩人之間停了一瞬</p>
+
+        <p>「敬我們熱愛的工作。」語氣不誇張，但很真</p>
+
+        <p>珞塔笑了一下，舉杯，「敬不管多忙還是會接下來的自己。」</p>
+
+        <p>蒂莉安也跟上，「敬還沒崩潰的今晚。」</p>
+
+        <p>三個杯子在空中輕輕碰了一下，清脆的聲音短暫地蓋過周圍的喧鬧</p>
+
+        <p>她們仰頭喝下那口氣泡微刺的酒，像是在為各自的夜晚做一個小小的分岔標記</p>
+
+
+        <div class="scene-break" aria-hidden="true">✦</div>
+
+
+        <p>宴會接近尾聲時，人群開始往出口流動，燈光沒有變，但氣氛已經從高點慢慢往下收</p>
+
+        <p>阿格妮絲陪著她們走到飯店大廳門口</p>
+
+        <p>外面的車一輛一輛停靠，冷空氣從門縫滲進來，讓人稍微清醒了一點</p>
+
+        <p>「妳確定妳沒關係嗎？」珞塔站在車門邊，還是忍不住多問了一句</p>
+
+        <p>她的目光落在阿格妮絲身上——那身剪裁俐落的禮服、那種不自覺吸引視線的氣場，她太清楚這意味著什麼</p>
+
+        <p>阿格妮絲笑了一下，手輕輕搭在珞塔的腰側，帶點安撫意味</p>
+
+        <p>「我不會喝多的。」她說，「就一杯。」</p>
+
+        <p>語氣輕，但很篤定</p>
+
+        <p>「妳就放心讓司機送妳回家。」</p>
+
+        <p>珞塔看了她一眼，像是在確認什麼，最後還是點頭，她坐進副駕駛座，在關上門前又探出頭，「如果妳不回來睡，記得跟我說一聲。」</p>
+
+        <p>「好——我會的。」阿格妮絲揮了揮手，笑得很自然</p>
+
+        <p>車門關上，引擎聲響起</p>
+
+        <p>車子慢慢駛離門口，紅色尾燈在夜裡拉出一道短暫的線</p>
+
+        <p>阿格妮絲站在原地，看著車子消失在街角，她沒有立刻動，只是站了一秒，像是在讓某個情緒沉下去。</p>
+
+        <p>然後她轉身，高跟鞋重新踩回光滑的地面，節奏穩定。她提著裙襬走回大廳，經過剛剛熱鬧過的空間，聲音已經淡了許多</p>
+
+        <p>櫃檯前的燈光柔和，帶著一點刻意營造的溫度</p>
+
+        <p>「您好。」</p>
+
+        <p>她對櫃檯人員微微一笑，語氣禮貌而清楚，那句話說出口的時候，她的眼神沒有遲疑</p>
+
+        <p>「我想訂一間今晚的套房。」</p>
+
+      </div>
+
+      <!-- =================================
+           章節結尾
+      ================================= -->
+
+      <div class="chapter-ending">
+        END OF CHAPTER 1
+      </div>
+
+    </article>
+
+
+    <!-- =====================================
+         章節導覽
+    ===================================== -->
+
+    <nav class="chapter-bottom-navigation">
+
+      <a href="omn-teaser.html">
+        ← PREVIOUS · TEASER
+      </a>
+
+      <a href="../novel-omn.html">
+        TABLE OF CONTENTS →
+      </a>
+
+    </nav>
+
+
+    <!-- =====================================
+         CHAPTER 1 留言區
+
+         沿用原本 Google Apps Script
+         獨立 chapter ID
+    ===================================== -->
+
+    <section class="chapter-comments">
+
+      <h2>Readers' Notes</h2>
+
+      <p class="chapter-comments-description">
+        Leave your thoughts within the archive.
+      </p>
+
+      <iframe
+        src="https://script.google.com/macros/s/AKfycbzBm39IqxbCQGk3Th2T6lR0eBxl9tFafBmEsKtnKP5paCqUdiP7wb1mpLK53hRLxWLw/exec?chapter=omn-01"
+        title="OMN Chapter 1 Comments"
+        loading="lazy"
+        referrerpolicy="strict-origin-when-cross-origin"
+      ></iframe>
+
+    </section>
+
+  </main>
+
+</div>
+
+</body>
+</html>
