@@ -25,15 +25,16 @@
     /* =========================================
        ROTARS — OMN NOVEL ARCHIVE
 
-       ★ 完整小說專頁
+       完整小說專頁
+
        ★ 置中封面
        ★ 六位主演
        ★ 作品簡介
-       ★ 可自行新增的章節目錄
-       ★ 每章可連結獨立閱讀頁面
-       ★ 電腦、iPad、手機適用
+       ★ Teaser 前導篇
+       ★ 自訂章節目錄
+       ★ 獨立閱讀頁面連結
 
-       檔案名稱：novel-omn.html
+       檔案：novel-omn.html
     ========================================= */
 
     * {
@@ -197,7 +198,7 @@
 
     /* =========================================
        小說封面
-       完整顯示、不裁切
+       完整顯示，不裁切
     ========================================= */
 
     .omn-cover {
@@ -396,6 +397,11 @@
         rgba(91, 65, 45, 0.07);
     }
 
+    a.omn-cast-item:focus-visible {
+      outline: 2px solid #5A4030;
+      outline-offset: 3px;
+    }
+
     .omn-cast-name {
       font-family:
         "Noto Serif TC",
@@ -418,7 +424,7 @@
 
     /* =========================================
        TABLE OF CONTENTS
-       章節目錄
+       Teaser + 正式章節
     ========================================= */
 
     .omn-chapters {
@@ -429,8 +435,6 @@
     .omn-chapter-list {
       border-top:
         1px solid rgba(91, 65, 45, 0.38);
-
-      min-height: 1px;
     }
 
     .omn-chapter-item {
@@ -503,6 +507,34 @@
       font-size: 25px;
 
       color: #715640;
+    }
+
+    /* =========================================
+       Teaser 特別標記
+
+       讓前導篇與正式章節稍有區別，
+       但不破壞整體英倫簡約風格。
+    ========================================= */
+
+    .omn-teaser-item {
+      background:
+        rgba(255, 247, 232, 0.12);
+    }
+
+    .omn-teaser-item .omn-chapter-number {
+      letter-spacing: 3px;
+      font-weight: 600;
+    }
+
+    .omn-teaser-item .omn-chapter-title {
+      font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+      font-size: 25px;
+      font-style: italic;
+      letter-spacing: 0.5px;
     }
 
     /* =========================================
@@ -617,6 +649,10 @@
         font-size: 15px;
       }
 
+      .omn-teaser-item .omn-chapter-title {
+        font-size: 22px;
+      }
+
       .omn-cast-item,
       .omn-chapter-item {
         padding: 19px 5px;
@@ -699,6 +735,7 @@
         <a
           href="library.html"
           class="nav-link active"
+          aria-current="page"
         >
           LIBRARY
         </a>
@@ -762,7 +799,7 @@
         <!-- =====================================
              ★ 小說封面
 
-             封面圖片：
+             封面：
              images/IMG_1527.jpeg
 
              完整顯示，不裁切。
@@ -804,14 +841,15 @@
 
 
           <!-- =================================
-               ★★★ 小說簡介編輯區 ★★★
+               ★ 小說簡介編輯區
 
-               將下方文字換成 OMN 的
-               正式故事介紹。
+               未來將下面的文字替換成
+               OMN 正式劇情介紹。
 
-               可以使用多個 <p> 分段。
+               若需要多段：
 
-               不需要修改 CSS。
+               <p>第一段</p>
+               <p>第二段</p>
           ================================= -->
 
           <div class="omn-story-text">
@@ -834,8 +872,7 @@
              THE CAST
              六位主演
 
-             ★ 僅顯示角色名稱
-             ★ 不顯示演員本名
+             僅顯示小說角色名稱
         ===================================== -->
 
         <section class="omn-cast">
@@ -872,11 +909,7 @@
             </div>
 
 
-            <!-- =================================
-                 主演 03：吉姆
-
-                 點擊可前往金碩珍個人頁
-            ================================= -->
+            <!-- 主演 03：吉姆 -->
 
             <a
               href="character-03.html"
@@ -935,8 +968,8 @@
                    </span>
                  </div>
 
-                 如果人物有個人頁，
-                 可以改成 a 標籤並加 href。
+                 若有個人頁，
+                 可改成 a 標籤並加 href。
             ================================= -->
 
 
@@ -954,10 +987,8 @@
              TABLE OF CONTENTS
              小說章節目錄
 
-             ★ 目前不顯示任何預設章節
-             ★ 作者自行填入章節編號
-             ★ 作者自行填入章節標題
-             ★ 每章可連結獨立 HTML 頁面
+             ★ 第一篇：Teaser
+             ★ 正式章節自行新增
         ===================================== -->
 
         <section class="omn-chapters">
@@ -971,62 +1002,75 @@
           </div>
 
 
-          <!-- =====================================
-               ★★★ 章節新增區 ★★★
-
-               未來所有章節都放在這裡。
-
-               目前保持空白。
-
-               章節範本寫在下方註解中，
-               不會顯示在網站上。
-          ===================================== -->
-
           <div class="omn-chapter-list">
 
 
             <!-- =================================
-                 ★★★ 如何新增章節 ★★★
+                 ★★★ OMN TEASER ★★★
 
-                 每一章需要填寫三個地方：
+                 名稱：
+                 Soft Before the Noise
 
-                 ① 章節連結
+                 閱讀頁面：
+                 omn-teaser.html
+
+                 ★ 不計入正式章節編號
+                 ★ 放在所有章節之前
+            ================================= -->
+
+            <a
+              href="omn-teaser.html"
+              class="omn-chapter-item omn-teaser-item"
+            >
+
+              <div class="omn-chapter-info">
+
+                <span class="omn-chapter-number">
+                  TEASER
+                </span>
+
+                <span class="omn-chapter-title">
+                  Soft Before the Noise
+                </span>
+
+              </div>
+
+              <span
+                class="omn-chapter-arrow"
+                aria-hidden="true"
+              >
+                ›
+              </span>
+
+            </a>
+
+
+            <!-- =================================
+                 ★★★ 正式章節新增區 ★★★
+
+                 請把未來新增的章節，
+                 放在這個註解下方、
+                 omn-chapter-list 結束標籤之前。
+
+                 目前沒有預設章節。
+
+
+                 【新增章節教學】
+
+                 每一章需要修改：
+
+                 ① 閱讀頁面連結
                  ② 章節編號
                  ③ 章節標題
 
 
-                 【第一步】
+                 【章節範本】
 
-                 在 GitHub 建立章節正文檔案。
+                 複製下面的 <a> 到 </a>
+                 整組程式碼。
 
-                 建議命名：
+                 貼在這段註解結束後。
 
-                 omn-chapter-01.html
-                 omn-chapter-02.html
-                 omn-chapter-03.html
-                 omn-chapter-04.html
-
-                 每章使用不同檔名。
-
-
-                 【第二步】
-
-                 複製下面的整組章節範本，
-                 貼在這個 div 裡面。
-
-                 注意：
-
-                 範本現在被 HTML 註解包住，
-                 所以不會顯示。
-
-                 新增正式章節時，
-                 只複製 <a> 到 </a>
-                 這一整組即可。
-
-
-                 =================================
-                 ★★★ 章節範本開始 ★★★
-                 =================================
 
                  <a
                    href="omn-chapter-01.html"
@@ -1054,33 +1098,22 @@
 
                  </a>
 
-                 =================================
-                 ★★★ 章節範本結束 ★★★
-                 =================================
+
+                 【三個修改位置】
 
 
-                 【第三步】
-
-                 修改以下三個地方：
-
-
-                 ★ ① 章節連結
+                 ★ ① 閱讀頁面
 
                  href="omn-chapter-01.html"
 
-                 這是讀者點擊後，
-                 會進入的章節閱讀頁。
-
-                 請改成該章節的 HTML 檔名。
+                 改成對應章節的 HTML 檔名。
 
 
                  ★ ② 章節編號
 
-                 <span class="omn-chapter-number">
-                   在這裡填入章節編號
-                 </span>
+                 在 omn-chapter-number 裡填寫。
 
-                 妳可以使用：
+                 可以使用：
 
                  CHAPTER I
                  CHAPTER II
@@ -1092,39 +1125,31 @@
                  第二章
                  第三章
 
-                 依照妳喜歡的格式。
-
 
                  ★ ③ 章節標題
 
-                 <span class="omn-chapter-title">
-                   在這裡填入章節標題
-                 </span>
-
-                 替換成該章節的正式名稱。
+                 在 omn-chapter-title 裡填寫
+                 妳自己決定的標題。
 
 
-                 【第四步】
+                 【閱讀頁面命名建議】
 
-                 按照小說順序，
-                 繼續新增其他章節。
-
-                 每新增一章，
-                 就複製一整組 <a>...</a>。
-
-                 章節會自動由上往下排列。
+                 omn-chapter-01.html
+                 omn-chapter-02.html
+                 omn-chapter-03.html
+                 omn-chapter-04.html
 
 
-                 ★★★ 重要提醒 ★★★
+                 ★ 每新增一章，
+                   複製一整組即可。
 
-                 必須先建立對應的章節
-                 HTML 閱讀頁面。
+                 ★ 新章節會排列在 Teaser 下方。
 
-                 否則點擊後會顯示
-                 找不到頁面。
+                 ★ 必須先建立對應的
+                   HTML 閱讀頁面，
+                   連結才能正常開啟。
 
-                 不需要修改 CSS。
-                 不需要修改 JavaScript。
+                 ★ 不需要修改 CSS。
 
             ================================= -->
 
