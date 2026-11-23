@@ -13,11 +13,13 @@
 
   <style>
 
-    /* ==============================
-       CHARACTERS 頁面基本排版
-    ============================== */
+    /* =========================================
+       CHARACTERS 專屬樣式
+       優先支援 iPhone、iPad 與 Safari
+    ========================================= */
 
     .characters-main {
+      min-width: 0;
       padding-top: calc(var(--header-height, 100px) + 65px);
       padding-bottom: 55px;
     }
@@ -28,192 +30,267 @@
 
     .characters-eyebrow {
       margin: 0 0 16px;
+
       font-family: "Cormorant Garamond", Georgia, serif;
       font-size: 15px;
       letter-spacing: 4px;
+
       color: #B9A899;
     }
 
     .characters-intro h1 {
       margin: 0;
+
       font-family: "Cormorant Garamond", Georgia, serif;
       font-size: clamp(48px, 6vw, 76px);
       font-weight: 500;
       line-height: 1.1;
+
       color: #F2E9DC;
     }
 
     .characters-description {
       margin: 20px 0 0;
+
       font-family: "Cormorant Garamond", Georgia, serif;
       font-size: 21px;
+      line-height: 1.5;
+
       color: #B9A899;
     }
 
 
-    /* ==============================
-       英倫信箋背景
-    ============================== */
+    /* =========================================
+       英倫信箋
+       灰調象牙白 + 細緻雙線框
+    ========================================= */
 
     .cast-letter {
       position: relative;
-      padding: 52px 48px 60px;
+      min-width: 0;
+
+      padding: 54px 46px 62px;
 
       background:
-        repeating-linear-gradient(
-          0deg,
-          transparent 0,
-          transparent 31px,
-          rgba(130, 110, 89, 0.035) 32px
-        ),
         linear-gradient(
-          145deg,
-          #F1E8D9,
-          #E5D8C5
+          135deg,
+          #F0EDE5 0%,
+          #E8E4DA 55%,
+          #DED9CF 100%
         );
 
-      border: 1px solid #B7A28A;
+      border: 1px solid #B5A894;
 
       box-shadow:
-        0 20px 55px rgba(0,0,0,0.32),
-        inset 0 0 0 9px rgba(255,255,255,0.20),
-        inset 0 0 0 10px rgba(125,99,76,0.22);
+        0 18px 45px rgba(0, 0, 0, 0.27);
+
+      isolation: isolate;
     }
 
     .cast-letter::before {
       content: "";
+
       position: absolute;
-      inset: 18px;
-      border: 1px solid rgba(110,85,62,0.22);
+      inset: 12px;
+
+      border: 1px solid rgba(115, 96, 77, 0.28);
+
       pointer-events: none;
+      z-index: -1;
     }
+
+
+    /* =========================================
+       信箋標題
+    ========================================= */
 
     .cast-heading {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: space-between;
-      gap: 20px;
+      justify-content: center;
 
-      margin-bottom: 35px;
-      padding-bottom: 18px;
+      gap: 10px;
 
-      border-bottom: 1px solid rgba(91,70,53,0.35);
+      margin-bottom: 38px;
+      padding-bottom: 25px;
+
+      text-align: center;
+
+      border-bottom:
+        1px solid rgba(105, 86, 68, 0.28);
+    }
+
+    .cast-heading .cast-small-title {
+      margin: 0;
+
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 12px;
+      letter-spacing: 3px;
+
+      color: #8C7966;
     }
 
     .cast-heading h2 {
       margin: 0;
+
       font-family: "Cormorant Garamond", Georgia, serif;
-      font-size: 30px;
-      font-weight: 600;
-      letter-spacing: 2px;
+      font-size: 37px;
+      font-weight: 500;
+      letter-spacing: 3px;
+      line-height: 1.1;
+
       color: #47372C;
     }
 
-    .cast-heading span {
+    .cast-heading .cast-caption {
       font-family: "Cormorant Garamond", Georgia, serif;
-      font-size: 14px;
-      letter-spacing: 2px;
-      color: #78614E;
+      font-size: 18px;
+      font-style: italic;
+      letter-spacing: 0.8px;
+
+      color: #7B6958;
     }
 
 
-    /* ==============================
+    /* =========================================
        人物照片牆
-       電腦四欄 / 平板三欄 / 手機兩欄
-    ============================== */
+
+       重要：
+       不使用固定 3:4 裁切。
+       圖片保持原始比例，完整顯示。
+    ========================================= */
 
     .cast-grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 28px;
+
+      grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+      gap: 26px 22px;
+
+      align-items: start;
     }
 
     .cast-card {
       display: block;
       min-width: 0;
+
       text-decoration: none;
+
+      -webkit-tap-highlight-color: transparent;
     }
 
     .cast-photo {
       display: block;
       width: 100%;
-      aspect-ratio: 3 / 4;
-      overflow: hidden;
+      min-width: 0;
 
-      background: #D5C5AF;
-      border: 1px solid rgba(91,70,53,0.30);
+      overflow: visible;
 
-      box-shadow: 0 5px 15px rgba(65,45,30,0.12);
+      background: transparent;
 
-      transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
+      border: none;
+      box-shadow: none;
     }
 
     .cast-photo img {
       display: block;
+
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: auto;
+
+      max-width: 100%;
+
+      object-fit: contain;
+
+      border: none;
+      border-radius: 0;
+
+      box-shadow:
+        0 5px 12px rgba(70, 51, 35, 0.10);
+
+      transition:
+        transform 0.25s ease,
+        filter 0.25s ease;
     }
 
-    .cast-placeholder {
-      background:
-        linear-gradient(
-          145deg,
-          #D8C8B4,
-          #BFA98E
-        );
+
+    /* =========================================
+       觸控互動
+       手機和平板點擊時有輕微回饋
+    ========================================= */
+
+    a.cast-card:active img {
+      transform: scale(0.975);
+      filter: brightness(0.96);
     }
 
-    a.cast-card:hover .cast-photo {
-      transform: translateY(-5px);
-      box-shadow: 0 14px 25px rgba(65,45,30,0.22);
+    @media (hover: hover) and (pointer: fine) {
+
+      a.cast-card:hover img {
+        transform: translateY(-4px);
+      }
+
     }
+
+
+    /* =========================================
+       頁尾
+    ========================================= */
 
     .characters-footer {
       display: flex;
       justify-content: space-between;
+
       gap: 20px;
 
       margin-top: 80px;
       padding-top: 25px;
 
-      border-top: 1px solid rgba(185,168,153,0.22);
+      border-top:
+        1px solid rgba(185, 168, 153, 0.22);
 
       font-family: "Cormorant Garamond", Georgia, serif;
       font-size: 14px;
       letter-spacing: 1px;
+
       color: #B9A899;
     }
 
 
-    /* ==============================
-       平板：三欄
-    ============================== */
+    /* =========================================
+       iPad 直向 / 中型平板
+       三欄排列
+    ========================================= */
 
-    @media (max-width: 1100px) {
+    @media (min-width: 701px) and (max-width: 1100px) {
 
       .cast-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 22px;
+        grid-template-columns:
+          repeat(3, minmax(0, 1fr));
+
+        gap: 24px 20px;
       }
 
       .cast-letter {
-        padding: 42px 34px 50px;
+        padding: 44px 32px 52px;
       }
 
     }
 
 
-    /* ==============================
-       手機：兩欄
-    ============================== */
+    /* =========================================
+       手機
+       兩欄排列
+    ========================================= */
 
     @media (max-width: 700px) {
 
       .characters-main {
-        padding-top: calc(var(--header-height, 100px) + 40px);
+        padding-top:
+          calc(var(--header-height, 100px) + 40px);
+
         padding-bottom: 115px;
       }
 
@@ -221,13 +298,13 @@
         margin-bottom: 38px;
       }
 
-      .characters-intro h1 {
-        font-size: 48px;
-      }
-
       .characters-eyebrow {
         font-size: 12px;
         letter-spacing: 2px;
+      }
+
+      .characters-intro h1 {
+        font-size: 48px;
       }
 
       .characters-description {
@@ -235,36 +312,60 @@
       }
 
       .cast-letter {
-        padding: 34px 20px 38px;
+        padding: 34px 20px 40px;
       }
 
       .cast-letter::before {
-        inset: 9px;
+        inset: 8px;
       }
 
       .cast-heading {
-        margin-bottom: 24px;
-        gap: 10px;
+        gap: 8px;
+
+        margin-bottom: 26px;
+        padding-bottom: 20px;
+      }
+
+      .cast-heading .cast-small-title {
+        font-size: 10px;
+        letter-spacing: 1.5px;
       }
 
       .cast-heading h2 {
-        font-size: 23px;
+        font-size: 30px;
       }
 
-      .cast-heading span {
-        font-size: 10px;
-        letter-spacing: 1px;
+      .cast-heading .cast-caption {
+        font-size: 15px;
       }
 
       .cast-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 16px;
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+
+        gap: 20px 14px;
       }
 
       .characters-footer {
         flex-direction: column;
+
         gap: 8px;
+        margin-top: 55px;
+
         font-size: 12px;
+      }
+
+    }
+
+
+    /* =========================================
+       尊重裝置減少動畫設定
+    ========================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .cast-photo img {
+        transition: none;
       }
 
     }
@@ -278,7 +379,9 @@
 
   <div class="site">
 
-    <!-- 頂部品牌 -->
+    <!-- =========================================
+         頂部品牌
+    ========================================= -->
 
     <header class="site-header">
 
@@ -291,8 +394,15 @@
         >
 
         <div class="brand-text">
-          <span class="brand-name">RotaRS</span>
-          <span class="brand-subtitle">THE LITERARY ARCHIVE</span>
+
+          <span class="brand-name">
+            RotaRS
+          </span>
+
+          <span class="brand-subtitle">
+            THE LITERARY ARCHIVE
+          </span>
+
         </div>
 
       </a>
@@ -300,11 +410,16 @@
     </header>
 
 
-    <!-- 左側導覽列 -->
+    <!-- =========================================
+         左側導覽列
+    ========================================= -->
 
     <aside class="sidebar">
 
-      <nav class="sidebar-nav" aria-label="Main Navigation">
+      <nav
+        class="sidebar-nav"
+        aria-label="Main Navigation"
+      >
 
         <a href="home.html" class="nav-link">
           HOME
@@ -335,7 +450,9 @@
     </aside>
 
 
-    <!-- 人物資料庫 -->
+    <!-- =========================================
+         人物資料庫
+    ========================================= -->
 
     <main class="main-content characters-main">
 
@@ -354,191 +471,281 @@
       </section>
 
 
-      <!-- 英倫信箋照片牆 -->
+      <!-- =========================================
+           英倫信箋
+      ========================================= -->
 
       <section class="cast-letter">
 
         <div class="cast-heading">
 
-          <h2>THE CAST</h2>
+          <p class="cast-small-title">
+            ROTARS · THE LITERARY ARCHIVE
+          </p>
 
-          <span>EXPLORE THE PROFILES</span>
+          <h2>The Cast</h2>
+
+          <span class="cast-caption">
+            Portraits from the Archive
+          </span>
 
         </div>
 
 
+        <!-- =========================================
+             人物照片區域
+             共有 10 位人物
+        ========================================= -->
+
         <div class="cast-grid">
 
 
-          <!-- =========================================
+          <!-- =====================================
                人物 01
-               ★ 照片網址貼在 src="..." 裡面 ★
-          ========================================= -->
+               ★ 照片網址貼在 src="..." ★
+          ===================================== -->
 
           <div class="cast-card">
+
             <div class="cast-photo">
+
               <img
                 src="images/IMG_1507.jpeg"
                 alt="人物 01"
                 loading="lazy"
-                onerror="this.style.display='none'"
               >
+
             </div>
+
           </div>
 
 
-          <!-- 人物 02：照片網址貼在 src -->
+          <!-- =====================================
+               人物 02
+          ===================================== -->
 
           <div class="cast-card">
+
             <div class="cast-photo">
+
               <img
                 src="images/IMG_1508.jpeg"
                 alt="人物 02"
                 loading="lazy"
-                onerror="this.style.display='none'"
               >
+
             </div>
+
           </div>
 
 
-          <!-- 人物 03 -->
+          <!-- =====================================
+               人物 03
+          ===================================== -->
 
           <div class="cast-card">
+
             <div class="cast-photo">
+
               <img
                 src="images/IMG_1516.jpeg"
                 alt="人物 03"
                 loading="lazy"
-                onerror="this.style.display='none'"
               >
+
             </div>
+
           </div>
 
 
-          <!-- 人物 04 -->
+          <!-- =====================================
+               人物 04
+          ===================================== -->
 
           <div class="cast-card">
+
             <div class="cast-photo">
+
               <img
                 src="images/IMG_1510.jpeg"
                 alt="人物 04"
                 loading="lazy"
-                onerror="this.style.display='none'"
               >
+
             </div>
+
           </div>
 
 
-          <!-- 人物 05 -->
+          <!-- =====================================
+               人物 05
+          ===================================== -->
 
           <div class="cast-card">
+
             <div class="cast-photo">
+
               <img
                 src="images/IMG_1511.jpeg"
                 alt="人物 05"
                 loading="lazy"
-                onerror="this.style.display='none'"
               >
+
             </div>
+
           </div>
 
 
-          <!-- 人物 06 -->
+          <!-- =====================================
+               人物 06
+          ===================================== -->
 
           <div class="cast-card">
+
             <div class="cast-photo">
+
               <img
                 src="images/IMG_1514.jpeg"
                 alt="人物 06"
                 loading="lazy"
-                onerror="this.style.display='none'"
               >
+
             </div>
+
           </div>
 
 
-          <!-- 人物 07 -->
+          <!-- =====================================
+               人物 07
+          ===================================== -->
 
           <div class="cast-card">
+
             <div class="cast-photo">
+
               <img
                 src="images/IMG_1512.jpeg"
                 alt="人物 07"
                 loading="lazy"
-                onerror="this.style.display='none'"
               >
+
             </div>
+
           </div>
 
 
-          <!-- 人物 08 -->
+          <!-- =====================================
+               人物 08
+          ===================================== -->
 
           <div class="cast-card">
+
             <div class="cast-photo">
+
               <img
                 src="images/IMG_1513.jpeg"
                 alt="人物 08"
                 loading="lazy"
-                onerror="this.style.display='none'"
               >
+
             </div>
+
           </div>
 
 
-          <!-- 人物 09 -->
+          <!-- =====================================
+               人物 09
+          ===================================== -->
 
           <div class="cast-card">
+
             <div class="cast-photo">
+
               <img
                 src="images/IMG_1509.jpeg"
                 alt="人物 09"
                 loading="lazy"
-                onerror="this.style.display='none'"
               >
+
             </div>
+
           </div>
 
 
-          <!-- 人物 10 -->
+          <!-- =====================================
+               人物 10
+          ===================================== -->
 
           <div class="cast-card">
+
             <div class="cast-photo">
+
               <img
                 src="images/CB68BA50-983C-4159-81F9-4FC2C7AFE5C3.png"
                 alt="人物 10"
                 loading="lazy"
-                onerror="this.style.display='none'"
               >
+
             </div>
+
           </div>
 
 
           <!-- =========================================
                ★ 未來新增人物，貼在這裡 ★
 
-               複製下面這整組：
+               複製下面整組語法：
 
                <div class="cast-card">
+
                  <div class="cast-photo">
+
                    <img
                      src="images/新人物照片.jpg"
                      alt="人物名稱"
                      loading="lazy"
                    >
+
                  </div>
+
                </div>
 
-               ★ src = 照片網址或圖片路徑
-               ★ alt = 人物名稱（不會顯示在照片下方）
-               ★ 每新增一組，就多一張人物照片
-               ★ 不需要修改 CSS
+               ★ src：
+                 填入照片網址或 GitHub 圖片路徑。
 
-               未來要讓照片連到人物介紹頁：
-               將外層 div 改成：
+               ★ alt：
+                 填入人物名稱。
+                 不會顯示在照片下方。
 
-               <a href="人物介紹頁.html" class="cast-card">
+               ★ 每增加一組：
+                 就會多一張肖像。
+                 不需要修改 CSS。
 
-               結尾改成 </a>
+
+               ★ 未來人物介紹頁連結：
+
+               將：
+
+               <div class="cast-card">
+
+               改成：
+
+               <a
+                 href="人物介紹頁.html"
+                 class="cast-card"
+               >
+
+               並將該人物卡片最後的：
+
+               </div>
+
+               改成：
+
+               </a>
+
+               注意：
+               只修改最外層的標籤。
+               內部 cast-photo 不用改。
 
           ========================================= -->
 
@@ -548,13 +755,19 @@
       </section>
 
 
-      <!-- 頁尾 -->
+      <!-- =========================================
+           頁尾
+      ========================================= -->
 
       <footer class="characters-footer">
 
-        <span>RotaRS — The Literary Archive</span>
+        <span>
+          RotaRS — The Literary Archive
+        </span>
 
-        <span>© Rota Silver</span>
+        <span>
+          © Rota Silver
+        </span>
 
       </footer>
 
