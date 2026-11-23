@@ -3,1101 +3,885 @@
 <html lang="zh-Hant">
 
 <head>
-  <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
-  <meta
-    name="robots"
-    content="noindex, nofollow, noimageindex"
-  >
-
-  <title>OMN | RotaRS — The Literary Archive</title>
-
-  <!-- 網站共用樣式 -->
-  <link rel="stylesheet" href="../../style.css?v=5">
-
-  <!-- 閱讀系統樣式 -->
-  <link rel="stylesheet" href="../../reading.css?v=1">
-
-  <!-- 閱讀系統資料與功能 -->
-  <script defer src="../../novels.js?v=1"></script>
-  <script defer src="../../reading.js?v=2"></script>
-
-  <style>
-
-    /* =========================================
-       ROTARS — OMN NOVEL ARCHIVE
-
-       完整小說專頁
-       置中小說封面
-       六位角色卡片
-       共用角色主頁
-       Teaser 前導篇
-       自訂章節目錄
-       Resume Reading
-       章節閱讀狀態
-
-       檔案：
-       novels/omn/novel-omn.html
-    ========================================= */
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      background: #211811;
-      color: #E9DDCC;
-
-      font-family:
-        "Noto Serif TC",
-        Georgia,
-        serif;
-    }
-
-    /* =========================================
-       主要內容區
-    ========================================= */
-
-    .omn-main {
-      min-width: 0;
-
-      padding-top:
-        calc(var(--header-height, 100px) + 45px);
-
-      padding-bottom: 75px;
-    }
-
-    /* =========================================
-       返回作品總覽
-    ========================================= */
-
-    .omn-back {
-      display: inline-block;
-
-      margin-bottom: 30px;
-
-      color: #C9B69B;
-      text-decoration: none;
-
-      font-family:
-        "Cormorant Garamond",
-        Georgia,
-        serif;
-
-      font-size: 16px;
-      letter-spacing: 1.5px;
-    }
-
-    .omn-back:hover {
-      color: #F2E9DC;
-    }
-
-    .omn-back:focus-visible {
-      outline: 2px solid #C9B69B;
-      outline-offset: 5px;
-    }
-
-    /* =========================================
-       煙燻羊皮紙
-    ========================================= */
-
-    .omn-paper {
-      position: relative;
-      isolation: isolate;
-
-      min-width: 0;
-
-      padding: 58px 50px 65px;
-
-      background-color: #C7B49A;
-
-      background-image:
-        radial-gradient(
-          ellipse at 50% 28%,
-          rgba(246, 231, 208, 0.24),
-          transparent 75%
-        ),
-        linear-gradient(
-          135deg,
-          #D3C1A8 0%,
-          #C7B49A 52%,
-          #B8A187 100%
-        );
-
-      border: 1px solid #8C745D;
-
-      box-shadow:
-        0 20px 48px rgba(0, 0, 0, 0.34),
-        inset 0 0 35px rgba(84, 59, 39, 0.06);
-    }
-
-    .omn-paper::before {
-      content: "";
-
-      position: absolute;
-      inset: 12px;
-
-      border:
-        1px solid rgba(91, 65, 45, 0.35);
-
-      pointer-events: none;
-      z-index: -1;
-    }
-
-    /* =========================================
-       小說標題
-    ========================================= */
-
-    .omn-heading {
-      text-align: center;
-      margin-bottom: 43px;
-    }
-
-    .omn-overline {
-      margin: 0 0 15px;
-
-      font-family:
-        "Cormorant Garamond",
-        Georgia,
-        serif;
-
-      font-size: 12px;
-      letter-spacing: 3px;
-
-      color: #725B48;
-    }
-
-    .omn-heading h1 {
-      margin: 0;
-
-      font-family:
-        "Cormorant Garamond",
-        Georgia,
-        serif;
-
-      font-size: clamp(55px, 8vw, 90px);
-      font-weight: 500;
-
-      line-height: 1.1;
-      letter-spacing: 5px;
-
-      color: #35251C;
-    }
-
-    .omn-subtitle {
-      margin: 12px 0 0;
-
-      font-family:
-        "Cormorant Garamond",
-        Georgia,
-        serif;
-
-      font-size: 20px;
-      font-style: italic;
-
-      color: #715640;
-    }
-
-    /* =========================================
-       小說封面
-    ========================================= */
-
-    .omn-cover {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-
-      gap: 16px;
-
-      width: min(100%, 470px);
-      margin: 0 auto;
-    }
-
-    .omn-cover img {
-      display: block;
-
-      width: 100%;
-      height: auto;
-
-      object-fit: contain;
-
-      border:
-        1px solid rgba(74, 50, 32, 0.55);
-
-      box-shadow:
-        0 17px 35px rgba(49, 31, 20, 0.3),
-        0 3px 7px rgba(49, 31, 20, 0.15);
-    }
-
-    .omn-cover-caption {
-      margin: 0;
-
-      font-family:
-        "Cormorant Garamond",
-        Georgia,
-        serif;
-
-      font-size: 12px;
-      letter-spacing: 2.5px;
-
-      color: #725B48;
-      text-align: center;
-    }
-
-    /* =========================================
-       古典分隔線
-    ========================================= */
-
-    .omn-divider {
-      display: flex;
-      align-items: center;
-
-      gap: 18px;
-
-      margin: 55px 0;
-    }
-
-    .omn-divider::before,
-    .omn-divider::after {
-      content: "";
-
-      flex: 1;
-      height: 1px;
-
-      background:
-        rgba(91, 65, 45, 0.35);
-    }
-
-    .omn-divider span {
-      flex-shrink: 0;
-
-      font-size: 20px;
-      color: #715640;
-    }
-
-    /* =========================================
-       共用區塊標題
-    ========================================= */
-
-    .omn-section-heading {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-
-      gap: 8px;
-
-      width: 100%;
-      margin: 0 0 30px;
-
-      text-align: center;
-    }
-
-    .omn-section-heading h2 {
-      margin: 0;
-
-      font-family:
-        "Cormorant Garamond",
-        Georgia,
-        serif;
-
-      font-size: clamp(32px, 4vw, 42px);
-      font-weight: 500;
-
-      color: #3E2D23;
-    }
-
-    .omn-section-heading p {
-      margin: 0;
-
-      font-family:
-        "Cormorant Garamond",
-        Georgia,
-        serif;
-
-      font-size: 17px;
-      font-style: italic;
-
-      color: #715640;
-    }
-
-    /* =========================================
-       THE CAST
-
-       電腦：六欄
-       iPad：三欄
-       手機：兩欄
-    ========================================= */
-
-    .omn-cast {
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .omn-cast-grid {
-      display: grid;
-
-      grid-template-columns:
-        repeat(6, minmax(0, 1fr));
-
-      gap: 12px;
-    }
-
-    .omn-cast-card {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-
-      min-width: 0;
-      min-height: 100px;
-
-      padding: 18px 7px;
-
-      border:
-        1px solid rgba(91, 65, 45, 0.38);
-
-      background:
-        rgba(255, 247, 232, 0.08);
-
-      color: #39291F;
-      text-decoration: none;
-
-      text-align: center;
-
-      transition:
-        background 0.25s ease,
-        transform 0.25s ease,
-        border-color 0.25s ease;
-    }
-
-    .omn-cast-card:hover {
-      background:
-        rgba(255, 247, 232, 0.25);
-
-      border-color:
-        rgba(91, 65, 45, 0.7);
-
-      transform: translateY(-3px);
-    }
-
-    .omn-cast-card:focus-visible {
-      outline: 2px solid #5A4030;
-      outline-offset: 4px;
-    }
-
-    .omn-cast-card-name {
-      font-family:
-        "Noto Serif TC",
-        serif;
-
-      font-size: 16px;
-      letter-spacing: 1px;
-      line-height: 1.7;
-
-      color: #39291F;
-      overflow-wrap: anywhere;
-    }
-
-    .omn-cast-card-label {
-      margin-top: 8px;
-
-      font-family:
-        "Cormorant Garamond",
-        Georgia,
-        serif;
-
-      font-size: 11px;
-      font-style: italic;
-      letter-spacing: 1px;
-
-      color: #826A55;
-    }
-
-    /* =========================================
-       TABLE OF CONTENTS
-    ========================================= */
-
-    .omn-chapters {
-      max-width: 740px;
-      margin: 0 auto;
-    }
-
-    .omn-chapter-list {
-      border-top:
-        1px solid rgba(91, 65, 45, 0.38);
-    }
-
-    .omn-chapter-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      gap: 18px;
-
-      padding: 22px 12px;
-
-      border-bottom:
-        1px solid rgba(91, 65, 45, 0.38);
-
-      color: #39291F;
-      text-decoration: none;
-
-      transition:
-        background 0.2s ease,
-        padding-left 0.2s ease;
-    }
-
-    .omn-chapter-item:hover {
-      background:
-        rgba(91, 65, 45, 0.07);
-
-      padding-left: 18px;
-    }
-
-    .omn-chapter-item:focus-visible {
-      outline: 2px solid #5A4030;
-      outline-offset: 3px;
-    }
-
-    .omn-chapter-info {
-      display: flex;
-      flex-direction: column;
-
-      gap: 7px;
-      min-width: 0;
-    }
-
-    .omn-chapter-number {
-      font-family:
-        "Cormorant Garamond",
-        Georgia,
-        serif;
-
-      font-size: 14px;
-      letter-spacing: 2px;
-
-      color: #725B48;
-    }
-
-    .omn-chapter-title {
-      font-family:
-        "Noto Serif TC",
-        serif;
-
-      font-size: 17px;
-      letter-spacing: 1px;
-
-      color: #39291F;
-    }
-
-    .omn-chapter-arrow {
-      flex-shrink: 0;
-
-      font-family: Georgia, serif;
-      font-size: 25px;
-
-      color: #715640;
-    }
-
-    /* =========================================
-       TEASER
-    ========================================= */
-
-    .omn-teaser-item {
-      background:
-        rgba(255, 247, 232, 0.12);
-    }
-
-    .omn-teaser-item .omn-chapter-number {
-      letter-spacing: 3px;
-      font-weight: 600;
-    }
-
-    .omn-teaser-item .omn-chapter-title {
-      font-family:
-        "Cormorant Garamond",
-        Georgia,
-        serif;
-
-      font-size: 25px;
-      font-style: italic;
-      letter-spacing: 0.5px;
-    }
-
-    /* =========================================
-       頁尾
-    ========================================= */
-
-    .omn-footer {
-      margin-top: 65px;
-      padding-top: 26px;
-
-      border-top:
-        1px solid rgba(91, 65, 45, 0.35);
-
-      text-align: center;
-
-      font-family:
-        "Cormorant Garamond",
-        Georgia,
-        serif;
-
-      font-size: 13px;
-      letter-spacing: 1.5px;
-
-      color: #725B48;
-    }
-
-    /* =========================================
-       iPad
-    ========================================= */
-
-    @media
-      (min-width: 701px)
-      and
-      (max-width: 1100px) {
-
-      .omn-paper {
-        padding: 48px 35px 55px;
-      }
-
-      .omn-cover {
-        width: min(100%, 400px);
-      }
-
-      .omn-cast-grid {
-        grid-template-columns:
-          repeat(3, minmax(0, 1fr));
-
-        gap: 12px;
-      }
-
-      .omn-cast-card {
-        min-height: 90px;
-      }
-
-    }
-
-    /* =========================================
-       手機
-    ========================================= */
-
-    @media (max-width: 700px) {
-
-      .omn-main {
-        padding-top:
-          calc(var(--header-height, 100px) + 30px);
-
-        padding-bottom: 110px;
-      }
-
-      .omn-paper {
-        padding: 38px 22px 45px;
-      }
-
-      .omn-paper::before {
-        inset: 8px;
-      }
-
-      .omn-heading {
-        margin-bottom: 32px;
-      }
-
-      .omn-overline {
-        font-size: 10px;
-        letter-spacing: 1.5px;
-      }
-
-      .omn-heading h1 {
-        font-size: 58px;
-        letter-spacing: 3px;
-      }
-
-      .omn-subtitle {
-        font-size: 18px;
-      }
-
-      .omn-cover {
-        width: 100%;
-        max-width: 360px;
-      }
-
-      .omn-divider {
-        margin: 40px 0;
-      }
-
-      .omn-section-heading h2 {
-        font-size: 32px;
-      }
-
-      .omn-section-heading p {
-        font-size: 15px;
-      }
-
-      .omn-cast-grid {
-        grid-template-columns:
-          repeat(2, minmax(0, 1fr));
-
-        gap: 10px;
-      }
-
-      .omn-cast-card {
-        min-height: 85px;
-        padding: 14px 6px;
-      }
-
-      .omn-cast-card-name {
-        font-size: 15px;
-      }
-
-      .omn-chapter-title {
-        font-size: 15px;
-      }
-
-      .omn-teaser-item .omn-chapter-title {
-        font-size: 22px;
-      }
-
-      .omn-chapter-item {
-        padding: 19px 5px;
-      }
-
-      .omn-footer {
-        margin-top: 50px;
-      }
-
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-
-      .omn-cast-card,
-      .omn-chapter-item {
-        transition: none;
-      }
-
-    }
-
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow,noimageindex">
+
+<title>OMN | RotaRS — The Literary Archive</title>
+
+<link rel="stylesheet" href="../../style.css?v=5">
+<link rel="stylesheet" href="../../reading.css?v=1">
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Serif+TC:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script defer src="../../novels.js?v=1"></script>
+<script defer src="../../reading.js?v=2"></script>
+
+<style>
+
+/* =========================================
+   RotaRS — OMN
+   THE LITERARY ARCHIVE
+
+   作品首頁
+   路徑：novels/omn/novel-omn.html
+========================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #211811;
+  color: #e9ddcc;
+  font-family: "Noto Serif TC", Georgia, serif;
+}
+
+/* =========================================
+   主內容區
+========================================= */
+
+.omn-main {
+  min-width: 0;
+  padding-top: calc(var(--header-height, 100px) + 45px);
+  padding-bottom: 75px;
+}
+
+.omn-back {
+  display: inline-block;
+  margin-bottom: 30px;
+  color: #c9b69b;
+  text-decoration: none;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 16px;
+  letter-spacing: 1.5px;
+}
+
+.omn-back:hover {
+  color: #f2e9dc;
+}
+
+.omn-back:focus-visible {
+  outline: 2px solid #c9b69b;
+  outline-offset: 5px;
+}
+
+/* =========================================
+   羊皮紙
+========================================= */
+
+.omn-paper {
+  position: relative;
+  isolation: isolate;
+  min-width: 0;
+  padding: 58px 50px 65px;
+
+  background-color: #c7b49a;
+
+  background-image:
+    radial-gradient(
+      ellipse at 50% 28%,
+      rgba(246,231,208,.24),
+      transparent 75%
+    ),
+    linear-gradient(
+      135deg,
+      #d3c1a8 0%,
+      #c7b49a 52%,
+      #b8a187 100%
+    );
+
+  border: 1px solid #8c745d;
+
+  box-shadow:
+    0 20px 48px rgba(0,0,0,.34),
+    inset 0 0 35px rgba(84,59,39,.06);
+}
+
+.omn-paper::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(91,65,45,.35);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* =========================================
+   小說標題
+========================================= */
+
+.omn-heading {
+  text-align: center;
+  margin-bottom: 43px;
+}
+
+.omn-overline {
+  margin: 0 0 15px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: #725b48;
+}
+
+.omn-heading h1 {
+  margin: 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(55px,8vw,90px);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: 5px;
+  color: #35251c;
+}
+
+.omn-subtitle {
+  margin: 12px 0 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 20px;
+  font-style: italic;
+  color: #715640;
+}
+
+/* =========================================
+   小說封面
+========================================= */
+
+.omn-cover {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: min(100%,470px);
+  margin: 0 auto;
+}
+
+.omn-cover img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border: 1px solid rgba(74,50,32,.55);
+
+  box-shadow:
+    0 17px 35px rgba(49,31,20,.3),
+    0 3px 7px rgba(49,31,20,.15);
+}
+
+.omn-cover-caption {
+  margin: 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 12px;
+  letter-spacing: 2.5px;
+  color: #725b48;
+  text-align: center;
+}
+
+/* =========================================
+   古典分隔線
+========================================= */
+
+.omn-divider {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin: 55px 0;
+}
+
+.omn-divider::before,
+.omn-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: rgba(91,65,45,.35);
+}
+
+.omn-divider span {
+  flex-shrink: 0;
+  font-size: 20px;
+  color: #715640;
+}
+
+/* =========================================
+   區塊標題
+========================================= */
+
+.omn-section-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  margin: 0 0 30px;
+  text-align: center;
+}
+
+.omn-section-heading h2 {
+  margin: 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(32px,4vw,42px);
+  font-weight: 500;
+  color: #3e2d23;
+}
+
+.omn-section-heading p {
+  margin: 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 17px;
+  font-style: italic;
+  color: #715640;
+}
+
+/* =========================================
+   THE CAST
+========================================= */
+
+.omn-cast {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.omn-cast-grid {
+  display: grid;
+  grid-template-columns: repeat(6,minmax(0,1fr));
+  gap: 12px;
+}
+
+.omn-cast-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 0;
+  min-height: 100px;
+  padding: 18px 7px;
+
+  border: 1px solid rgba(91,65,45,.38);
+  background: rgba(255,247,232,.08);
+
+  color: #39291f;
+  text-decoration: none;
+  text-align: center;
+
+  transition:
+    background .25s ease,
+    transform .25s ease,
+    border-color .25s ease;
+}
+
+.omn-cast-card:hover {
+  background: rgba(255,247,232,.25);
+  border-color: rgba(91,65,45,.7);
+  transform: translateY(-3px);
+}
+
+.omn-cast-card:focus-visible {
+  outline: 2px solid #5a4030;
+  outline-offset: 4px;
+}
+
+.omn-cast-card-name {
+  font-family: "Noto Serif TC", serif;
+  font-size: 16px;
+  letter-spacing: 1px;
+  line-height: 1.7;
+  color: #39291f;
+  overflow-wrap: anywhere;
+}
+
+.omn-cast-card-label {
+  margin-top: 8px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 11px;
+  font-style: italic;
+  letter-spacing: 1px;
+  color: #826a55;
+}
+
+/* =========================================
+   TABLE OF CONTENTS
+========================================= */
+
+.omn-chapters {
+  max-width: 740px;
+  margin: 0 auto;
+}
+
+.omn-chapter-list {
+  border-top: 1px solid rgba(91,65,45,.38);
+}
+
+.omn-chapter-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+
+  padding: 22px 12px;
+
+  border-bottom: 1px solid rgba(91,65,45,.38);
+
+  color: #39291f;
+  text-decoration: none;
+
+  transition:
+    background .2s ease,
+    padding-left .2s ease;
+}
+
+.omn-chapter-item:hover {
+  background: rgba(91,65,45,.07);
+  padding-left: 18px;
+}
+
+.omn-chapter-item:focus-visible {
+  outline: 2px solid #5a4030;
+  outline-offset: 3px;
+}
+
+.omn-chapter-info {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
+}
+
+.omn-chapter-number {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: #725b48;
+}
+
+.omn-chapter-title {
+  font-family: "Noto Serif TC", serif;
+  font-size: 17px;
+  letter-spacing: 1px;
+  color: #39291f;
+}
+
+.omn-chapter-arrow {
+  flex-shrink: 0;
+  font-family: Georgia, serif;
+  font-size: 25px;
+  color: #715640;
+}
+
+/* =========================================
+   TEASER
+========================================= */
+
+.omn-teaser-item {
+  background: rgba(255,247,232,.12);
+}
+
+.omn-teaser-item .omn-chapter-number {
+  letter-spacing: 3px;
+  font-weight: 600;
+}
+
+.omn-teaser-item .omn-chapter-title {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 25px;
+  font-style: italic;
+  letter-spacing: .5px;
+}
+
+/* =========================================
+   頁尾
+========================================= */
+
+.omn-footer {
+  margin-top: 65px;
+  padding-top: 26px;
+  border-top: 1px solid rgba(91,65,45,.35);
+  text-align: center;
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  color: #725b48;
+}
+
+/* =========================================
+   iPad
+========================================= */
+
+@media (min-width:701px) and (max-width:1100px) {
+
+  .omn-paper {
+    padding: 48px 35px 55px;
+  }
+
+  .omn-cover {
+    width: min(100%,400px);
+  }
+
+  .omn-cast-grid {
+    grid-template-columns: repeat(3,minmax(0,1fr));
+    gap: 12px;
+  }
+
+  .omn-cast-card {
+    min-height: 90px;
+  }
+
+}
+
+/* =========================================
+   手機
+========================================= */
+
+@media (max-width:700px) {
+
+  .omn-main {
+    padding-top: calc(var(--header-height,100px) + 30px);
+    padding-bottom: 110px;
+  }
+
+  .omn-paper {
+    padding: 38px 22px 45px;
+  }
+
+  .omn-paper::before {
+    inset: 8px;
+  }
+
+  .omn-heading {
+    margin-bottom: 32px;
+  }
+
+  .omn-overline {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+  }
+
+  .omn-heading h1 {
+    font-size: 58px;
+    letter-spacing: 3px;
+  }
+
+  .omn-subtitle {
+    font-size: 18px;
+  }
+
+  .omn-cover {
+    width: 100%;
+    max-width: 360px;
+  }
+
+  .omn-divider {
+    margin: 40px 0;
+  }
+
+  .omn-section-heading h2 {
+    font-size: 32px;
+  }
+
+  .omn-section-heading p {
+    font-size: 15px;
+  }
+
+  .omn-cast-grid {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    gap: 10px;
+  }
+
+  .omn-cast-card {
+    min-height: 85px;
+    padding: 14px 6px;
+  }
+
+  .omn-cast-card-name {
+    font-size: 15px;
+  }
+
+  .omn-chapter-title {
+    font-size: 15px;
+  }
+
+  .omn-teaser-item .omn-chapter-title {
+    font-size: 22px;
+  }
+
+  .omn-chapter-item {
+    padding: 19px 5px;
+  }
+
+  .omn-footer {
+    margin-top: 50px;
+  }
+
+}
+
+@media (prefers-reduced-motion:reduce) {
+
+  .omn-cast-card,
+  .omn-chapter-item {
+    transition: none;
+  }
+
+}
+
+</style>
 
 </head>
-
 
 <body
   class="characters-page"
   data-novel-id="omn"
 >
 
-  <div class="site">
+<div class="site">
 
+  <!-- =====================================
+       網站頂部
+  ===================================== -->
 
-    <!-- =========================================
-         網站頂部品牌
-    ========================================= -->
+  <header class="site-header">
 
-    <header class="site-header">
+    <a href="../../home.html" class="brand">
 
-      <a href="../../home.html" class="brand">
-
-        <img
-          src="../../images/IMG_1497.png"
-          alt="RotaRS Logo"
-          class="brand-logo"
-        >
-
-        <div class="brand-text">
-
-          <span class="brand-name">
-            RotaRS
-          </span>
-
-          <span class="brand-subtitle">
-            THE LITERARY ARCHIVE
-          </span>
-
-        </div>
-
-      </a>
-
-    </header>
-
-
-    <!-- =========================================
-         左側導覽列
-    ========================================= -->
-
-    <aside class="sidebar">
-
-      <nav
-        class="sidebar-nav"
-        aria-label="Main Navigation"
+      <img
+        src="../../images/IMG_1497.png"
+        alt="RotaRS Logo"
+        class="brand-logo"
       >
 
-        <a
-          href="../../home.html"
-          class="nav-link"
-        >
-          HOME
-        </a>
+      <div class="brand-text">
 
-        <a
-          href="../../library.html"
-          class="nav-link active"
-          aria-current="page"
-        >
-          LIBRARY
-        </a>
-
-        <a
-          href="../../characters.html"
-          class="nav-link"
-        >
-          CHARACTERS
-        </a>
-
-        <span class="nav-link nav-disabled">
-          CONTINUE READING
+        <span class="brand-name">
+          RotaRS
         </span>
 
-      </nav>
+        <span class="brand-subtitle">
+          THE LITERARY ARCHIVE
+        </span>
 
-      <div class="sidebar-footer">
-        ROTA SILVER
       </div>
 
-    </aside>
+    </a>
+
+  </header>
 
 
-    <!-- =========================================
-         OMN 小說專頁
-    ========================================= -->
+  <!-- =====================================
+       左側導覽列
+  ===================================== -->
 
-    <main class="main-content omn-main">
+  <aside class="sidebar">
+
+    <nav
+      class="sidebar-nav"
+      aria-label="Main Navigation"
+    >
+
+      <a href="../../home.html" class="nav-link">
+        HOME
+      </a>
 
       <a
         href="../../library.html"
-        class="omn-back"
+        class="nav-link active"
+        aria-current="page"
       >
-        ← BACK TO LIBRARY
+        LIBRARY
       </a>
 
+      <a href="../../characters.html" class="nav-link">
+        CHARACTERS
+      </a>
 
-      <article class="omn-paper">
+      <span class="nav-link nav-disabled">
+        CONTINUE READING
+      </span>
+
+    </nav>
+
+    <div class="sidebar-footer">
+      ROTA SILVER
+    </div>
+
+  </aside>
 
 
-        <!-- =====================================
-             小說標題
-        ===================================== -->
+  <!-- =====================================
+       OMN 作品首頁
+  ===================================== -->
 
-        <header class="omn-heading">
+  <main class="main-content omn-main">
 
-          <p class="omn-overline">
-            ROTARS · THE LITERARY ARCHIVE
+    <a
+      href="../../library.html"
+      class="omn-back"
+    >
+      ← BACK TO LIBRARY
+    </a>
+
+
+    <article class="omn-paper">
+
+      <!-- =================================
+           小說標題
+      ================================= -->
+
+      <header class="omn-heading">
+
+        <p class="omn-overline">
+          ROTARS · THE LITERARY ARCHIVE
+        </p>
+
+        <h1>OMN</h1>
+
+        <p class="omn-subtitle">
+          A Novel from the Archive
+        </p>
+
+      </header>
+
+
+      <!-- =================================
+           小說封面
+      ================================= -->
+
+      <figure class="omn-cover">
+
+        <img
+          src="../../images/IMG_1527.jpeg"
+          alt="OMN 小說封面"
+        >
+
+        <figcaption class="omn-cover-caption">
+          THE OFFICIAL COVER
+        </figcaption>
+
+      </figure>
+
+
+      <div class="omn-divider" aria-hidden="true">
+        <span>✦</span>
+      </div>
+
+
+      <!-- =================================
+           THE CAST
+           六位共用角色
+      ================================= -->
+
+      <section class="omn-cast">
+
+        <div class="omn-section-heading">
+
+          <h2>The Cast</h2>
+
+          <p>
+            The Characters Within the Story
           </p>
 
-          <h1>OMN</h1>
-
-          <p class="omn-subtitle">
-            A Novel from the Archive
-          </p>
-
-        </header>
+        </div>
 
 
-        <!-- =====================================
-             小說封面
-        ===================================== -->
+        <div class="omn-cast-grid">
 
-        <figure class="omn-cover">
+          <!-- 珞塔 -->
 
-          <img
-            src="../../images/IMG_1527.jpeg"
-            alt="OMN 小說封面"
+          <a
+            href="../../character-01.html"
+            class="omn-cast-card"
+            aria-label="查看珞塔的角色主頁"
           >
 
-          <figcaption class="omn-cover-caption">
-            THE OFFICIAL COVER
-          </figcaption>
+            <span class="omn-cast-card-name">
+              珞塔
+            </span>
 
-        </figure>
+            <span class="omn-cast-card-label">
+              View Profile
+            </span>
+
+          </a>
 
 
-        <div class="omn-divider">
-          <span>✦</span>
+          <!-- 阿格妮絲 -->
+
+          <a
+            href="../../character-02.html"
+            class="omn-cast-card"
+            aria-label="查看阿格妮絲的角色主頁"
+          >
+
+            <span class="omn-cast-card-name">
+              阿格妮絲
+            </span>
+
+            <span class="omn-cast-card-label">
+              View Profile
+            </span>
+
+          </a>
+
+
+          <!-- 吉姆 -->
+
+          <a
+            href="../../character-03.html"
+            class="omn-cast-card"
+            aria-label="查看吉姆的角色主頁"
+          >
+
+            <span class="omn-cast-card-name">
+              吉姆
+            </span>
+
+            <span class="omn-cast-card-label">
+              View Profile
+            </span>
+
+          </a>
+
+
+          <!-- 修格斯 -->
+
+          <a
+            href="../../character-04.html"
+            class="omn-cast-card"
+            aria-label="查看修格斯的角色主頁"
+          >
+
+            <span class="omn-cast-card-name">
+              修格斯
+            </span>
+
+            <span class="omn-cast-card-label">
+              View Profile
+            </span>
+
+          </a>
+
+
+          <!-- 菲爾 -->
+
+          <a
+            href="../../character-07.html"
+            class="omn-cast-card"
+            aria-label="查看菲爾的角色主頁"
+          >
+
+            <span class="omn-cast-card-name">
+              菲爾
+            </span>
+
+            <span class="omn-cast-card-label">
+              View Profile
+            </span>
+
+          </a>
+
+
+          <!-- 雷蒙德 -->
+
+          <a
+            href="../../character-05.html"
+            class="omn-cast-card"
+            aria-label="查看雷蒙德的角色主頁"
+          >
+
+            <span class="omn-cast-card-name">
+              雷蒙德
+            </span>
+
+            <span class="omn-cast-card-label">
+              View Profile
+            </span>
+
+          </a>
+
+        </div>
+
+      </section>
+
+
+      <div class="omn-divider" aria-hidden="true">
+        <span>✦</span>
+      </div>
+
+
+      <!-- =================================
+           TABLE OF CONTENTS
+
+           RESUME READING
+           由 reading.js 自動加入。
+
+           Teaser 已正式改為新資料夾。
+      ================================= -->
+
+      <section class="omn-chapters">
+
+        <div class="omn-section-heading">
+
+          <h2>Table of Contents</h2>
+
+          <p>The Chapters</p>
+
         </div>
 
 
-        <!-- =====================================
-             THE CAST
-             共用角色檔案
-        ===================================== -->
+        <div class="omn-chapter-list">
 
-        <section class="omn-cast">
+          <!-- =============================
+               TEASER
+               Soft Before the Noise
 
-          <div class="omn-section-heading">
+               新版路徑：
+               novels/omn/chapters/omn-teaser.html
+          ============================= -->
 
-            <h2>The Cast</h2>
+          <a
+            href="chapters/omn-teaser.html"
+            class="omn-chapter-item omn-teaser-item"
+            data-chapter-id="omn-teaser"
+          >
 
-            <p>
-              The Characters Within the Story
-            </p>
+            <div class="omn-chapter-info">
 
-          </div>
+              <span class="omn-chapter-number">
+                TEASER
+              </span>
 
+              <span class="omn-chapter-title">
+                Soft Before the Noise
+              </span>
 
-          <div class="omn-cast-grid">
+            </div>
 
-
-            <!-- 01 珞塔 -->
-
-            <a
-              href="../../character-01.html"
-              class="omn-cast-card"
-              aria-label="查看珞塔的角色主頁"
+            <span
+              class="omn-chapter-arrow"
+              aria-hidden="true"
             >
+              ›
+            </span>
 
-              <span class="omn-cast-card-name">
-                珞塔
-              </span>
+          </a>
 
-              <span class="omn-cast-card-label">
-                View Profile
-              </span>
-
-            </a>
-
-
-            <!-- 02 阿格妮絲 -->
-
-            <a
-              href="../../character-02.html"
-              class="omn-cast-card"
-              aria-label="查看阿格妮絲的角色主頁"
-            >
-
-              <span class="omn-cast-card-name">
-                阿格妮絲
-              </span>
-
-              <span class="omn-cast-card-label">
-                View Profile
-              </span>
-
-            </a>
-
-
-            <!-- 03 吉姆 -->
-
-            <a
-              href="../../character-03.html"
-              class="omn-cast-card"
-              aria-label="查看吉姆的角色主頁"
-            >
-
-              <span class="omn-cast-card-name">
-                吉姆
-              </span>
-
-              <span class="omn-cast-card-label">
-                View Profile
-              </span>
-
-            </a>
-
-
-            <!-- 04 修格斯 -->
-
-            <a
-              href="../../character-04.html"
-              class="omn-cast-card"
-              aria-label="查看修格斯的角色主頁"
-            >
-
-              <span class="omn-cast-card-name">
-                修格斯
-              </span>
-
-              <span class="omn-cast-card-label">
-                View Profile
-              </span>
-
-            </a>
-
-
-            <!-- 05 菲爾 -->
-
-            <a
-              href="../../character-07.html"
-              class="omn-cast-card"
-              aria-label="查看菲爾的角色主頁"
-            >
-
-              <span class="omn-cast-card-name">
-                菲爾
-              </span>
-
-              <span class="omn-cast-card-label">
-                View Profile
-              </span>
-
-            </a>
-
-
-            <!-- 06 雷蒙德 -->
-
-            <a
-              href="../../character-05.html"
-              class="omn-cast-card"
-              aria-label="查看雷蒙德的角色主頁"
-            >
-
-              <span class="omn-cast-card-name">
-                雷蒙德
-              </span>
-
-              <span class="omn-cast-card-label">
-                View Profile
-              </span>
-
-            </a>
-
-
-          </div>
-
-        </section>
-
-
-        <div class="omn-divider">
-          <span>✦</span>
         </div>
 
-
-        <!-- =====================================
-             TABLE OF CONTENTS
-
-             RESUME READING 由 reading.js
-             自動加入。
-
-             目前 Teaser 暫時使用舊網址。
-             搬移章節後再更新。
-        ===================================== -->
-
-        <section class="omn-chapters">
-
-          <div class="omn-section-heading">
-
-            <h2>Table of Contents</h2>
-
-            <p>The Chapters</p>
-
-          </div>
+      </section>
 
 
-          <div class="omn-chapter-list">
+      <!-- =================================
+           頁尾
+      ================================= -->
 
+      <footer class="omn-footer">
+        RotaRS · THE LITERARY ARCHIVE
+      </footer>
 
-            <!-- =================================
-                 TEASER
-                 Soft Before the Noise
+    </article>
 
-                 暫時連回網站根目錄
-            ================================= -->
+  </main>
 
-            <a
-              href="../../omn-teaser.html"
-              class="omn-chapter-item omn-teaser-item"
-              data-chapter-id="omn-teaser"
-            >
-
-              <div class="omn-chapter-info">
-
-                <span class="omn-chapter-number">
-                  TEASER
-                </span>
-
-                <span class="omn-chapter-title">
-                  Soft Before the Noise
-                </span>
-
-              </div>
-
-              <span
-                class="omn-chapter-arrow"
-                aria-hidden="true"
-              >
-                ›
-              </span>
-
-            </a>
-
-
-            <!-- =================================
-                 正式章節新增區
-
-                 搬遷完成後：
-
-                 1. 建立章節 HTML
-                 2. 在 novels.js 登記
-                 3. 在此加入章節連結
-
-                 未來章節範例：
-
-                 <a
-                   href="chapters/omn-chapter-01.html"
-                   class="omn-chapter-item"
-                   data-chapter-id="omn-chapter-01"
-                 >
-
-                   <div class="omn-chapter-info">
-
-                     <span class="omn-chapter-number">
-                       CHAPTER I
-                     </span>
-
-                     <span class="omn-chapter-title">
-                       章節標題
-                     </span>
-
-                   </div>
-
-                   <span
-                     class="omn-chapter-arrow"
-                     aria-hidden="true"
-                   >
-                     ›
-                   </span>
-
-                 </a>
-
-            ================================= -->
-
-
-          </div>
-
-        </section>
-
-
-        <!-- =====================================
-             頁尾
-        ===================================== -->
-
-        <footer class="omn-footer">
-
-          RotaRS · THE LITERARY ARCHIVE
-
-        </footer>
-
-
-      </article>
-
-    </main>
-
-  </div>
+</div>
 
 </body>
 </html>
