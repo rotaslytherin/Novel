@@ -52,8 +52,7 @@
 
 
     /* ==============================
-       信箋背景
-       只影響人物照片區域
+       英倫信箋背景
     ============================== */
 
     .cast-letter {
@@ -190,7 +189,7 @@
 
 
     /* ==============================
-       平板
+       平板：三欄
     ============================== */
 
     @media (max-width: 1100px) {
@@ -208,7 +207,7 @@
 
 
     /* ==============================
-       手機
+       手機：兩欄
     ============================== */
 
     @media (max-width: 700px) {
@@ -279,9 +278,7 @@
 
   <div class="site">
 
-    <!-- ==============================
-         頂部品牌
-    ============================== -->
+    <!-- 頂部品牌 -->
 
     <header class="site-header">
 
@@ -303,9 +300,7 @@
     </header>
 
 
-    <!-- ==============================
-         左側導覽列
-    ============================== -->
+    <!-- 左側導覽列 -->
 
     <aside class="sidebar">
 
@@ -340,9 +335,7 @@
     </aside>
 
 
-    <!-- ==============================
-         人物資料庫
-    ============================== -->
+    <!-- 人物資料庫 -->
 
     <main class="main-content characters-main">
 
@@ -361,9 +354,7 @@
       </section>
 
 
-      <!-- ==============================
-           英倫信箋照片牆
-      ============================== -->
+      <!-- 英倫信箋照片牆 -->
 
       <section class="cast-letter">
 
@@ -381,139 +372,151 @@
 
           <!-- =========================================
                人物 01
-
-               照片網址：
-               把 images/actor01.jpg 改成妳的照片路徑。
-
-               個人介紹頁：
-               以後建立 actor01.html 後，
-               可將外層 div 改成：
-               <a href="actor01.html" class="cast-card">
-               並把結尾 </div> 改成 </a>
+               ★ 照片網址貼在 src="..." 裡面 ★
           ========================================= -->
 
           <div class="cast-card">
-
             <div class="cast-photo">
-
               <img
                 src="images/actor01.jpg"
                 alt="人物 01"
                 loading="lazy"
                 onerror="this.style.display='none'"
               >
-
             </div>
-
           </div>
 
 
-          <!-- =========================================
-               人物 02
-               照片網址貼在 src
-          ========================================= -->
+          <!-- 人物 02：照片網址貼在 src -->
 
           <div class="cast-card">
-
             <div class="cast-photo">
-
               <img
                 src="images/actor02.jpg"
                 alt="人物 02"
                 loading="lazy"
                 onerror="this.style.display='none'"
               >
-
             </div>
-
           </div>
 
 
-          <!-- =========================================
-               人物 03
-          ========================================= -->
+          <!-- 人物 03 -->
 
           <div class="cast-card">
-
             <div class="cast-photo">
-
               <img
                 src="images/actor03.jpg"
                 alt="人物 03"
                 loading="lazy"
                 onerror="this.style.display='none'"
               >
-
             </div>
-
           </div>
 
 
-          <!-- =========================================
-               人物 04
-          ========================================= -->
+          <!-- 人物 04 -->
 
           <div class="cast-card">
-
             <div class="cast-photo">
-
               <img
                 src="images/actor04.jpg"
                 alt="人物 04"
                 loading="lazy"
                 onerror="this.style.display='none'"
               >
-
             </div>
-
           </div>
 
 
-          <!-- =========================================
-               人物 05
-          ========================================= -->
+          <!-- 人物 05 -->
 
           <div class="cast-card">
-
             <div class="cast-photo">
-
               <img
                 src="images/actor05.jpg"
                 alt="人物 05"
                 loading="lazy"
                 onerror="this.style.display='none'"
               >
-
             </div>
-
           </div>
 
 
-          <!-- =========================================
-               人物 06
-          ========================================= -->
+          <!-- 人物 06 -->
 
           <div class="cast-card">
-
             <div class="cast-photo">
-
               <img
                 src="images/actor06.jpg"
                 alt="人物 06"
                 loading="lazy"
                 onerror="this.style.display='none'"
               >
-
             </div>
+          </div>
 
+
+          <!-- 人物 07 -->
+
+          <div class="cast-card">
+            <div class="cast-photo">
+              <img
+                src="images/actor07.jpg"
+                alt="人物 07"
+                loading="lazy"
+                onerror="this.style.display='none'"
+              >
+            </div>
+          </div>
+
+
+          <!-- 人物 08 -->
+
+          <div class="cast-card">
+            <div class="cast-photo">
+              <img
+                src="images/actor08.jpg"
+                alt="人物 08"
+                loading="lazy"
+                onerror="this.style.display='none'"
+              >
+            </div>
+          </div>
+
+
+          <!-- 人物 09 -->
+
+          <div class="cast-card">
+            <div class="cast-photo">
+              <img
+                src="images/actor09.jpg"
+                alt="人物 09"
+                loading="lazy"
+                onerror="this.style.display='none'"
+              >
+            </div>
+          </div>
+
+
+          <!-- 人物 10 -->
+
+          <div class="cast-card">
+            <div class="cast-photo">
+              <img
+                src="images/actor10.jpg"
+                alt="人物 10"
+                loading="lazy"
+                onerror="this.style.display='none'"
+              >
+            </div>
           </div>
 
 
           <!-- =========================================
-               ★ 未來新增人物，從這裡開始 ★
+               ★ 未來新增人物，貼在這裡 ★
 
-               複製以下整組語法，
-               貼在這個註解的上方或下方：
+               複製下面這整組：
 
                <div class="cast-card">
                  <div class="cast-photo">
@@ -525,10 +528,18 @@
                  </div>
                </div>
 
-               每增加一組，就多一張照片。
+               ★ src = 照片網址或圖片路徑
+               ★ alt = 人物名稱（不會顯示在照片下方）
+               ★ 每新增一組，就多一張人物照片
+               ★ 不需要修改 CSS
 
-               不需要修改 CSS。
-               版面會自動換行。
+               未來要讓照片連到人物介紹頁：
+               將外層 div 改成：
+
+               <a href="人物介紹頁.html" class="cast-card">
+
+               結尾改成 </a>
+
           ========================================= -->
 
 
@@ -537,9 +548,7 @@
       </section>
 
 
-      <!-- ==============================
-           頁尾
-      ============================== -->
+      <!-- 頁尾 -->
 
       <footer class="characters-footer">
 
