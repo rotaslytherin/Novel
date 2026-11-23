@@ -1,6 +1,10 @@
+
 /* =========================================
    RotaRS — THE LITERARY ARCHIVE
    NOVEL REGISTRY
+
+   全站小說與章節登記系統
+
    檔案：novels.js
 ========================================= */
 
@@ -8,13 +12,19 @@
 
 window.RotaRSNovels = {
 
+  /* =========================================
+     OMN
+     第一部小說
+  ========================================= */
+
   omn: {
 
     id: "omn",
 
     title: "OMN",
 
-    url: "novel-omn.html",
+    // 小說專屬首頁
+    url: "novels/omn/novel-omn.html",
 
     chapters: [
 
@@ -22,7 +32,10 @@ window.RotaRSNovels = {
         id: "omn-teaser",
         number: "TEASER",
         title: "Soft Before the Noise",
-        url: "omn-teaser.html",
+
+        // 小說專屬章節資料夾
+        url: "novels/omn/chapters/omn-teaser.html",
+
         type: "teaser"
       }
 
@@ -33,7 +46,7 @@ window.RotaRSNovels = {
            id: "omn-chapter-01",
            number: "CHAPTER I",
            title: "章節標題",
-           url: "omn-chapter-01.html",
+           url: "novels/omn/chapters/omn-chapter-01.html",
            type: "chapter"
          }
 
@@ -42,5 +55,22 @@ window.RotaRSNovels = {
     ]
 
   }
+
+  /* =========================================
+     未來新增第二部小說
+
+     ,novel02: {
+
+       id: "novel02",
+
+       title: "第二部小說",
+
+       url: "novels/novel02/index.html",
+
+       chapters: []
+
+     }
+
+  ========================================= */
 
 };
