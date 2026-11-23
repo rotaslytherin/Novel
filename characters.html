@@ -16,7 +16,10 @@
     /* =========================================
        CHARACTERS 人物典藏頁
        煙燻羊皮紙版本
-       優先支援 iPhone、iPad、Safari
+
+       ★ 十位人物皆已設定個人頁連結
+       ★ 照片完整顯示，不裁切
+       ★ iPad 三欄、手機兩欄
     ========================================= */
 
     .characters-main {
@@ -31,41 +34,45 @@
 
     .characters-eyebrow {
       margin: 0 0 16px;
+
       font-family: "Cormorant Garamond", Georgia, serif;
       font-size: 15px;
       letter-spacing: 4px;
+
       color: #B9A899;
     }
 
     .characters-intro h1 {
       margin: 0;
+
       font-family: "Cormorant Garamond", Georgia, serif;
       font-size: clamp(48px, 6vw, 76px);
       font-weight: 500;
       line-height: 1.1;
+
       color: #F2E9DC;
     }
 
     .characters-description {
       margin: 20px 0 0;
+
       font-family: "Cormorant Garamond", Georgia, serif;
       font-size: 21px;
       line-height: 1.5;
+
       color: #B9A899;
     }
 
 
     /* =========================================
-       煙燻羊皮紙背景
-
-       ★ 主色：#C7B49A
-
-       以溫暖的深米棕色為基礎，
-       保留英倫古典信箋的細緻感。
+       煙燻羊皮紙
+       主色 #C7B49A
     ========================================= */
 
     .cast-letter {
       position: relative;
+      isolation: isolate;
+
       min-width: 0;
 
       padding: 54px 46px 62px;
@@ -90,11 +97,7 @@
       box-shadow:
         0 20px 48px rgba(0, 0, 0, 0.34),
         inset 0 0 35px rgba(84, 59, 39, 0.06);
-
-      isolation: isolate;
     }
-
-    /* 英倫雙線內框 */
 
     .cast-letter::before {
       content: "";
@@ -110,7 +113,7 @@
 
 
     /* =========================================
-       信箋標題
+       人物名冊標題
     ========================================= */
 
     .cast-heading {
@@ -163,11 +166,12 @@
 
 
     /* =========================================
-       人物照片牆
+       人物肖像排列
 
-       ★ 完整顯示原圖
-       ★ 不使用 object-fit: cover
-       ★ 不裁切雕花邊框
+       ★ 桌面四欄
+       ★ iPad 三欄
+       ★ 手機兩欄
+       ★ 原始照片完整顯示
     ========================================= */
 
     .cast-grid {
@@ -183,9 +187,13 @@
 
     .cast-card {
       display: block;
+
       min-width: 0;
 
+      color: inherit;
       text-decoration: none;
+
+      cursor: pointer;
 
       -webkit-tap-highlight-color: transparent;
     }
@@ -229,18 +237,22 @@
 
 
     /* =========================================
-       手機和平板觸控回饋
-       未來人物卡片變成連結後生效
+       觸控與滑鼠互動
     ========================================= */
 
-    a.cast-card:active img {
+    .cast-card:active img {
       transform: scale(0.975);
       filter: brightness(0.96);
     }
 
+    .cast-card:focus-visible {
+      outline: 2px solid #5A4030;
+      outline-offset: 5px;
+    }
+
     @media (hover: hover) and (pointer: fine) {
 
-      a.cast-card:hover img {
+      .cast-card:hover img {
         transform: translateY(-4px);
       }
 
@@ -272,8 +284,7 @@
 
 
     /* =========================================
-       iPad 直向 / 中型平板
-       三欄排列
+       iPad / 中型平板
     ========================================= */
 
     @media (min-width: 701px) and (max-width: 1100px) {
@@ -294,7 +305,6 @@
 
     /* =========================================
        手機
-       兩欄排列
     ========================================= */
 
     @media (max-width: 700px) {
@@ -369,10 +379,6 @@
 
     }
 
-
-    /* =========================================
-       減少動畫設定
-    ========================================= */
 
     @media (prefers-reduced-motion: reduce) {
 
@@ -505,8 +511,10 @@
 
 
         <!-- =========================================
-             人物照片區域
-             共有 10 位人物
+             十位人物肖像
+
+             ★ 每張照片都已設定個人頁網址
+             ★ 未來建立個人頁時，使用相同檔名
         ========================================= -->
 
         <div class="cast-grid">
@@ -514,198 +522,285 @@
 
           <!-- =====================================
                人物 01
-               ★ 照片網址貼在 src="..." ★
+               個人頁：character-01.html
           ===================================== -->
 
-          <div class="cast-card">
+          <a
+            href="character-01.html"
+            class="cast-card"
+            aria-label="開啟人物 01 檔案"
+          >
+
             <div class="cast-photo">
+
               <img
                 src="images/IMG_1507.jpeg"
                 alt="人物 01"
                 loading="lazy"
               >
+
             </div>
-          </div>
+
+          </a>
 
 
           <!-- =====================================
                人物 02
+               個人頁：character-02.html
           ===================================== -->
 
-          <div class="cast-card">
+          <a
+            href="character-02.html"
+            class="cast-card"
+            aria-label="開啟人物 02 檔案"
+          >
+
             <div class="cast-photo">
+
               <img
                 src="images/IMG_1508.jpeg"
                 alt="人物 02"
                 loading="lazy"
               >
+
             </div>
-          </div>
+
+          </a>
 
 
           <!-- =====================================
-               人物 03
+               人物 03｜金碩珍
+               個人頁：character-03.html
+               ★ 已建立
           ===================================== -->
 
-          <div class="cast-card">
+          <a
+            href="character-03.html"
+            class="cast-card"
+            aria-label="開啟金碩珍人物檔案"
+          >
+
             <div class="cast-photo">
+
               <img
                 src="images/IMG_1516.jpeg"
-                alt="人物 03"
+                alt="金碩珍"
                 loading="lazy"
               >
+
             </div>
-          </div>
+
+          </a>
 
 
           <!-- =====================================
                人物 04
+               個人頁：character-04.html
           ===================================== -->
 
-          <div class="cast-card">
+          <a
+            href="character-04.html"
+            class="cast-card"
+            aria-label="開啟人物 04 檔案"
+          >
+
             <div class="cast-photo">
+
               <img
                 src="images/IMG_1510.jpeg"
                 alt="人物 04"
                 loading="lazy"
               >
+
             </div>
-          </div>
+
+          </a>
 
 
           <!-- =====================================
                人物 05
+               個人頁：character-05.html
           ===================================== -->
 
-          <div class="cast-card">
+          <a
+            href="character-05.html"
+            class="cast-card"
+            aria-label="開啟人物 05 檔案"
+          >
+
             <div class="cast-photo">
+
               <img
                 src="images/IMG_1511.jpeg"
                 alt="人物 05"
                 loading="lazy"
               >
+
             </div>
-          </div>
+
+          </a>
 
 
           <!-- =====================================
                人物 06
+               個人頁：character-06.html
           ===================================== -->
 
-          <div class="cast-card">
+          <a
+            href="character-06.html"
+            class="cast-card"
+            aria-label="開啟人物 06 檔案"
+          >
+
             <div class="cast-photo">
+
               <img
                 src="images/IMG_1514.jpeg"
                 alt="人物 06"
                 loading="lazy"
               >
+
             </div>
-          </div>
+
+          </a>
 
 
           <!-- =====================================
                人物 07
+               個人頁：character-07.html
           ===================================== -->
 
-          <div class="cast-card">
+          <a
+            href="character-07.html"
+            class="cast-card"
+            aria-label="開啟人物 07 檔案"
+          >
+
             <div class="cast-photo">
+
               <img
                 src="images/IMG_1512.jpeg"
                 alt="人物 07"
                 loading="lazy"
               >
+
             </div>
-          </div>
+
+          </a>
 
 
           <!-- =====================================
                人物 08
+               個人頁：character-08.html
           ===================================== -->
 
-          <div class="cast-card">
+          <a
+            href="character-08.html"
+            class="cast-card"
+            aria-label="開啟人物 08 檔案"
+          >
+
             <div class="cast-photo">
+
               <img
                 src="images/IMG_1513.jpeg"
                 alt="人物 08"
                 loading="lazy"
               >
+
             </div>
-          </div>
+
+          </a>
 
 
           <!-- =====================================
                人物 09
+               個人頁：character-09.html
           ===================================== -->
 
-          <div class="cast-card">
+          <a
+            href="character-09.html"
+            class="cast-card"
+            aria-label="開啟人物 09 檔案"
+          >
+
             <div class="cast-photo">
+
               <img
                 src="images/IMG_1509.jpeg"
                 alt="人物 09"
                 loading="lazy"
               >
+
             </div>
-          </div>
+
+          </a>
 
 
           <!-- =====================================
                人物 10
+               個人頁：character-10.html
           ===================================== -->
 
-          <div class="cast-card">
+          <a
+            href="character-10.html"
+            class="cast-card"
+            aria-label="開啟人物 10 檔案"
+          >
+
             <div class="cast-photo">
+
               <img
                 src="images/CB68BA50-983C-4159-81F9-4FC2C7AFE5C3.png"
                 alt="人物 10"
                 loading="lazy"
               >
+
             </div>
-          </div>
+
+          </a>
 
 
           <!-- =========================================
-               ★ 未來新增人物，貼在這裡 ★
+               ★★★ 未來新增第 11 位人物 ★★★
 
-               複製下面整組語法：
+               複製下面整組語法，
+               貼在這裡：
 
-               <div class="cast-card">
+               <a
+                 href="character-11.html"
+                 class="cast-card"
+                 aria-label="開啟人物 11 檔案"
+               >
+
                  <div class="cast-photo">
+
                    <img
-                     src="images/新人物照片.jpg"
-                     alt="人物名稱"
+                     src="images/新人物照片.jpeg"
+                     alt="人物 11"
                      loading="lazy"
                    >
+
                  </div>
-               </div>
-
-               ★ src：
-                 填入照片網址或 GitHub 圖片路徑。
-
-               ★ alt：
-                 填入人物名稱。
-                 不會顯示在照片下方。
-
-               ★ 每增加一組：
-                 就會多一張肖像。
-                 不需要修改 CSS。
-
-               ★ 未來人物介紹頁連結：
-
-               將最外層：
-
-               <div class="cast-card">
-
-               改成：
-
-               <a href="人物介紹頁.html" class="cast-card">
-
-               並將對應的最外層結尾：
-
-               </div>
-
-               改成：
 
                </a>
+
+
+               ★ 修改三個地方：
+
+               1. href="character-11.html"
+                  對應人物個人頁的檔名。
+
+               2. src="images/新人物照片.jpeg"
+                  對應人物肖像照片路徑。
+
+               3. alt="人物 11"
+                  可改成真實人物姓名。
+
+               ★ 新增人物後不需要修改 CSS。
+
+               ★ 記得另外建立對應的
+                 character-11.html 個人頁。
 
           ========================================= -->
 
