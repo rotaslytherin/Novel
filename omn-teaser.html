@@ -10,8 +10,12 @@
 <title>Soft Before the Noise | OMN | RotaRS</title>
 
 <link rel="stylesheet" href="style.css?v=5">
+<link rel="stylesheet" href="reading.css?v=1">
 
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Serif+TC:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script defer src="novels.js?v=1"></script>
+<script defer src="reading.js?v=1"></script>
 
 <style>
 
@@ -157,10 +161,6 @@ body {
 
 /* =========================
    小說正文
-
-   深咖啡色文字
-   段首縮排兩個中文字
-   自然段落間距
 ========================= */
 
 .novel-body {
@@ -379,7 +379,11 @@ body {
 
 </head>
 
-<body class="characters-page">
+<body
+  class="characters-page"
+  data-novel-id="omn"
+  data-chapter-id="omn-teaser"
+>
 
 <div class="site">
 
@@ -498,9 +502,7 @@ body {
 
         <!-- =========================
              小說正文開始
-
-             以下文字為小說原文。
-             每個 p 為一個自然段落。
+             以下文字完全保留原文
         ========================= -->
 
         <section class="novel-body">
@@ -610,8 +612,6 @@ body {
           aria-hidden="true"
         ></div>
 
-        <!-- 返回小說目錄 -->
-
         <nav
           class="reading-navigation"
           aria-label="閱讀導覽"
@@ -627,19 +627,13 @@ body {
 
       <!-- =========================
            Google 公開留言區
-
            章節 ID：omn-teaser
-
-           其他章節只需要修改
-           網址最後的 chapter 參數
       ========================= -->
 
       <section
         class="comments-panel"
         aria-labelledby="comments-title"
       >
-
-       
 
         <p class="comments-help">
         </p>
@@ -654,7 +648,6 @@ body {
 
         <p class="comments-fallback">
 
-
           <a
             href="https://script.google.com/macros/s/AKfycbzBm39IqxbCQGk3Th2T6lR0eBxl9tFafBmEsKtnKP5paCqUdiP7wb1mpLK53hRLxWLw/exec?chapter=omn-teaser"
             target="_blank"
@@ -666,8 +659,6 @@ body {
         </p>
 
       </section>
-
-      <!-- 頁尾 -->
 
       <p class="site-footer-note">
         RotaRS · THE LITERARY ARCHIVE
