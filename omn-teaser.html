@@ -1,0 +1,851 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="robots"
+    content="noindex, nofollow, noimageindex"
+  >
+
+  <title>
+    Soft Before the Noise | OMN | RotaRS
+  </title>
+
+  <!-- 網站共用 CSS -->
+  <link
+    rel="stylesheet"
+    href="style.css?v=5"
+  >
+
+  <!-- 字體 -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Serif+TC:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  >
+
+
+  <style>
+
+    /* =========================================
+       ROTARS — NOVEL READING PAGE
+
+       作品：OMN
+       篇章：TEASER
+       標題：Soft Before the Noise
+
+       ★ 小說閱讀排版
+       ★ 章節插圖
+       ★ Google 公開留言
+       ★ 電腦 / iPad / 手機適用
+    ========================================= */
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #211811;
+      color: #E9DDCC;
+
+      font-family:
+        "Noto Serif TC",
+        Georgia,
+        serif;
+    }
+
+    /* =========================================
+       主內容區
+    ========================================= */
+
+    .reading-main {
+      min-width: 0;
+
+      padding-top:
+        calc(var(--header-height, 100px) + 45px);
+
+      padding-bottom: 85px;
+    }
+
+    .reading-container {
+      width: 100%;
+      max-width: 950px;
+      margin: 0 auto;
+    }
+
+    /* =========================================
+       返回小說目錄
+    ========================================= */
+
+    .reading-back {
+      display: inline-block;
+
+      margin-bottom: 30px;
+
+      color: #C9B69B;
+      text-decoration: none;
+
+      font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+      font-size: 17px;
+      letter-spacing: 1px;
+    }
+
+    .reading-back:hover {
+      color: #F5E9D9;
+    }
+
+    /* =========================================
+       羊皮紙閱讀區
+    ========================================= */
+
+    .reading-paper {
+      position: relative;
+      isolation: isolate;
+
+      min-width: 0;
+
+      padding: 65px 65px 75px;
+
+      background:
+        radial-gradient(
+          ellipse at 50% 20%,
+          rgba(248, 235, 214, 0.35),
+          transparent 75%
+        ),
+        linear-gradient(
+          135deg,
+          #D3C1A8,
+          #C7B49A 55%,
+          #BDA78D
+        );
+
+      border: 1px solid #8C745D;
+
+      box-shadow:
+        0 20px 48px rgba(0, 0, 0, 0.32);
+    }
+
+    .reading-paper::before {
+      content: "";
+      position: absolute;
+      inset: 12px;
+
+      border:
+        1px solid rgba(91, 65, 45, 0.35);
+
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* =========================================
+       章節標題
+    ========================================= */
+
+    .chapter-header {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .chapter-series {
+      margin: 0 0 25px;
+
+      font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+      font-size: 15px;
+      letter-spacing: 4px;
+
+      color: #765D48;
+    }
+
+    .chapter-type {
+      margin: 0 0 15px;
+
+      font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+      font-size: 17px;
+      letter-spacing: 5px;
+
+      color: #6D5340;
+    }
+
+    .chapter-title {
+      margin: 0;
+
+      font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+      font-size: clamp(35px, 5vw, 54px);
+      font-weight: 500;
+      line-height: 1.2;
+
+      color: #38271E;
+    }
+
+    /* =========================================
+       古典分隔線
+    ========================================= */
+
+    .chapter-divider {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+
+      max-width: 370px;
+      margin: 38px auto;
+
+      color: #775B45;
+    }
+
+    .chapter-divider::before,
+    .chapter-divider::after {
+      content: "";
+
+      flex: 1;
+      height: 1px;
+
+      background:
+        rgba(91, 65, 45, 0.35);
+    }
+
+    .chapter-divider span {
+      flex-shrink: 0;
+      font-size: 17px;
+    }
+
+    /* =========================================
+       章節插圖
+
+       圖片完整顯示
+       不強制裁切
+    ========================================= */
+
+    .chapter-illustration {
+      width: 100%;
+      max-width: 720px;
+
+      margin: 0 auto 55px;
+
+      text-align: center;
+    }
+
+    .chapter-illustration img {
+      display: block;
+
+      width: 100%;
+      height: auto;
+
+      object-fit: contain;
+
+      border:
+        1px solid rgba(91, 65, 45, 0.25);
+    }
+
+    /* =========================================
+       小說正文
+
+       ★ 段首縮排兩個中文字
+       ★ 適合繁體中文橫排小說
+       ★ 不使用兩端強制對齊
+       ★ 段落自然排列
+    ========================================= */
+
+    .novel-body {
+      width: 100%;
+      max-width: 690px;
+
+      margin: 0 auto;
+
+      color: #35271F;
+
+      font-family:
+        "Noto Serif TC",
+        "PMingLiU",
+        serif;
+
+      font-size: 17px;
+      font-weight: 400;
+
+      line-height: 2.25;
+
+      letter-spacing: 0.045em;
+
+      text-align: left;
+
+      overflow-wrap: break-word;
+    }
+
+    .novel-body p {
+      margin: 0;
+
+      text-indent: 2em;
+    }
+
+    /* 場景轉換分隔 */
+
+    .novel-scene-break {
+      margin: 35px 0;
+
+      text-align: center;
+      text-indent: 0;
+
+      letter-spacing: 8px;
+      color: #80664F;
+    }
+
+    /* =========================================
+       章節結束
+    ========================================= */
+
+    .chapter-ending {
+      margin: 65px auto 0;
+
+      text-align: center;
+
+      font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+      font-size: 16px;
+      letter-spacing: 4px;
+
+      color: #765D48;
+    }
+
+    /* =========================================
+       返回目錄按鈕
+    ========================================= */
+
+    .chapter-navigation {
+      display: flex;
+      justify-content: center;
+
+      margin-top: 35px;
+    }
+
+    .chapter-navigation a {
+      display: inline-block;
+
+      padding: 13px 24px;
+
+      border:
+        1px solid rgba(91, 65, 45, 0.55);
+
+      color: #49352A;
+      text-decoration: none;
+
+      font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+      font-size: 17px;
+      letter-spacing: 1px;
+
+      transition:
+        background 0.2s ease;
+    }
+
+    .chapter-navigation a:hover {
+      background:
+        rgba(91, 65, 45, 0.1);
+    }
+
+    /* =========================================
+       留言區
+
+       Google Apps Script
+       Readers' Notes
+    ========================================= */
+
+    .comments-section {
+      margin-top: 60px;
+      padding-top: 45px;
+
+      border-top:
+        1px solid rgba(91, 65, 45, 0.4);
+    }
+
+    .comments-heading {
+      margin-bottom: 25px;
+      text-align: center;
+    }
+
+    .comments-heading h2 {
+      margin: 0;
+
+      font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+      font-size: 38px;
+      font-weight: 500;
+
+      color: #39291F;
+    }
+
+    .comments-heading p {
+      margin: 7px 0 0;
+
+      font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+      font-size: 18px;
+      font-style: italic;
+
+      color: #765B46;
+    }
+
+    .comments-frame {
+      display: block;
+
+      width: 100%;
+      height: 800px;
+
+      border: none;
+      background: #C7B49A;
+    }
+
+    .comments-fallback {
+      margin-top: 15px;
+
+      text-align: center;
+
+      font-size: 13px;
+      line-height: 1.8;
+
+      color: #765B46;
+    }
+
+    .comments-fallback a {
+      color: #49352A;
+      text-underline-offset: 4px;
+    }
+
+    /* =========================================
+       頁尾
+    ========================================= */
+
+    .reading-footer {
+      margin-top: 60px;
+
+      padding-top: 25px;
+
+      border-top:
+        1px solid rgba(91, 65, 45, 0.35);
+
+      text-align: center;
+
+      font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+      font-size: 13px;
+      letter-spacing: 2px;
+
+      color: #765D48;
+    }
+
+    /* =========================================
+       iPad
+    ========================================= */
+
+    @media
+      (min-width: 701px)
+      and
+      (max-width: 1100px) {
+
+      .reading-paper {
+        padding: 55px 40px 65px;
+      }
+
+      .novel-body {
+        font-size: 16.5px;
+      }
+
+      .comments-frame {
+        height: 850px;
+      }
+
+    }
+
+    /* =========================================
+       手機
+    ========================================= */
+
+    @media (max-width: 700px) {
+
+      .reading-main {
+        padding-top:
+          calc(var(--header-height, 100px) + 30px);
+
+        padding-bottom: 100px;
+      }
+
+      .reading-paper {
+        padding: 40px 22px 50px;
+      }
+
+      .reading-paper::before {
+        inset: 8px;
+      }
+
+      .chapter-series {
+        font-size: 12px;
+        letter-spacing: 2px;
+      }
+
+      .chapter-type {
+        font-size: 15px;
+      }
+
+      .chapter-title {
+        font-size: 37px;
+      }
+
+      .chapter-header {
+        margin-bottom: 35px;
+      }
+
+      .chapter-illustration {
+        margin-bottom: 40px;
+      }
+
+      .novel-body {
+        font-size: 15.5px;
+        line-height: 2.15;
+
+        letter-spacing: 0.02em;
+      }
+
+      .chapter-ending {
+        margin-top: 45px;
+      }
+
+      .comments-section {
+        margin-top: 45px;
+        padding-top: 35px;
+      }
+
+      .comments-heading h2 {
+        font-size: 32px;
+      }
+
+      .comments-frame {
+        height: 900px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body class="characters-page">
+
+  <div class="site">
+
+
+    <!-- =========================================
+         網站頂部
+    ========================================= -->
+
+    <header class="site-header">
+
+      <a
+        href="home.html"
+        class="brand"
+      >
+
+        <img
+          src="images/IMG_1497.png"
+          alt="RotaRS Logo"
+          class="brand-logo"
+        >
+
+        <div class="brand-text">
+
+          <span class="brand-name">
+            RotaRS
+          </span>
+
+          <span class="brand-subtitle">
+            THE LITERARY ARCHIVE
+          </span>
+
+        </div>
+
+      </a>
+
+    </header>
+
+
+    <!-- =========================================
+         左側導覽
+    ========================================= -->
+
+    <aside class="sidebar">
+
+      <nav
+        class="sidebar-nav"
+        aria-label="Main Navigation"
+      >
+
+        <a
+          href="home.html"
+          class="nav-link"
+        >
+          HOME
+        </a>
+
+        <a
+          href="library.html"
+          class="nav-link active"
+        >
+          LIBRARY
+        </a>
+
+        <a
+          href="characters.html"
+          class="nav-link"
+        >
+          CHARACTERS
+        </a>
+
+        <span class="nav-link nav-disabled">
+          CONTINUE READING
+        </span>
+
+      </nav>
+
+      <div class="sidebar-footer">
+        ROTA SILVER
+      </div>
+
+    </aside>
+
+
+    <!-- =========================================
+         TEASER 閱讀頁
+    ========================================= -->
+
+    <main class="main-content reading-main">
+
+      <div class="reading-container">
+
+
+        <!-- 返回 OMN -->
+
+        <a
+          href="novel-omn.html"
+          class="reading-back"
+        >
+          ← BACK TO OMN
+        </a>
+
+
+        <article class="reading-paper">
+
+
+          <!-- =================================
+               章節標題
+          ================================= -->
+
+          <header class="chapter-header">
+
+            <p class="chapter-series">
+              OMN · THE LITERARY ARCHIVE
+            </p>
+
+            <p class="chapter-type">
+              TEASER
+            </p>
+
+            <h1 class="chapter-title">
+              Soft Before the Noise
+            </h1>
+
+          </header>
+
+
+          <div class="chapter-divider">
+            <span>✦</span>
+          </div>
+
+
+          <!-- =================================
+               章節插圖
+
+               圖片：
+               images/IMG_1530.jpeg
+          ================================= -->
+
+          <figure class="chapter-illustration">
+
+            <img
+              src="images/IMG_1530.jpeg"
+              alt="Soft Before the Noise 章節插圖"
+            >
+
+          </figure>
+
+
+          <!-- =================================
+               ★★★ 小說正文編輯區 ★★★
+
+               珞塔，妳的小說就放在這裡！
+
+               每一個自然段落使用：
+
+               <p>小說內容</p>
+
+               CSS 會自動讓段首縮排兩字。
+
+               不需要自己輸入全形空白。
+
+               如果需要換場景，可以加入：
+
+               <div class="novel-scene-break">
+                 ✦
+               </div>
+
+               請把下方示範文字換成正文。
+          ================================= -->
+
+          <section
+            class="novel-body"
+            aria-label="小說正文"
+          >
+
+            <p>
+              故事即將開始。
+            </p>
+
+          </section>
+
+
+          <!-- =================================
+               小說正文結束
+          ================================= -->
+
+          <div class="chapter-ending">
+            — END OF TEASER —
+          </div>
+
+
+          <!-- 返回章節目錄 -->
+
+          <nav class="chapter-navigation">
+
+            <a href="novel-omn.html">
+              ← BACK TO CONTENTS
+            </a>
+
+          </nav>
+
+
+          <!-- =================================
+               GOOGLE 公開留言區
+
+               已接入 RotaRS Comments
+
+               章節 ID：
+               omn-teaser
+
+               新留言會先進入試算表
+               狀態 PENDING。
+
+               將狀態改為 APPROVED
+               才會公開顯示。
+          ================================= -->
+
+          <section
+            class="comments-section"
+            aria-label="讀者留言區"
+          >
+
+            <header class="comments-heading">
+
+              <h2>Readers' Notes</h2>
+
+              <p>
+                Leave a Thought Between the Pages
+              </p>
+
+            </header>
+
+
+            <iframe
+              class="comments-frame"
+              title="RotaRS Readers' Notes 留言區"
+              src="https://script.google.com/macros/s/AKfycbzBm39IqxbCQGk3Th2T6lR0eBxl9tFafBmEsKtnKP5paCqUdiP7wb1mpLK53hRLxWLw/exec?chapter=omn-teaser"
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
+            ></iframe>
+
+
+            <p class="comments-fallback">
+
+
+              <a
+                href="https://script.google.com/macros/s/AKfycbzBm39IqxbCQGk3Th2T6lR0eBxl9tFafBmEsKtnKP5paCqUdiP7wb1mpLK53hRLxWLw/exec?chapter=omn-teaser"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                開啟獨立留言頁面
+              </a>
+
+              。
+
+            </p>
+
+          </section>
+
+
+          <!-- =================================
+               頁尾
+          ================================= -->
+
+          <footer class="reading-footer">
+
+            RotaRS · THE LITERARY ARCHIVE
+
+          </footer>
+
+
+        </article>
+
+      </div>
+
+    </main>
+
+  </div>
+
+</body>
+</html>
