@@ -16,13 +16,28 @@
    08 作品閱讀進度
    09 重新閱讀
    10 本機資料版本管理
+
+   新增：
+   11 跨資料夾網址解析
+   12 GitHub Pages 專案路徑支援
+   13 新舊章節網址相容
+   14 統一書籤與閱讀連結
 ========================================= */
 
 (function () {
   "use strict";
 
+  /* =========================================
+     基本設定
+  ========================================= */
+
   const STORAGE_KEY = "rotars-reading-v1";
   const VERSION = 1;
+
+  const SITE_ROOT = new URL(
+    "/Novel/",
+    window.location.origin
+  );
 
   const novels = window.RotaRSNovels || {};
 
@@ -36,7 +51,7 @@
   const chapter = novel
     ? novel.chapters.find(
         item => item.id === chapterId
-      )
+      ) || null
     : null;
 
   const novelBody = document.querySelector(
@@ -83,11 +98,13 @@
         typeof parsed !== "object" ||
         parsed.version !== VERSION ||
         !parsed.novels ||
-        typeof parsed.novels !== "object"
+        typeof parsed.novels !== "object" ||
+        Array.isArray(parsed.novels)
       ) {
         return emptyData();
       }
 
+      storageAvailable = true;
       return parsed;
 
     } catch (error) {
@@ -137,7 +154,9 @@
   function getChapter(id, targetChapterId) {
     const item = novels[id];
 
-    if (!item) return null;
+    if (!item || !Array.isArray(item.chapters)) {
+      return null;
+    }
 
     return item.chapters.find(
       entry => entry.id === targetChapterId
@@ -147,7 +166,20 @@
   /* =========================================
      安全網址
 
-     僅允許本站相對 HTML 路徑
+     novels.js 中的網址一律視為
+     網站根目錄 /Novel/ 的相對路徑。
+
+     支援：
+     novel-omn.html
+     omn-teaser.html
+     novels/omn/novel-omn.html
+     novels/omn/chapters/omn-teaser.html
+
+     不允許：
+     外部網址
+     ../
+     查詢字串
+     非 HTML 檔案
   ========================================= */
 
   function safeUrl(url) {
@@ -158,14 +190,99 @@
       return null;
     }
 
+    const segments = url.split("/");
+
+    if (
+      segments.some(
+        segment =>
+          !segment ||
+          segment === "." ||
+          segment === ".."
+      )
+    ) {
+      return null;
+    }
+
     return url;
+  }
+
+  /* =========================================
+     統一解析網站網址
+  ========================================= */
+
+  function resolveSiteUrl(url) {
+    const path = safeUrl(url);
+
+    if (!path) return null;
+
+    const destination = new URL(
+      path,
+      SITE_ROOT
+    );
+
+    if (
+      destination.origin !== SITE_ROOT.origin ||
+      !destination.pathname.startsWith(
+        SITE_ROOT.pathname
+      )
+    ) {
+      return null;
+    }
+
+    return destination;
+  }
+
+  /* =========================================
+     解析頁面中的章節連結
+
+     目錄 href 可以是相對於目前頁面的
+     路徑，也可以是網站根目錄路徑。
+  ========================================= */
+
+  function resolvePageLink(url) {
+    if (typeof url !== "string") {
+      return null;
+    }
+
+    try {
+      const destination = new URL(
+        url,
+        window.location.href
+      );
+
+      if (
+        destination.origin !== SITE_ROOT.origin ||
+        !destination.pathname.startsWith(
+          SITE_ROOT.pathname
+        )
+      ) {
+        return null;
+      }
+
+      return destination;
+
+    } catch (error) {
+      return null;
+    }
+  }
+
+  /* =========================================
+     比對章節網址
+  ========================================= */
+
+  function urlsMatch(first, second) {
+    if (!first || !second) {
+      return false;
+    }
+
+    return first.pathname === second.pathname;
   }
 
   /* =========================================
      段落識別碼
 
      未指定 ID 時自動產生。
-     未來修改正文時，建議保留原 ID。
+     修改正文時請保留既有段落 ID。
   ========================================= */
 
   function prepareParagraphs() {
@@ -386,7 +503,8 @@
   /* =========================================
      Continue Reading
 
-     從小說登記表取得合法章節網址
+     從小說登記表取得章節網址。
+     一律轉換為 /Novel/ 下的完整網址。
   ========================================= */
 
   function getResumeTarget(targetNovelId) {
@@ -414,9 +532,10 @@
       return null;
     }
 
-    const url = safeUrl(targetChapter.url);
+    const destination =
+      resolveSiteUrl(targetChapter.url);
 
-    if (!url) return null;
+    if (!destination) return null;
 
     return {
       novelId: id,
@@ -424,7 +543,7 @@
       chapter: targetChapter,
       novel: novels[id],
       progress,
-      url
+      url: destination.href
     };
   }
 
@@ -434,26 +553,24 @@
 
     if (!target) return false;
 
-    const url = new URL(
-      target.url,
-      window.location.href
+    const destination = new URL(
+      target.url
     );
 
-    url.searchParams.set(
+    destination.searchParams.set(
       "rotars-resume",
       "1"
     );
 
-    window.location.assign(url.href);
+    window.location.assign(
+      destination.href
+    );
 
     return true;
   }
 
   /* =========================================
-     導覽列
-
-     將停用的 CONTINUE READING
-     轉成真正可用的連結
+     導覽列 CONTINUE READING
   ========================================= */
 
   function setupContinueReading() {
@@ -475,13 +592,21 @@
 
     if (!target) return;
 
+    const destination = new URL(
+      target.url
+    );
+
+    destination.searchParams.set(
+      "rotars-resume",
+      "1"
+    );
+
     const link =
       document.createElement("a");
 
     link.className = "nav-link";
 
-    link.href = target.url +
-      "?rotars-resume=1";
+    link.href = destination.href;
 
     link.textContent =
       "CONTINUE READING";
@@ -642,12 +767,19 @@
 
     const record = data.novels[id];
 
-    if (!record) return [];
+    if (
+      !record ||
+      !Array.isArray(record.bookmarks)
+    ) {
+      return [];
+    }
 
     return [...record.bookmarks];
   }
 
   function goToBookmark(bookmark, targetNovelId) {
+    if (!bookmark) return false;
+
     const id = targetNovelId || novelId;
 
     const targetChapter =
@@ -655,14 +787,10 @@
 
     if (!targetChapter) return false;
 
-    const url = safeUrl(targetChapter.url);
+    const destination =
+      resolveSiteUrl(targetChapter.url);
 
-    if (!url) return false;
-
-    const destination = new URL(
-      url,
-      window.location.href
-    );
+    if (!destination) return false;
 
     destination.searchParams.set(
       "rotars-bookmark",
@@ -710,7 +838,12 @@
     const record =
       data.novels[targetNovelId];
 
-    if (!record) return false;
+    if (
+      !record ||
+      !Array.isArray(record.completedChapters)
+    ) {
+      return false;
+    }
 
     return record.completedChapters.includes(
       targetChapterId
@@ -720,7 +853,6 @@
   /* =========================================
      作品閱讀進度
 
-     僅計算正式章節。
      Teaser 不列入正式章節比例。
   ========================================= */
 
@@ -752,6 +884,9 @@
 
   /* =========================================
      目錄閱讀狀態
+
+     透過解析後的網址比對，
+     不再直接比較 href 文字。
   ========================================= */
 
   function setupChapterStatuses() {
@@ -762,12 +897,24 @@
     );
 
     links.forEach(link => {
-      const url = link.getAttribute("href");
+      const href =
+        link.getAttribute("href");
+
+      const pageUrl =
+        resolvePageLink(href);
+
+      if (!pageUrl) return;
 
       const targetChapter =
-        novel.chapters.find(
-          item => item.url === url
-        );
+        novel.chapters.find(item => {
+          const registryUrl =
+            resolveSiteUrl(item.url);
+
+          return urlsMatch(
+            pageUrl,
+            registryUrl
+          );
+        });
 
       if (!targetChapter) return;
 
@@ -790,7 +937,7 @@
   }
 
   /* =========================================
-     作品頁繼續閱讀按鈕
+     作品頁 RESUME READING
   ========================================= */
 
   function setupNovelResume() {
@@ -808,14 +955,29 @@
 
     if (!chapterSection) return;
 
+    const chapterList =
+      chapterSection.querySelector(
+        ".omn-chapter-list"
+      );
+
+    if (!chapterList) return;
+
+    const destination = new URL(
+      target.url
+    );
+
+    destination.searchParams.set(
+      "rotars-resume",
+      "1"
+    );
+
     const button =
       document.createElement("a");
 
     button.className =
       "reading-resume-button";
 
-    button.href =
-      target.url + "?rotars-resume=1";
+    button.href = destination.href;
 
     button.textContent =
       "RESUME READING";
@@ -828,17 +990,12 @@
 
     chapterSection.insertBefore(
       button,
-      chapterSection.querySelector(
-        ".omn-chapter-list"
-      )
+      chapterList
     );
   }
 
   /* =========================================
      閱讀完成偵測
-
-     讀者實際閱讀並接近正文結尾，
-     才標記章節完成。
   ========================================= */
 
   function checkChapterCompletion() {
@@ -867,9 +1024,6 @@
 
   /* =========================================
      恢復閱讀請求
-
-     只有透過 Continue Reading
-     或手動書籤進入時才跳轉。
   ========================================= */
 
   function handleRestoreRequest() {
