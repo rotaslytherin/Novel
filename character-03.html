@@ -16,8 +16,12 @@
 
     /* =========================================
        RotaRS CHARACTER PROFILE
-       第三號人物檔案
-       煙燻羊皮紙版本
+       第三號人物檔案｜金碩珍
+
+       ★ 煙燻羊皮紙
+       ★ 主照片完整顯示
+       ★ 相冊統一外框、不裁切照片
+       ★ 支援 iPhone / iPad
     ========================================= */
 
     * {
@@ -47,6 +51,11 @@
 
     .profile-back:active {
       opacity: 0.65;
+    }
+
+    .profile-back:focus-visible {
+      outline: 2px solid #C9B69B;
+      outline-offset: 5px;
     }
 
 
@@ -98,7 +107,7 @@
 
 
     /* =========================================
-       頁面標題
+       頂部檔案標題
     ========================================= */
 
     .profile-heading {
@@ -141,7 +150,7 @@
 
     /* =========================================
        主肖像
-       完整顯示，不裁切
+       完整顯示、不裁切
     ========================================= */
 
     .hero-portrait {
@@ -178,6 +187,10 @@
 
     /* =========================================
        姓名與人物身分
+
+       ★ 金碩珍
+       ★ 吉姆 · Jim
+       ★ Gryffindor 保持原樣
     ========================================= */
 
     .identity {
@@ -208,14 +221,38 @@
       color: #35251C;
     }
 
-    .identity-english {
-      margin: 10px 0 0;
+    /* ★ 中文角色名與英文名同行 */
 
+    .identity-character {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      flex-wrap: wrap;
+
+      gap: 10px;
+
+      margin: 12px 0 0;
+
+      color: #634B38;
+    }
+
+    .identity-character .chinese {
+      font-family: "Noto Serif TC", serif;
+      font-size: 22px;
+      font-weight: 400;
+      letter-spacing: 3px;
+    }
+
+    .identity-character .separator {
+      font-family: Georgia, serif;
+      font-size: 17px;
+      opacity: 0.7;
+    }
+
+    .identity-character .english {
       font-family: "Cormorant Garamond", Georgia, serif;
       font-size: 28px;
       font-style: italic;
-
-      color: #634B38;
     }
 
     .identity-roles {
@@ -244,7 +281,7 @@
 
 
     /* =========================================
-       分隔線
+       裝飾分隔線
     ========================================= */
 
     .ornament-divider {
@@ -277,36 +314,57 @@
 
     /* =========================================
        區塊標題
+
+       ★ Selected Works
+       ★ Portrait Gallery
+
+       主標題與副標題全部置中，
+       副標題放在主標題正下方。
     ========================================= */
 
     .section-heading {
-      margin-bottom: 25px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      gap: 7px;
+
+      width: 100%;
+      margin-bottom: 28px;
+
       text-align: center;
     }
 
     .section-heading h2 {
+      display: block;
+
       margin: 0;
 
       font-family: "Cormorant Garamond", Georgia, serif;
       font-size: clamp(30px, 4vw, 39px);
       font-weight: 500;
+      line-height: 1.2;
 
       color: #3E2D23;
     }
 
     .section-heading p {
-      margin: 7px 0 0;
+      display: block;
+
+      margin: 0;
 
       font-family: "Cormorant Garamond", Georgia, serif;
-      font-size: 15px;
+      font-size: 16px;
       font-style: italic;
+      line-height: 1.4;
 
       color: #715640;
     }
 
 
     /* =========================================
-       出演劇本清單
+       出演劇本
     ========================================= */
 
     .works-list {
@@ -349,13 +407,15 @@
       color: #39291F;
     }
 
+    /* ★ 劇中角色名稱 */
+
     .work-role {
       display: block;
       margin-top: 5px;
 
-      font-family: "Cormorant Garamond", Georgia, serif;
-      font-size: 15px;
-      font-style: italic;
+      font-family: "Noto Serif TC", serif;
+      font-size: 14px;
+      letter-spacing: 1px;
 
       color: #725B48;
     }
@@ -373,14 +433,9 @@
     /* =========================================
        相冊
 
-       所有縮圖使用相同比例的相框，
-       但原圖不會被修改。
-
-       object-fit: contain
-       可確保不同尺寸照片完整顯示。
-
-       相框留白使用深咖啡底色，
-       避免直式、橫式照片排列凌亂。
+       ★ 統一相框比例
+       ★ 照片完整顯示
+       ★ 橫式、直式照片都能放入
     ========================================= */
 
     .gallery-grid {
@@ -429,6 +484,11 @@
 
     .gallery-item:active {
       transform: scale(0.975);
+    }
+
+    .gallery-item:focus-visible {
+      outline: 2px solid #4E392B;
+      outline-offset: 4px;
     }
 
     @media (hover: hover) and (pointer: fine) {
@@ -620,7 +680,11 @@
         letter-spacing: 3px;
       }
 
-      .identity-english {
+      .identity-character .chinese {
+        font-size: 19px;
+      }
+
+      .identity-character .english {
         font-size: 25px;
       }
 
@@ -631,6 +695,14 @@
 
       .ornament-divider {
         margin: 36px 0;
+      }
+
+      .section-heading h2 {
+        font-size: 31px;
+      }
+
+      .section-heading p {
+        font-size: 15px;
       }
 
       .work-title {
@@ -750,7 +822,7 @@
 
 
     <!-- =========================================
-         人物個人頁
+         第三號人物檔案
     ========================================= -->
 
     <main class="main-content profile-main">
@@ -784,8 +856,8 @@
         <!-- =====================================
              ★ 主照片 ★
 
-             要更換主照片：
-             修改下方 img 的 src 即可。
+             更換主照片：
+             修改下方 src 即可。
         ===================================== -->
 
         <figure class="hero-portrait">
@@ -812,39 +884,53 @@
             THE PERSON BEHIND THE STORIES
           </p>
 
+
           <!-- ★ 真實姓名 ★ -->
 
           <h2 class="identity-name">
             金碩珍
           </h2>
 
-          <!-- ★ 劇中英文名字 ★ -->
 
-          <p class="identity-english">
-            Jim
+          <!-- =================================
+               ★ 劇中角色名字 ★
+
+               中文：吉姆
+               英文：Jim
+
+               未來可以分別修改。
+          ================================= -->
+
+          <p class="identity-character">
+
+            <span class="chinese">
+              吉姆
+            </span>
+
+            <span class="separator">
+              ·
+            </span>
+
+            <span class="english">
+              Jim
+            </span>
+
           </p>
 
 
           <!-- =================================
                ★ 人物身分標籤 ★
 
-               目前：
-               Gryffindor
+               Gryffindor 保持不變。
 
-               未來新增其他身分，
-               複製這一行：
+               未來新增身分時，
+               複製以下一行：
 
-               <span class="identity-role">新身分</span>
+               <span class="identity-role">
+                 新身分
+               </span>
 
-               貼在 identity-roles 裡面即可。
-
-               例如：
-               Auror
-               Professor
-               Healer
-
-               以上只是新增方式範例，
-               不代表這個角色已有這些設定。
+               貼在 identity-roles 裡面。
           ================================= -->
 
           <div class="identity-roles">
@@ -886,10 +972,10 @@
             <!-- =================================
                  ★ 出演劇本 01 ★
 
-                 劇本名稱：OMN
+                 劇本：OMN
+                 飾演：吉姆
 
-                 目前沒有提供小說頁網址，
-                 所以暫時不設定點擊連結。
+                 尚未設定小說頁網址。
             ================================= -->
 
             <div class="work-item">
@@ -901,7 +987,7 @@
                 </span>
 
                 <span class="work-role">
-                  As Jim
+                  飾演：吉姆
                 </span>
 
               </div>
@@ -916,9 +1002,9 @@
             <!-- =================================
                  ★★★ 未來新增出演劇本 ★★★
 
-                 請在這裡新增。
+                 請在這裡新增！
 
-                 複製下面這整組語法：
+                 複製以下整組：
 
                  <div class="work-item">
 
@@ -929,7 +1015,7 @@
                      </span>
 
                      <span class="work-role">
-                       As 新角色名字
+                       飾演：新角色名字
                      </span>
 
                    </div>
@@ -941,28 +1027,32 @@
                  </div>
 
 
-                 ★ 如果未來劇本有自己的網頁：
+                 ★ 如果劇本已有網頁：
 
-                 把最外層的
+                 把最外層：
 
                  <div class="work-item">
 
-                 改成
+                 改成：
 
-                 <a href="novel.html" class="work-item">
+                 <a
+                   href="novel.html"
+                   class="work-item"
+                 >
 
-                 並將對應結尾
+                 並將對應的最外層結尾：
 
                  </div>
 
-                 改成
+                 改成：
 
                  </a>
 
-                 其中 novel.html 換成實際劇本網址。
+                 ★ novel.html：
+                   改成實際劇本頁檔名。
 
                  ★ 每新增一部劇本，
-                   就複製一組放在這裡。
+                   就複製一整組放在這裡。
 
             ================================= -->
 
@@ -994,16 +1084,10 @@
           </div>
 
 
-          <!-- =================================
-               ★ 相冊照片區 ★
-
-               不同尺寸照片會自動放進
-               統一比例的相框。
-
-               點擊照片可查看完整原圖。
-          ================================= -->
-
-          <div class="gallery-grid" id="portraitGallery">
+          <div
+            class="gallery-grid"
+            id="portraitGallery"
+          >
 
 
             <!-- 相冊照片 01 -->
@@ -1014,11 +1098,13 @@
               aria-label="查看照片 1"
               data-full="images/IMG_1519.jpeg"
             >
+
               <img
                 src="images/IMG_1519.jpeg"
                 alt="金碩珍相冊照片 1"
                 loading="lazy"
               >
+
             </button>
 
 
@@ -1030,11 +1116,13 @@
               aria-label="查看照片 2"
               data-full="images/IMG_1521.jpeg"
             >
+
               <img
                 src="images/IMG_1521.jpeg"
                 alt="金碩珍相冊照片 2"
                 loading="lazy"
               >
+
             </button>
 
 
@@ -1046,11 +1134,13 @@
               aria-label="查看照片 3"
               data-full="images/IMG_1522.jpeg"
             >
+
               <img
                 src="images/IMG_1522.jpeg"
                 alt="金碩珍相冊照片 3"
                 loading="lazy"
               >
+
             </button>
 
 
@@ -1062,11 +1152,13 @@
               aria-label="查看照片 4"
               data-full="images/IMG_1523.jpeg"
             >
+
               <img
                 src="images/IMG_1523.jpeg"
                 alt="金碩珍相冊照片 4"
                 loading="lazy"
               >
+
             </button>
 
 
@@ -1078,11 +1170,13 @@
               aria-label="查看照片 5"
               data-full="images/IMG_1524.jpeg"
             >
+
               <img
                 src="images/IMG_1524.jpeg"
                 alt="金碩珍相冊照片 5"
                 loading="lazy"
               >
+
             </button>
 
 
@@ -1094,11 +1188,13 @@
               aria-label="查看照片 6"
               data-full="images/IMG_1525.jpeg"
             >
+
               <img
                 src="images/IMG_1525.jpeg"
                 alt="金碩珍相冊照片 6"
                 loading="lazy"
               >
+
             </button>
 
 
@@ -1113,12 +1209,15 @@
                    aria-label="查看新照片"
                    data-full="images/新照片.jpeg"
                  >
+
                    <img
                      src="images/新照片.jpeg"
                      alt="新照片"
                      loading="lazy"
                    >
+
                  </button>
+
 
                  ★ 記得修改兩個地方：
 
@@ -1127,7 +1226,8 @@
 
                  兩者填入相同圖片路徑。
 
-                 不需要修改 JavaScript。
+                 ★ 新增後不需要修改 JS。
+
             ================================= -->
 
 
@@ -1155,12 +1255,6 @@
 
   <!-- =========================================
        相冊放大視窗
-
-       點擊縮圖開啟
-       點擊 X 關閉
-       左右箭頭切換
-       手機 / iPad 可左右滑動
-       鍵盤可使用 Esc、左右方向鍵
   ========================================= -->
 
   <div
@@ -1218,7 +1312,12 @@
 
     /* =========================================
        相冊互動功能
-       不需要因新增照片而修改這段
+
+       ★ 點擊縮圖放大
+       ★ 左右箭頭切換
+       ★ iPhone / iPad 左右滑動
+       ★ Esc 關閉
+       ★ 新增照片不需要修改 JS
     ========================================= */
 
     (function () {
@@ -1256,7 +1355,6 @@
       );
 
       let currentIndex = 0;
-
       let previousFocus = null;
 
       let touchStartX = 0;
@@ -1272,7 +1370,6 @@
         ) % items.length;
 
         const item = items[currentIndex];
-
         const photo = item.querySelector("img");
 
         lightboxImage.src = item.dataset.full;
@@ -1341,9 +1438,12 @@
 
       items.forEach(function (item, index) {
 
-        item.addEventListener("click", function () {
-          openLightbox(index);
-        });
+        item.addEventListener(
+          "click",
+          function () {
+            openLightbox(index);
+          }
+        );
 
       });
 
@@ -1411,16 +1511,20 @@
               event.shiftKey &&
               document.activeElement === first
             ) {
+
               event.preventDefault();
               last.focus();
+
             }
 
             if (
               !event.shiftKey &&
               document.activeElement === last
             ) {
+
               event.preventDefault();
               first.focus();
+
             }
 
           }
@@ -1429,7 +1533,7 @@
       );
 
 
-      /* 手機與 iPad 左右滑動 */
+      /* iPhone / iPad 左右滑動 */
 
       lightbox.addEventListener(
         "touchstart",
