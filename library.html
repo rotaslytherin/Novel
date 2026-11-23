@@ -22,25 +22,18 @@
 
   <link rel="stylesheet" href="style.css?v=5">
 
-  <!-- =========================================
-       RotaRS 閱讀系統
-
-       啟用全站 CONTINUE READING
-  ========================================= -->
-
-  <script defer src="novels.js?v=1"></script>
-  <script defer src="reading.js?v=1"></script>
-
   <style>
 
     /* =========================================
        RotaRS — LIBRARY
 
        作品總覽頁
+       純閱讀網站版本
 
        ★ 第一部作品：OMN
        ★ 封面：images/IMG_1527.jpeg
-       ★ 點擊進入 novel-omn.html
+       ★ 作品頁：novels/omn/novel-omn.html
+       ★ 最新作品放在最前面
        ★ 未來可持續新增作品
     ========================================= */
 
@@ -222,6 +215,11 @@
        桌面：3 欄
        iPad：2 欄
        手機：1 欄
+
+       ★ HTML 中越前面的作品，
+         就越先顯示。
+
+       ★ 最新作品請放在第一張卡片前面。
     ========================================= */
 
     .novel-grid {
@@ -561,10 +559,6 @@
           CHARACTERS
         </a>
 
-        <span class="nav-link nav-disabled">
-          CONTINUE READING
-        </span>
-
       </nav>
 
       <div class="sidebar-footer">
@@ -618,6 +612,9 @@
 
         <!-- =========================================
              作品卡片排列區
+
+             ★ 最新作品放最前面
+             ★ 不需要重新編排 VOLUME 編號
         ========================================= -->
 
         <div class="novel-grid">
@@ -630,11 +627,11 @@
                images/IMG_1527.jpeg
 
                專頁：
-               novel-omn.html
+               novels/omn/novel-omn.html
           ===================================== -->
 
           <a
-            href="novel-omn.html"
+            href="novels/omn/novel-omn.html"
             class="novel-card"
             aria-label="開啟 OMN 小說專頁"
           >
@@ -671,20 +668,21 @@
           <!-- =====================================
                ★★★ 未來新增作品 ★★★
 
-               複製以下整組語法，
-               放在 novel-grid 裡面。
+               ★ 最新作品請放在 OMN 卡片前面。
+
+               複製以下整組語法：
 
                <a
-                 href="novel-002.html"
+                 href="novels/新作品資料夾/新作品首頁.html"
                  class="novel-card"
-                 aria-label="開啟第二部作品"
+                 aria-label="開啟新作品"
                >
 
                  <div class="novel-cover">
 
                    <img
-                     src="images/第二部封面.jpeg"
-                     alt="第二部小說封面"
+                     src="images/新作品封面.jpeg"
+                     alt="新作品封面"
                      loading="lazy"
                    >
 
@@ -697,7 +695,7 @@
                    </span>
 
                    <span class="novel-title">
-                     第二部作品名稱
+                     新作品名稱
                    </span>
 
                    <span class="novel-enter">
@@ -712,23 +710,21 @@
                ★ 修改以下四個地方：
 
                1. href
-                  小說專頁的檔案名稱。
+                  新作品首頁的完整相對路徑。
 
                2. img src
-                  小說封面圖片路徑。
+                  新作品封面圖片路徑。
 
                3. VOLUME 002
                   作品編號。
 
-               4. 第二部作品名稱
+               4. 新作品名稱
                   小說名稱。
 
                ★ 每新增一部作品，
-                 複製一整組即可。
+                 複製一整組放在最前面即可。
 
-               ★ 作品會自動排列。
-
-               ★ 不需要修改 CSS。
+               ★ 不需要修改 CSS 或 JS。
 
           ===================================== -->
 
