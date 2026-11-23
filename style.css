@@ -1,0 +1,454 @@
+
+@charset "UTF-8";
+
+/* =========================
+   RotaRS — Espresso Library
+   基本設定
+========================= */
+
+:root {
+  --coffee-dark: #211D1B;
+  --coffee-panel: #38302B;
+  --coffee-accent: #9B7660;
+
+  --ivory: #F2E9DC;
+  --muted: #B9A899;
+  --silver: #C5C4C2;
+
+  --header-height: 100px;
+  --sidebar-width: 220px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ivory);
+
+  font-family:
+    Georgia,
+    "Noto Serif TC",
+    serif;
+
+  background-color: #090807;
+
+  background-image:
+    linear-gradient(
+      rgba(20, 15, 12, 0.12),
+      rgba(20, 15, 12, 0.20)
+    ),
+    url("images/IMG_1496.png");
+
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* =========================
+   網站整體配置
+========================= */
+
+.site {
+  min-height: 100vh;
+}
+
+/* =========================
+   頂部 Logo
+========================= */
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: var(--header-height);
+  z-index: 100;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 36px;
+
+  background: rgba(24, 19, 16, 0.42);
+
+  border-bottom:
+    1px solid rgba(185, 168, 153, 0.20);
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.brand-logo {
+  width: 62px;
+  height: 82px;
+  object-fit: contain;
+  filter: drop-shadow(
+    0 0 8px rgba(185, 145, 90, 0.20)
+  );
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.brand-name {
+  font-size: 25px;
+  letter-spacing: 2px;
+  color: var(--ivory);
+}
+
+.brand-subtitle {
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--muted);
+}
+
+/* =========================
+   左側固定導覽列
+========================= */
+
+.sidebar {
+  position: fixed;
+
+  top: var(--header-height);
+  left: 0;
+  bottom: 0;
+
+  width: var(--sidebar-width);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: 48px 24px 28px;
+
+  background: rgba(24, 19, 16, 0.30);
+
+  border-right:
+    1px solid rgba(185, 168, 153, 0.18);
+
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.nav-link {
+  display: block;
+
+  padding: 14px 18px;
+
+  font-size: 14px;
+  letter-spacing: 2px;
+
+  color: var(--muted);
+
+  border-radius: 5px;
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease;
+}
+
+.nav-link:hover {
+  color: var(--ivory);
+  background: rgba(155, 118, 96, 0.20);
+}
+
+.nav-link.active {
+  color: var(--ivory);
+  background: rgba(155, 118, 96, 0.32);
+
+  border-left:
+    2px solid var(--coffee-accent);
+}
+
+.sidebar-footer {
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--muted);
+  opacity: 0.7;
+}
+
+/* =========================
+   右側主要內容
+========================= */
+
+.main-content {
+  margin-left: var(--sidebar-width);
+
+  padding:
+    calc(var(--header-height) + 65px)
+    6%
+    100px;
+
+  min-height: 100vh;
+}
+
+.library-intro {
+  margin-bottom: 65px;
+}
+
+.eyebrow {
+  margin: 0 0 15px;
+
+  font-size: 11px;
+  letter-spacing: 4px;
+
+  color: var(--muted);
+}
+
+.library-intro h1 {
+  margin: 0;
+
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+
+.intro-description {
+  margin-top: 18px;
+
+  font-size: 14px;
+  line-height: 1.9;
+  letter-spacing: 1px;
+
+  color: var(--muted);
+}
+
+/* =========================
+   書庫區域
+========================= */
+
+.collection {
+  margin-bottom: 90px;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 28px;
+
+  border-bottom:
+    1px solid rgba(185, 168, 153, 0.25);
+
+  padding-bottom: 18px;
+}
+
+.section-heading h2 {
+  margin: 0;
+
+  font-size: 21px;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+
+.section-heading span {
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--muted);
+}
+
+.book-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 28px;
+}
+
+/* 暫時的小說封面位置 */
+
+.book-placeholder {
+  aspect-ratio: 2 / 3;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border:
+    1px solid rgba(185, 168, 153, 0.35);
+
+  background: rgba(56, 48, 43, 0.30);
+
+  border-radius: 5px;
+}
+
+.book-placeholder span {
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--muted);
+}
+
+/* =========================
+   關於區域
+========================= */
+
+.about-section {
+  padding-top: 30px;
+
+  border-top:
+    1px solid rgba(185, 168, 153, 0.20);
+}
+
+.about-section h2 {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.about-section p {
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: 1px;
+}
+
+/* =========================
+   平板
+========================= */
+
+@media (max-width: 1100px) {
+  :root {
+    --sidebar-width: 180px;
+  }
+
+  .book-grid {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* =========================
+   手機
+========================= */
+
+@media (max-width: 700px) {
+  :root {
+    --header-height: 78px;
+    --sidebar-width: 0px;
+  }
+
+  .site-header {
+    padding: 0 18px;
+  }
+
+  .brand-logo {
+    width: 46px;
+    height: 62px;
+  }
+
+  .brand-name {
+    font-size: 21px;
+  }
+
+  .brand-subtitle {
+    font-size: 8px;
+    letter-spacing: 2px;
+  }
+
+  .sidebar {
+    top: auto;
+    bottom: 0;
+    right: 0;
+
+    width: 100%;
+    height: 66px;
+
+    padding: 0 10px;
+
+    z-index: 100;
+
+    border-right: none;
+    border-top:
+      1px solid rgba(185, 168, 153, 0.22);
+
+    background: rgba(24, 19, 16, 0.92);
+  }
+
+  .sidebar-nav {
+    height: 100%;
+
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+
+    gap: 4px;
+  }
+
+  .nav-link {
+    padding: 12px 10px;
+    font-size: 12px;
+    letter-spacing: 0;
+  }
+
+  .nav-link.active {
+    border-left: none;
+    border-bottom:
+      2px solid var(--coffee-accent);
+  }
+
+  .sidebar-footer {
+    display: none;
+  }
+
+  .main-content {
+    margin-left: 0;
+
+    padding:
+      calc(var(--header-height) + 38px)
+      20px
+      110px;
+  }
+
+  .library-intro {
+    margin-bottom: 45px;
+  }
+
+  .library-intro h1 {
+    font-size: 38px;
+  }
+
+  .book-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 16px;
+  }
+
+  .section-heading span {
+    font-size: 8px;
+  }
+
+  body {
+    background-attachment: scroll;
+    background-position: center top;
+  }
+}
