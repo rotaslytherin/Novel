@@ -3,6 +3,7 @@
 <html lang="zh-Hant">
 
 <head>
+
   <meta charset="UTF-8">
 
   <meta
@@ -15,19 +16,481 @@
     content="noindex, nofollow, noimageindex"
   >
 
-  <title>LIBRARY | RotaRS — The Literary Archive</title>
+  <title>
+    Library | RotaRS — The Literary Archive
+  </title>
 
   <link rel="stylesheet" href="style.css?v=5">
 
+  <style>
+
+    /* =========================================
+       RotaRS — LIBRARY
+
+       作品總覽頁
+
+       ★ 第一部作品：OMN
+       ★ 封面：images/IMG_1527.jpeg
+       ★ 點擊進入 novel-omn.html
+       ★ 未來可持續新增作品
+    ========================================= */
+
+    * {
+      box-sizing: border-box;
+    }
+
+    .library-main {
+      min-width: 0;
+
+      padding-top:
+        calc(var(--header-height, 100px) + 65px);
+
+      padding-bottom: 70px;
+    }
+
+    /* =========================================
+       頁面標題
+    ========================================= */
+
+    .library-intro {
+      margin-bottom: 55px;
+    }
+
+    .library-eyebrow {
+      margin: 0 0 16px;
+
+      font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+      font-size: 15px;
+      letter-spacing: 4px;
+
+      color: #B9A899;
+    }
+
+    .library-intro h1 {
+      margin: 0;
+
+      font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+      font-size: clamp(48px, 6vw, 76px);
+      font-weight: 500;
+      line-height: 1.1;
+
+      color: #F2E9DC;
+    }
+
+    .library-description {
+      margin: 20px 0 0;
+
+      font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+      font-size: 21px;
+      line-height: 1.5;
+
+      color: #B9A899;
+    }
+
+    /* =========================================
+       煙燻羊皮紙
+    ========================================= */
+
+    .library-paper {
+      position: relative;
+      isolation: isolate;
+
+      min-width: 0;
+
+      padding: 55px 48px 65px;
+
+      background-color: #C7B49A;
+
+      background-image:
+        radial-gradient(
+          ellipse at 50% 35%,
+          rgba(246, 231, 208, 0.22),
+          transparent 75%
+        ),
+        linear-gradient(
+          135deg,
+          #D3C1A8 0%,
+          #C7B49A 52%,
+          #B8A187 100%
+        );
+
+      border: 1px solid #8C745D;
+
+      box-shadow:
+        0 20px 48px rgba(0, 0, 0, 0.34),
+        inset 0 0 35px rgba(84, 59, 39, 0.06);
+    }
+
+    .library-paper::before {
+      content: "";
+
+      position: absolute;
+      inset: 12px;
+
+      border:
+        1px solid rgba(91, 65, 45, 0.35);
+
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* =========================================
+       羊皮紙標題
+    ========================================= */
+
+    .library-heading {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      gap: 10px;
+
+      margin-bottom: 42px;
+      padding-bottom: 25px;
+
+      border-bottom:
+        1px solid rgba(91, 65, 45, 0.35);
+
+      text-align: center;
+    }
+
+    .library-small-title {
+      margin: 0;
+
+      font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+      font-size: 12px;
+      letter-spacing: 3px;
+
+      color: #725B48;
+    }
+
+    .library-heading h2 {
+      margin: 0;
+
+      font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+      font-size: 38px;
+      font-weight: 500;
+      letter-spacing: 2px;
+
+      color: #3E2D23;
+    }
+
+    .library-caption {
+      font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+      font-size: 18px;
+      font-style: italic;
+
+      color: #69503E;
+    }
+
+    /* =========================================
+       作品排列
+
+       桌面：3 欄
+       iPad：2 欄
+       手機：1 欄
+    ========================================= */
+
+    .novel-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+      gap: 35px 26px;
+
+      align-items: start;
+    }
+
+    /* =========================================
+       作品卡片
+    ========================================= */
+
+    .novel-card {
+      display: flex;
+      flex-direction: column;
+
+      min-width: 0;
+
+      color: inherit;
+      text-decoration: none;
+
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .novel-cover {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 100%;
+
+      background: transparent;
+    }
+
+    .novel-cover img {
+      display: block;
+
+      width: 100%;
+      height: auto;
+
+      object-fit: contain;
+
+      border:
+        1px solid rgba(74, 50, 32, 0.45);
+
+      box-shadow:
+        0 10px 22px rgba(50, 31, 19, 0.24);
+
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+    }
+
+    .novel-card:active .novel-cover img {
+      transform: scale(0.975);
+    }
+
+    .novel-card:focus-visible {
+      outline: 2px solid #5A4030;
+      outline-offset: 5px;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+
+      .novel-card:hover .novel-cover img {
+        transform: translateY(-5px);
+
+        box-shadow:
+          0 16px 28px rgba(50, 31, 19, 0.3);
+      }
+
+    }
+
+    /* =========================================
+       作品名稱
+    ========================================= */
+
+    .novel-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      gap: 7px;
+
+      padding-top: 20px;
+
+      text-align: center;
+    }
+
+    .novel-number {
+      font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+      font-size: 12px;
+      letter-spacing: 2px;
+
+      color: #725B48;
+    }
+
+    .novel-title {
+      font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+      font-size: 30px;
+      font-weight: 500;
+
+      color: #39291F;
+    }
+
+    .novel-enter {
+      margin-top: 5px;
+
+      font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+      font-size: 15px;
+      font-style: italic;
+
+      color: #715640;
+    }
+
+    /* =========================================
+       頁尾
+    ========================================= */
+
+    .library-footer {
+      display: flex;
+      justify-content: space-between;
+
+      gap: 20px;
+
+      margin-top: 80px;
+      padding-top: 25px;
+
+      border-top:
+        1px solid rgba(185, 168, 153, 0.22);
+
+      font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+      font-size: 14px;
+      letter-spacing: 1px;
+
+      color: #B9A899;
+    }
+
+    /* =========================================
+       iPad
+    ========================================= */
+
+    @media
+      (min-width: 701px)
+      and
+      (max-width: 1100px) {
+
+      .library-paper {
+        padding: 44px 32px 55px;
+      }
+
+      .novel-grid {
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+
+        gap: 30px 22px;
+      }
+
+    }
+
+    /* =========================================
+       手機
+    ========================================= */
+
+    @media (max-width: 700px) {
+
+      .library-main {
+        padding-top:
+          calc(var(--header-height, 100px) + 40px);
+
+        padding-bottom: 115px;
+      }
+
+      .library-intro {
+        margin-bottom: 38px;
+      }
+
+      .library-eyebrow {
+        font-size: 12px;
+        letter-spacing: 2px;
+      }
+
+      .library-intro h1 {
+        font-size: 48px;
+      }
+
+      .library-description {
+        font-size: 18px;
+      }
+
+      .library-paper {
+        padding: 35px 22px 45px;
+      }
+
+      .library-paper::before {
+        inset: 8px;
+      }
+
+      .library-heading {
+        margin-bottom: 32px;
+      }
+
+      .library-heading h2 {
+        font-size: 32px;
+      }
+
+      .library-caption {
+        font-size: 15px;
+      }
+
+      .novel-grid {
+        grid-template-columns: 1fr;
+        gap: 38px;
+      }
+
+      .novel-card {
+        width: 100%;
+        max-width: 310px;
+
+        margin: 0 auto;
+      }
+
+      .novel-title {
+        font-size: 28px;
+      }
+
+      .library-footer {
+        flex-direction: column;
+
+        gap: 8px;
+        margin-top: 55px;
+
+        font-size: 12px;
+      }
+
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .novel-cover img {
+        transition: none;
+      }
+
+    }
+
+  </style>
+
 </head>
+
 
 <body class="library-page">
 
   <div class="site">
 
-    <!-- =========================
-         頂部品牌區
-    ========================= -->
+    <!-- =========================================
+         網站頂部品牌
+    ========================================= -->
 
     <header class="site-header">
 
@@ -56,9 +519,9 @@
     </header>
 
 
-    <!-- =========================
+    <!-- =========================================
          左側導覽列
-    ========================= -->
+    ========================================= -->
 
     <aside class="sidebar">
 
@@ -102,13 +565,11 @@
     </aside>
 
 
-    <!-- =========================
-         LIBRARY 作品集
-    ========================= -->
+    <!-- =========================================
+         作品總覽
+    ========================================= -->
 
     <main class="main-content library-main">
-
-      <!-- 書庫標題 -->
 
       <section class="library-intro">
 
@@ -119,115 +580,158 @@
         <h1>The Library</h1>
 
         <p class="library-description">
-          A collection of stories,
-          characters and worlds.
+          A collection of stories waiting to be told.
         </p>
 
       </section>
 
 
-      <!-- =========================
-           小說收藏區
-      ========================= -->
+      <!-- =========================================
+           煙燻羊皮紙作品書架
+      ========================================= -->
 
-      <section class="collection" id="collection">
+      <section class="library-paper">
 
-        <div class="section-heading">
+        <div class="library-heading">
 
-          <h2>THE COLLECTION</h2>
+          <p class="library-small-title">
+            ROTARS · THE LITERARY ARCHIVE
+          </p>
 
-          <span>EXPLORE THE STORIES</span>
+          <h2>The Collection</h2>
+
+          <span class="library-caption">
+            Stories from the Archive
+          </span>
 
         </div>
 
 
-        <!-- 小說封面牆 -->
+        <!-- =========================================
+             作品卡片排列區
+        ========================================= -->
 
-        <div class="book-grid">
-
-          <!-- 小說 01 -->
-
-          <article class="book-card">
-
-            <div class="book-cover book-placeholder">
-              <span>COMING SOON</span>
-            </div>
-
-            <div class="book-info">
-
-              <h3>UNTITLED STORY</h3>
-
-              <p>IN PREPARATION</p>
-
-            </div>
-
-          </article>
+        <div class="novel-grid">
 
 
-          <!-- 小說 02 -->
+          <!-- =====================================
+               ★ 作品 01｜OMN
 
-          <article class="book-card">
+               封面：
+               images/IMG_1527.jpeg
 
-            <div class="book-cover book-placeholder">
-              <span>COMING SOON</span>
-            </div>
+               專頁：
+               novel-omn.html
+          ===================================== -->
 
-            <div class="book-info">
+          <a
+            href="novel-omn.html"
+            class="novel-card"
+            aria-label="開啟 OMN 小說專頁"
+          >
 
-              <h3>UNTITLED STORY</h3>
+            <div class="novel-cover">
 
-              <p>IN PREPARATION</p>
+              <img
+                src="images/IMG_1527.jpeg"
+                alt="OMN 小說封面"
+                loading="lazy"
+              >
 
             </div>
 
-          </article>
+            <div class="novel-info">
 
+              <span class="novel-number">
+                VOLUME 001
+              </span>
 
-          <!-- 小說 03 -->
+              <span class="novel-title">
+                OMN
+              </span>
 
-          <article class="book-card">
-
-            <div class="book-cover book-placeholder">
-              <span>COMING SOON</span>
-            </div>
-
-            <div class="book-info">
-
-              <h3>UNTITLED STORY</h3>
-
-              <p>IN PREPARATION</p>
+              <span class="novel-enter">
+                Enter the Story
+              </span>
 
             </div>
 
-          </article>
+          </a>
 
 
-          <!-- 小說 04 -->
+          <!-- =====================================
+               ★★★ 未來新增作品 ★★★
 
-          <article class="book-card">
+               複製以下整組語法，
+               放在 novel-grid 裡面。
 
-            <div class="book-cover book-placeholder">
-              <span>COMING SOON</span>
-            </div>
+               <a
+                 href="novel-002.html"
+                 class="novel-card"
+                 aria-label="開啟第二部作品"
+               >
 
-            <div class="book-info">
+                 <div class="novel-cover">
 
-              <h3>UNTITLED STORY</h3>
+                   <img
+                     src="images/第二部封面.jpeg"
+                     alt="第二部小說封面"
+                     loading="lazy"
+                   >
 
-              <p>IN PREPARATION</p>
+                 </div>
 
-            </div>
+                 <div class="novel-info">
 
-          </article>
+                   <span class="novel-number">
+                     VOLUME 002
+                   </span>
+
+                   <span class="novel-title">
+                     第二部作品名稱
+                   </span>
+
+                   <span class="novel-enter">
+                     Enter the Story
+                   </span>
+
+                 </div>
+
+               </a>
+
+
+               ★ 修改以下四個地方：
+
+               1. href
+                  小說專頁的檔案名稱。
+
+               2. img src
+                  小說封面圖片路徑。
+
+               3. VOLUME 002
+                  作品編號。
+
+               4. 第二部作品名稱
+                  小說名稱。
+
+               ★ 每新增一部作品，
+                 複製一整組即可。
+
+               ★ 作品會自動排列。
+
+               ★ 不需要修改 CSS。
+
+          ===================================== -->
+
 
         </div>
 
       </section>
 
 
-      <!-- =========================
+      <!-- =========================================
            頁尾
-      ========================= -->
+      ========================================= -->
 
       <footer class="library-footer">
 
